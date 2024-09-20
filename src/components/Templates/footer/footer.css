@@ -1,0 +1,180 @@
+/* Basic Footer Styles */
+.footer {
+  background-color: #000;
+  color: white;
+  padding: 40px 0; /* Ajustado o padding */
+  width: 100%;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #dddddd;
+  text-decoration: underline;
+}
+
+/* Social Icons */
+.social-icons a {
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+/* Above and Below Footer Styles */
+.above-footer,
+.below-footer {
+  background-color: #333; /* Cor base para ambas */
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  margin: 0;
+}
+
+.below-footer {
+  background-color: black; /* Sobrescrevendo apenas o background */
+}
+
+/* Services Menu Styles */
+.services-menu {
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Melhor responsividade */
+}
+
+.menu-toggle:focus {
+  outline: none;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-unstyled.open {
+  display: flex; /* Mostrar o menu quando aberto */
+}
+
+/* Responsive behavior for screens smaller than 1000px */
+@media (max-width: 1000px) {
+  .menu-toggle {
+    display: block; /* Exibir o botão de toggle */
+  }
+
+  .list-unstyled {
+    display: none; /* Ocultar o menu por padrão */
+  }
+
+  .list-unstyled.open {
+    display: flex; /* Mostrar o menu quando aberto */
+  }
+
+  .services-menu ul li a {
+    padding: 10px 0; /* Melhorar alvo de toque */
+  }
+}
+
+/* Hamburger Icon Animation */
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-icon span {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0;
+}
+
+.menu-icon span:nth-child(2) {
+  top: 10px;
+}
+
+.menu-icon span:nth-child(3) {
+  top: 20px;
+}
+
+/* Animation when the menu is open */
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 10px;
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 10px;
+}
+
+/* Newsletter Form Styles */
+.newsletter-form {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-form input {
+  width: 100%;
+  max-width: 300px;
+  margin-right: 10px;
+}
+
+.newsletter-form button {
+  white-space: nowrap;
+}
+
+/* Redline (Electricity Animation) */
+.redline {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background-color: #ff0000;
+  overflow: hidden;
+  margin-top: -19px;
+}
+
+.redline::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(270deg, #ff3131, #000000);
+  animation: electricity 10s linear infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes electricity {
+  0% {
+    right: 100%;
+  }
+  50%, 100% {
+    right: -100%;
+  }
+}

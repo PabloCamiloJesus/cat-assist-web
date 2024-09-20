@@ -1,0 +1,206 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.cadastro-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  background-color: #f8f9fa;
+ 
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.cadastro-right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cadastro-left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cadastro-left-section {
+  /* border-right: 1px solid #000; */
+  background-color: #bf0b3b;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  width: 40%;
+  height: 100vh;
+}
+
+.cadastro-left-section img {
+  position: relative;
+  left: 250px;
+}
+
+.login-right-section {
+  width: 20%;
+  /* border-left: 1px solid #000; */
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-weight: lighter;
+  font-size: 50px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Ajuste para deixar os botões colados */
+.cadastro-social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* Remove qualquer espaço extra */
+  margin-top: 20px;
+}
+.cadastro-social-media a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+  gap: 10px;
+  color: #0A0909;
+  text-decoration: none;
+  border: 1px solid transparent; /* Garantia de nenhum espaço */
+}
+
+.cadastro-social-media a img {
+  margin-right: 8px;
+}
+
+/* Aumentando a largura da linha de email e senha */
+.cadastro-form-group {
+  position: relative;
+  width: 100%; /* Aumenta a largura total do campo */
+  max-width: 500px; /* Define um máximo, se necessário */
+  margin-top: 20px;
+}
+
+.cadastro-input {
+  font-family: 'Raleway', sans-serif; /* Fonte Raleway aplicada aqui */
+  width: 350px; /* O input ocupará toda a largura disponível */
+  border: none;
+  border-bottom: 2px solid #000; /* Espessura padrão da linha */
+  padding: 8px 4px;
+  background-color: transparent;
+  font-size: 20px;
+  box-shadow: none;
+  color: #000; /* Cor do texto alterada para preto */
+}
+.cadastro-input:focus{
+  outline: none;
+}
+.cadastro-input::placeholder {
+  color: #000; /* Cor do placeholder alterada para preto */
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.cadastro-input:focus::placeholder {
+  opacity: 0; /* O placeholder some quando o campo recebe foco */
+}
+
+.cadastro-label {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  font-size: 16px;
+  color: #000000;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.cadastro-input:focus ~ .cadastro-label,
+.cadastro-input:not(:placeholder-shown) ~ .cadastro-label {
+  top: -10px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  outline: none;
+}
+
+.cadastro-forgot-password {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #000000;
+  opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cadastro-facebook {
+  border: none;
+  border-left: 1px gray solid;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cadastro-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 100px;
+  }
+
+  .cadastro-left-section, .cadastro-right-section {
+    border: none;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .cadastro-left-section {
+    border-bottom: 1px solid #000;
+    min-height: 250px;
+    width: 95%;
+    display: flex;
+    border-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cadastro-social-media a {
+    width: 100%; /* Deixa os botões um embaixo do outro em telas menores */
+    margin: 10px 0;
+  }
+
+  /* Ajuste para campos ocuparem largura total no mobile */
+  .cadastro-form-group {
+    max-width: 95%;
+  }
+
+  .cadastro-left-section img {
+    position: absolute; /* Permite posicionamento personalizado */
+    top: -50px; /* Mover a imagem para cima */
+    left: 50px; /* Coloca a imagem mais para fora da parte vermelha */
+    max-width: 600px;
+  }
+}

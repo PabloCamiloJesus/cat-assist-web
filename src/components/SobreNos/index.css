@@ -1,0 +1,87 @@
+/* Header */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Raleway", sans-serif;
+}
+/* TUDO NO BANNER */
+#banner {
+  position: relative;/* ALTERAR PARA A POSIÇÃO INICIAL */
+  text-align: center;
+  color: #fff;
+  height: 100%;
+}
+
+/* IMAGEM DO BANNER */
+.bannerimg {
+  width: 100%;
+  height: 100%;
+ filter: brightness(29%);   /* DIMINUIR O BRILHO DA IMAGEM */
+}
+
+/* CONTÉUDO DENTRO DO BANNER */
+.bannerconteudo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Missão, Visão, Valores */
+
+/* ICONES PEQUENOS EM CIMA DO MISSÃO VISÃO E VALOR */
+/* cards de missao visao e valores */
+.col-md-4 {
+  transition: transform 1.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+}
+
+/* cards de missao visao e valores quando o mouse passa por cima*/
+.col-md-4:hover {
+  /* border:solid 1px black; */
+  border-radius: 20px; /* borda arredondada */
+  box-shadow: 5px 5px 30px 5px rgb(219, 219, 219); /* sombra cinza fora do card */
+  transform: scale(1.03);   /* aumentar o tamanho do card */
+  
+} 
+
+.icones {
+  
+  height: 45px;
+  width: 45px;
+}
+
+/* Onde Estamos */
+.location-section {
+  padding: 50px 0;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.location-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.map-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.endereco {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+}
+
+@media (min-width:300px) and (max-width:758px){
+  .bannerconteudo h1{
+    font-size: 36px;
+  }
+  .bannerconteudo p{
+    font-size: 16px;
+    width: 100%;
+  }
+}

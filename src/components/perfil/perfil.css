@@ -1,0 +1,230 @@
+* {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.perfil-fullscreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: #00000050;
+}
+
+.perfil-fullscreen::before {
+  content: "center";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.freepik.com/fotos-premium/uma-faixa-vermelha-com-linhas-brancas_928715-1404.jpg?ga=GA1.1.1151205147.1710421356&semt=ais_hybrid');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: -1;
+  
+}
+
+.perfil-container {
+  background: rgba(183, 183, 183, 0.42);
+  flex-direction: row; 
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  color: white;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px); /* Efeito de desfoque nas bordas */
+}
+
+/* Layout Desktop */
+.perfil-content {
+  flex-direction: row; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.perfil-name {
+  font-size: 32px;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  padding: 40px;
+}
+
+.perfil-age {
+  font-size: 23px;
+  margin: 0;
+  color: #e2dddd;
+}
+
+.status-carteirinha{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.perfil-image {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  margin-right: 30px;
+}
+
+.perfil-info {
+  flex: 1;
+}
+
+.perfil-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.perfil-label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.perfil-value {
+  font-size: 16px;
+}
+
+.perfil-status .atrasado {
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(229, 9, 20, 0.464);
+}
+
+.perfil-button {
+  display: inline-block;
+  background-color: #E50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.perfil-button:hover {
+  background-color: #c40813;
+}
+
+/* Layout responsivo: o header do perfil fica em cima do content */
+@media (max-width: 768px) {
+  .perfil-fullscreen{
+    display: flex;
+    flex-direction: column;
+  }
+  .perfil-content {
+    margin-top: -90px; /* para ajustar a altura do content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .perfil-image {
+    width: 150px; /* Ajustado para versão responsiva */
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .perfil-name {
+    margin-top: 20%;
+    font-size: 24px; /* Reduzido no mobile */
+    }
+
+  .perfil-age {
+    font-size: 16px;
+  }
+
+  .perfil-container {
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .perfil-header {
+    order: 1; /* Define a ordem dos elementos no mobile */
+  }
+
+  .perfil-content {
+    order: 2;
+    width: 100%;
+  }
+
+  .perfil-info {
+    width: 100%;
+  }
+
+  .perfil-button {
+    width: 100%; /* Largura total no mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-container {
+    margin-top: -25px; /* para ajustar a altura do content */
+    width: 80%;
+    max-width: 360px;
+    padding: 15px;
+  }
+  .perfil-container{
+    width: 500px;
+  }
+
+  .perfil-image {
+    margin-top: -20%;
+    width: 150px; /* Ajuste adicional para telas menores */
+    height: 150px;
+  }
+
+  .perfil-name {
+    font-size: 20px;
+    margin-top: -20%;
+  }
+  
+
+  .perfil-age {
+    font-size: 14px;
+  }
+
+  .perfil-label, .perfil-value {
+    font-size: 12px;
+  }
+
+  .perfil-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

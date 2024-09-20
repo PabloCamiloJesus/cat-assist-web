@@ -1,0 +1,378 @@
+/* Resetando margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos gerais para ambas as páginas */
+h1 {
+  margin-bottom: 20px;
+  font-weight: lighter;
+  font-size: 50px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Login - Estilos específicos */
+.test-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  background-color: #f8f9fa;
+}
+
+.container_direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_esquerda {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #000;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  width: 40%;
+  height: 100vh;
+}
+
+.container_esquerda img {
+  position: relative;
+  left: 250px;
+}
+
+.container_direita {
+  width: 20%;
+}
+
+.form-group {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.form-control {
+  font-family: 'Raleway', sans-serif;
+  width: 350px;
+  border: none;
+  border-bottom: 2px solid #000;
+  padding: 8px 4px;
+  background-color: transparent;
+  font-size: 20px;
+  color: #000;
+}
+
+.form-control:focus {
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: #000;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.form-control:focus::placeholder {
+  opacity: 0;
+}
+
+.custom-label {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  font-size: 16px;
+  color: #000;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.form-control:focus ~ .custom-label,
+.form-control:not(:placeholder-shown) ~ .custom-label {
+  top: -10px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+}
+
+.forgot-password {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #000;
+  opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.EntrarComRedesSociais {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.EntrarComRedesSociais a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+  gap: 10px;
+  color: #0A0909;
+  text-decoration: none;
+}
+
+.EntrarComRedesSociais a img {
+  margin-right: 8px;
+}
+
+.facebook {
+  border-left: 1px solid gray;
+}
+
+/* Cadastro - Estilos específicos */
+.cadastro-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  background-color: #f8f9fa;
+}
+
+.auth-left-section {
+
+  position: absolute;
+
+  z-index: 3;
+
+  background-color: #000;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  width: 30%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out; /* Adiciona transição suave */
+  /*  */
+}
+
+.pos-rel {
+  width: 30%; 
+  position: relative;
+}
+
+.anim {
+
+  position: absolute;
+
+  animation: 1s teste ease-in-out forwards;
+}
+
+.cadastro-left-section img {
+  position: relative;
+  left: 250px;
+}
+
+.auth-right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.cadastro-form-group {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.cadastro-input {
+  font-family: 'Raleway', sans-serif;
+  width: 350px;
+  border: none;
+  border-bottom: 2px solid #000;
+  padding: 8px 4px;
+  background-color: transparent;
+  font-size: 20px;
+  color: #000;
+}
+
+.cadastro-input:focus {
+  outline: none;
+}
+
+.cadastro-input::placeholder {
+  color: #000;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.cadastro-input:focus::placeholder {
+  opacity: 0;
+}
+
+.cadastro-label {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  font-size: 16px;
+  color: #000;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.cadastro-input:focus ~ .cadastro-label,
+.cadastro-input:not(:placeholder-shown) ~ .cadastro-label {
+  top: -10px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+}
+
+.cadastro-social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.cadastro-social-media a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+  gap: 10px;
+  color: #0A0909;
+  text-decoration: none;
+}
+
+.cadastro-social-media a img {
+  margin-right: 8px;
+}
+
+.cadastro-facebook {
+  border-left: 1px solid gray;
+}
+
+/* Responsividade para ambas as páginas */
+@media (max-width: 768px) {
+  .test-container, .cadastro-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 100px;
+  }
+
+  .container_esquerda, .container_direita, 
+  .cadastro-left-section, .cadastro-right-section {
+    border: none;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .container_esquerda, .cadastro-left-section {
+    border-bottom: 1px solid #000;
+    min-height: 250px;
+    width: 95%;
+    border-radius: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-group, .cadastro-form-group {
+    max-width: 95%;
+  }
+
+  .container_esquerda img, .cadastro-left-section img {
+    position: static;
+    max-width: 180px;
+  }
+
+  .EntrarComRedesSociais a, .cadastro-social-media a {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+
+
+.auth-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease;
+}
+
+.bola{
+  position: relative;
+  left: 35%;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  
+}
+.cadastro-mode {
+    background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
+}
+
+.cadastro-mode .bola {
+  opacity: 0.8; /* Suave diminuição de opacidade para efeito */
+  transform: translateX(15%); /* Animação de translação */
+  opacity: 0.8; /* Suave diminuição de opacidade para efeito */
+}
+
+@keyframes teste {
+
+  0% { 
+    width: 30%;
+  }
+  
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 30%;
+  }
+
+}
+
+.cadastro-mode .auth-left-section {
+  background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
+  width: 100%; /* Faz a seção colorida ocupar toda a largura da tela */
+  border-radius: 0; /* Remove o raio da borda quando expandir */
+}

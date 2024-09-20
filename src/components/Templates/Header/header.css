@@ -1,0 +1,127 @@
+/* Header */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+}
+
+/* /* src/components/Header.css */
+.custom-navbar {
+  background-color: #000;
+  border-bottom: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  
+}
+
+.sesi-logo {
+  height: 40px;
+}
+
+#nav-left-right {
+  display: flex;
+  gap: 30px; /* Espaçamento entre os itens de navegação */
+  font-size: 16px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  
+}
+
+.nav-link:hover {
+  color: red !important;
+}
+
+/* Estilo para o dropdown do botão de hambúrguer */
+.hamburger-dropdown .hamburger-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: .3s ease-in-out;
+}
+
+.custom-dropdown-menu {
+  background-color: #000;
+  border: 1px solid red;
+  text-align: center;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.custom-dropdown-menu .dropdown-item {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #000;
+  height:35%;
+  transition: .3s ease-in-out;
+  font-weight: 300;
+  
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+  color: red;
+  background-color: #000;
+
+}
+
+#dropdown-menu{
+  padding: 0;
+  
+}
+
+/* Para esconder a navegação em telas menores */
+@media (min-width:300px) and (max-width: 757px) {
+  #nav-left-right .nav-link {
+    display: none; 
+  }
+
+  .navbar-nav{
+    display: none;
+  }
+
+  #navbar-responsive{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  #dropdown-menu{
+    margin-left: -95px;
+    transition: .3s ease-in-out;
+  }
+
+  .navbar-logo img{
+    order: 1;
+  }
+  .hamburger-dropdown{
+    order:2;
+  }
+
+}
+
+@media (min-width: 758px) {
+  .hamburger-dropdown {
+    display: none; /* Esconde o dropdown em telas grandes */
+  }
+
+  
+}
+
