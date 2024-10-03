@@ -109,6 +109,15 @@ button[type="submit"]:hover {
   opacity: 0;
 }
 
+#email-input, #password-input{
+  border-radius: 0;
+}
+.form-control:focus{
+  box-shadow: none;
+  border-color: #000;
+
+}
+
 .form-control:focus ~ .custom-label,
 .form-control:not(:placeholder-shown) ~ .custom-label {
   top: -10px;

@@ -13,9 +13,11 @@ import Avaliacao from "./components/Avaliacao/index";
 import Sobrenos from "./components/SobreNos/index";
 import Login from "./components/Login/index";
 import ChatBot from "./components/ChatBot/index";
+import Teste from "./components/teste/teste"
 // import ScrollableContent from "./components/scrollbar/scrollbar";
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
 
 function App() {
   // Hook para pegar a rota atual
@@ -44,6 +46,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sobre-nos" element={<Sobrenos />} />
         <Route path="/chatbot" element={<ChatBot />} />
+        <Route path="/_Dev_teste" element={<Teste />} />
       </Routes>
 
       {/* Exibe o Footer exceto nas rotas /cadastro e /login */}

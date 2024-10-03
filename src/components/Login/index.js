@@ -35,7 +35,6 @@ function Auth() {
       <section className="pos-rel"></section>
       <section id="anim" className={`auth-left-section ${isLogin ? '' : 'cadastro-mode'}`}>
         <img
-          width="50%"
           height="50%"
           src={isLogin 
             ? require("../../assets/login.cadastro/bolabasquete.png") 
