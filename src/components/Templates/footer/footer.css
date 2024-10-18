@@ -1,10 +1,10 @@
-/* Basic Footer Styles */
+/* Footer Styles */
 .footer {
   background-color: #000;
   color: white;
-  padding: 40px 0; /* Ajustado o padding */
+  padding: 40px 0;
   width: 100%;
-  text-align: center;
+
 }
 
 .footer a {
@@ -26,15 +26,15 @@
 /* Above and Below Footer Styles */
 .above-footer,
 .below-footer {
-  background-color: #333; /* Cor base para ambas */
+  background-color: #333;
   color: white;
   padding: 10px 0;
   text-align: center;
-  margin: 0;
+  
 }
 
 .below-footer {
-  background-color: black; /* Sobrescrevendo apenas o background */
+  background-color: black;
 }
 
 /* Services Menu Styles */
@@ -42,20 +42,56 @@
   position: relative;
 }
 
+/* Estilos atualizados para o ícone do menu e texto "SERVIÇOS" */
 .menu-toggle {
-  display: none;
+  display: flex; /* Alinhar ícone e texto lado a lado */
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   color: white;
   font-size: 18px;
   cursor: pointer;
-  margin-bottom: 10px; /* Melhor responsividade */
+  margin-bottom: 10px;
+  display: none; /* Hide by default */
+
 }
 
-.menu-toggle:focus {
-  outline: none;
+.menu-toggle .menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: -60px; /* Espaço entre ícone e texto */
+  position: relative;
+  top: 0; /* Alinhamento vertical */
 }
 
+.menu-toggle .menu-icon span {
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Adicionar padding ao texto para garantir que não sobreponha o ícone */
+.menu-toggle span {
+  padding-left: 10px;
+}
+
+/* Animações ao abrir o menu */
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Lista de serviços */
 .list-unstyled {
   list-style: none;
   padding: 0;
@@ -68,14 +104,14 @@
   display: flex; /* Mostrar o menu quando aberto */
 }
 
-/* Responsive behavior for screens smaller than 1000px */
+/* Responsividade para telas menores que 1000px */
 @media (max-width: 1000px) {
   .menu-toggle {
-    display: block; /* Exibir o botão de toggle */
+    display: block; /* Exibir o botão de toggle em telas menores */
   }
 
   .list-unstyled {
-    display: none; /* Ocultar o menu por padrão */
+    display: none; /* Ocultar menu por padrão */
   }
 
   .list-unstyled.open {
@@ -83,7 +119,13 @@
   }
 
   .services-menu ul li a {
-    padding: 10px 0; /* Melhorar alvo de toque */
+    padding: 10px 0; /* Melhorar o alvo de toque em dispositivos móveis */
+  }
+}
+/* Ensure the services menu is always visible on larger screens */
+@media (min-width: 1001px) {
+  .list-unstyled {
+    display: flex; /* Ensure it's always visible */
   }
 }
 
@@ -103,6 +145,7 @@
   height: 3px;
   background-color: white;
   transition: all 0.3s ease;
+  top: -20px;
 }
 
 .menu-icon span:nth-child(1) {
@@ -117,7 +160,7 @@
   top: 20px;
 }
 
-/* Animation when the menu is open */
+/* Animação quando o menu está aberto */
 .menu-icon.open span:nth-child(1) {
   transform: rotate(45deg);
   top: 10px;

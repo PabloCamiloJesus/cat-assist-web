@@ -46,6 +46,10 @@
   color: red !important;
 }
 
+.dropdown-menu{
+  z-index: 5;
+}
+
 /* Estilo para o dropdown do botão de hambúrguer */
 .hamburger-dropdown .hamburger-toggle {
   background: none;
@@ -64,6 +68,7 @@
   text-align: center;
   padding: 0;
   border-radius: 10px;
+  
 }
 
 .custom-dropdown-menu .dropdown-item {
@@ -74,18 +79,16 @@
   height:35%;
   transition: .3s ease-in-out;
   font-weight: 300;
-  
 }
 
 .custom-dropdown-menu .dropdown-item:hover {
   color: red;
   background-color: #000;
-
 }
 
 #dropdown-menu{
   padding: 0;
-  
+
 }
 
 /* Para esconder a navegação em telas menores */
@@ -102,10 +105,11 @@
     display: flex;
     flex-wrap: nowrap;
   }
-
+  
   #dropdown-menu{
     margin-left: -95px;
     transition: .3s ease-in-out;
+    
   }
 
   .navbar-logo img{
@@ -113,15 +117,19 @@
   }
   .hamburger-dropdown{
     order:2;
+    
   }
-
+  .middle-line {
+    display: none;
+ 
+}
 }
 
 @media (min-width: 758px) {
   .hamburger-dropdown {
     display: none; /* Esconde o dropdown em telas grandes */
   }
-
+  
   
 }
 

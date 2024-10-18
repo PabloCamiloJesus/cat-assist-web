@@ -8,8 +8,9 @@ import IntersectionObserverComponent from "../../animation/useIntersectionObserv
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
+  // Alterar entre abrir e fechar o dropdown
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };
 
   const location = useLocation();
@@ -35,58 +36,53 @@ const Header = () => {
   };
 
   return (
-    <IntersectionObserverComponent animationClass="animate__slow animate__fadeIn">
-    <Navbar expand="lg" className="custom-navbar d-flex" variant="dark">
-      <Container id="navbar-responsive">
-        {/* Botão de hambúrguer que aciona o dropdown em telas menores */}
-        <Dropdown className="hamburger-dropdown">
-          <Dropdown.Toggle
-            variant="dark"
-            id="dropdown-basic"
-            onClick={toggleDropdown}
-            className="hamburger-toggle"
-          >
-            ☰ {/* Ícone do hambúrguer */}
-          </Dropdown.Toggle>
+    <IntersectionObserverComponent>
+      <Navbar expand="lg" className="custom-navbar d-flex" variant="dark">
+        <Container id="navbar-responsive">
+          {/* Botão de hambúrguer que aciona o dropdown em telas menores */}
+          <Dropdown className="hamburger-dropdown" show={showDropdown} onToggle={toggleDropdown}>
+            <Dropdown.Toggle
+              variant="dark"
+              id="dropdown-basic"
+              onClick={toggleDropdown}
+              className="hamburger-toggle"
+            >
+              ☰ {/* Ícone do hambúrguer */}
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu
-            show={showDropdown}
-            className="custom-dropdown-menu"
-            id="dropdown-menu"
-          >
-            <Dropdown.Item href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>HOME</Dropdown.Item>
-            <Dropdown.Item href="#atendimento" onClick={(e) => handleNavigation(e, '#atendimento')}>ATENDIMENTOS</Dropdown.Item>
-            <Dropdown.Item href="#contato" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>SOBRE NÓS</Dropdown.Item>
-            <Dropdown.Item to="#perfil">PERFIL</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu className="custom-dropdown-menu" id="dropdown-menu">
+              <Dropdown.Item href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>HOME</Dropdown.Item>
+              <Dropdown.Item href="#atendimento" onClick={(e) => handleNavigation(e, '/', '#atendimento')}>ATENDIMENTOS</Dropdown.Item>
+              <Dropdown.Item href="#contato" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>SOBRE NÓS</Dropdown.Item>
+              <Dropdown.Item to="#perfil">PERFIL</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-        {/* Menus de navegação que aparecem na versão desktop */}
-        {/* Aplica a classe "hidden" ao Nav quando o dropdown estiver aberto */}
-        <Nav id="nav-left-right">
-          <Nav.Link className="nav-link" href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>
-            HOME
-          </Nav.Link>
-          <Nav.Link className="nav-link" href="#atendimento" onClick={(e) => handleNavigation(e, '/', '#atendimento')}>
-            ATENDIMENTOS
-          </Nav.Link>
-          {/* Logo centralizado */}
-          <div className="navbar-logo">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_SESI_vermelho.jpg"
-              alt="SESI Logo"
-              className="sesi-logo"
-            />
-          </div>
-          <Nav.Link className="nav-link" href="#sobre-nos" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>
-            SOBRE NÓS
-          </Nav.Link>
-          <Link className="nav-link" to="/perfil">
-            PERFIL
-          </Link>
-        </Nav>
-      </Container>
-    </Navbar>
+          {/* Menus de navegação que aparecem na versão desktop */}
+          <Nav id="nav-left-right">
+            <Nav.Link className="nav-link" href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>
+              HOME
+            </Nav.Link>
+            <Nav.Link className="nav-link" href="#atendimento" onClick={(e) => handleNavigation(e, '/', '#atendimento')}>
+              ATENDIMENTOS
+            </Nav.Link>
+            {/* Logo centralizado */}
+            <div className="navbar-logo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_SESI_vermelho.jpg"
+                alt="SESI Logo"
+                className="sesi-logo"
+              />
+            </div>
+            <Nav.Link className="nav-link" href="#sobre-nos" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>
+              SOBRE NÓS
+            </Nav.Link>
+            <Link className="nav-link" to="/perfil">
+              PERFIL
+            </Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </IntersectionObserverComponent>
   );
 };

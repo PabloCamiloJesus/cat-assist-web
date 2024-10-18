@@ -24,17 +24,14 @@ const Footer = () => {
               {/* Column 1: Service Links */}
               <div className="col-md-3 text-center mb-4 mb-md-0">
                 <div className="services-menu">
-                  <button
-                    className="menu-toggle mx-auto p-2"
-                    onClick={toggleMenu}
-                  >
-                    <div className={`menu-icon ${isMenuOpen ? "open" : ""}`}>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      SERVIÇOS
-                    </div>
-                  </button>
+                <button className="menu-toggle mx-auto p-2" onClick={toggleMenu}>
+  <div className={`menu-icon ${isMenuOpen ? "open" : ""}`}>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <span className="menu-text">SERVIÇOS</span>
+</button>
                   <ul className={`list-unstyled ${isMenuOpen ? "open" : ""}`}>
                     <li>
                       <a href="#home" className="text-white">

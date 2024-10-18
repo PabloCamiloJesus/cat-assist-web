@@ -52,8 +52,24 @@
     justify-content: center;
   }
 
-  .caixa input{
-    width: 600px;
+  .caixa input {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .caixa input::placeholder {
+    font-size: 16px; /* Tamanho de fonte padrão do placeholder */
+  }
+  
+  @media (max-width: 768px) {
+    .caixa input {
+      max-width: 100%;
+      font-size: 20px;
+    }
+  
+    .caixa input::placeholder {
+      font-size: 15px; /* Tamanho menor para o placeholder em telas pequenas */
+    }
   }
   #suggestion-input{
     border-radius: 0;

@@ -20,7 +20,7 @@ const Sobrenos = () => {
           {/*TÍTULO*/}
           <h1 className="display-1">Sobre Nós</h1>
           {/* SUBTÍTULO */}
-          <p>Um pouco sobre o que somos e oque pretendemos alcançar</p>
+          <p>Um pouco sobre o que somos e o que pretendemos alcançar</p>
         </div>
       </div>
       {/* PARTE DE MISSÃO, VISÃO E VALORES*/}

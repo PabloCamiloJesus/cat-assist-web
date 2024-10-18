@@ -1,8 +1,77 @@
+
 :root {
   --sesi-red: #bf0b3b;
   --sesi-black: #000000;
   --sesi-white: #ffffff;
+  --primary-color: #ff4081; /* Rosa vibrante para botões e destaques */
+  --secondary-color: #ffffff; /* Branco para textos e fundos */
+  --background-color: #121212; /* Fundo escuro */
+  --text-color: #f5f5f5; /* Texto claro */
+  --hover-color: #ff80ab; /* Cor de hover para botões */
 }
+
+body {
+  
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container-geral {
+  padding: 20px;
+  
+}
+
+.carousel {
+  position: relative;
+  background-color: var(--background-color);
+}
+
+.icone-do-bot img {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.texto-banner h1 {
+  color: var(--primary-color);
+  font-size: 3rem;
+  margin: 0;
+}
+
+.texto-banner p {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.botao-rosa {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.botao-rosa:hover {
+  background-color: var(--hover-color);
+}
+
+.slide-image {
+  border: 2px solid var(--secondary-color);
+}
+
+.slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -26,12 +95,9 @@
   font-size: 48px;
   font-weight: 500;
 }
-
-.container-geral p,
-.container-geral li {
-  /* font-size: px; */
+p{
+  text-align: justify;
 }
-
 .container-geral li {
   text-align: left;
 }
@@ -39,14 +105,16 @@
 .icone-do-bot {
   display: flex;
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 30px;
+  right: 30px;
   background-color: var(--sesi-red);
   height: 100px;
   width: 100px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+
+  z-index: 3;
 }
 .hidden {
   opacity: 0;
@@ -72,8 +140,8 @@
   background-position: center; /* Ajusta a posição da imagem */
   background-repeat: no-repeat;
   text-align: center;
-  /* margin-top: 20px; */
   padding: 20px;
+  
 }
 
 .texto-banner {
@@ -93,18 +161,14 @@
 
 .botao-rosa {
   background-color: var(--sesi-red);
-
   font-size: 24px;
-
   color: var(--sesi-white);
-
   padding: 20px 60px;
-
   border-radius: 20px;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.botao-rosa:hover{
+.botao-rosa:hover {
   background-color: #fff;
   color: #000;
 }
@@ -115,17 +179,11 @@
 
 .botao-preto {
   background-color: var(--sesi-black);
-
   font-size: 32px;
-
   color: var(--sesi-white);
-
   padding: 20px 60px;
-
   border-radius: 20px;
-
   transition: 0.3s ease;
- 
   gap: 20px;
 }
 
@@ -135,30 +193,28 @@
 
 .white-btn {
   background-color: var(--sesi-white);
-
   font-size: 32px;
-
   color: var(--sesi-black);
   padding: 20px 60px;
-
   border-radius: 20px;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.white-btn:hover{
+.white-btn:hover {
   background-color: #bf0b3b;
   color: #fff;
 }
 
 .d-flex {
   display: flex;
-
   width: 100%;
-
   align-items: center;
   justify-content: center;
-
   gap: 40px;
+}
+
+.frequent-quest{
+  color: #000;
 }
 
 .perguntas-frequentes-lado-direito img {
@@ -188,28 +244,20 @@
 
 .margin-oitenta {
   margin-top: 120px;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   width: 80%;
 }
 
 .atendimento-automatizado-lado-esquerdo-conteudo,
 .atendimento-automatizado-lado-direito-conteudo {
   display: flex;
-
   text-align: center;
-
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
-
   width: 610px;
-
   gap: 30px;
 }
 
@@ -226,9 +274,8 @@
 .middle-line {
   width: 2px;
   height: 80vh;
-
   background-color: var(--sesi-white);
-}
+} 
 
 .sobrenos h2 {
   height: 10vh;
@@ -238,11 +285,12 @@
 .sobrenos {
   margin-top: 120px;
   margin-bottom: 120px;
+  color: #000;
+  
 }
 
 .sobrenos-vai-esquerdo-conteudo {
   width: 551px;
-
   text-align: center;
 }
 
@@ -257,7 +305,11 @@
   width: 350px;
 }
 
-@media (max-width: 700px) {
+@media (min-width: 300px) and (max-width: 757px) {
+  p{
+    word-wrap: break-word; /* Para navegadores mais antigos */
+    overflow-wrap: break-word; /* Para navegadores modernos */  
+  }
   .texto-banner {
     width: 100%;
     margin-left: 0px;
@@ -265,27 +317,24 @@
 
   .banner {
     height: 150vh;
+    position: relative;
+    z-index: 1;
   }
 
   .d-flex {
     display: flex;
-
     flex-direction: column;
   }
 
   .perguntas-frequentes h2 {
     text-align: center;
-
     width: 100%;
-
     margin-left: auto;
   }
 
   .sobrenos h2 {
     text-align: center;
-
     width: 100%;
-
     margin-left: auto;
   }
 
@@ -293,25 +342,42 @@
     width: 100%;
   }
 
-  .frequent-quest{
+  .perguntas-frequentes-lado-direito {
+    display: flex;
+    width: 90%;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 0;
+  }
+
+  .perguntas-frequentes-lado-direito img {
+    width: 90% !important;
+    margin-left: 0;
+  }
+
+  .perguntas-frequentes {
+    height: max-content !important;
+  }
+
+  .frequent-quest {
     display: flex;
     flex-direction: column;
+    height: max-content;
   }
 }
 
-@media (max-width: 1414px) {
+@media (min-width:758px) and (max-width: 1414px) {
   .Atendimento-automatizado-conteudo {
     display: flex;
-
     height: max-content;
-
     flex-direction: column;
   }
 
   .middle-line {
     height: 2px;
     width: 80%;
-
     background-color: var(--sesi-white);
   }
 
@@ -329,4 +395,5 @@
   .sobrenos img {
     width: 100%;
   }
+
 }
