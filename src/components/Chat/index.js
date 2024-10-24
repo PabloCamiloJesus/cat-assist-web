@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import image from "../../assets/perfil.png";
 
+// Dados dos contatos e mensagens
 const contacts = [
   {
     id: 1,
@@ -32,55 +33,69 @@ const contacts = [
   },
 ];
 
-const ChatApp = () => {
-  const [selectedContact, setSelectedContact] = useState(contacts[0]); // Contato padrão
+// Componente para renderizar lista de contatos
+const ContactList = ({ contacts, selectedContact, setSelectedContact }) => (
+  <div className="contact-list">
+    <div className="contact-header d-flex flex-column align-items-center justify-content-center">
+      <img src={require("../../assets/Vector.png")} alt="Ícone" />
+      <h2>CHATS</h2>
+    </div>
+    {contacts.map((contact) => (
+      <div
+        key={contact.id}
+        className={`contact-item ${
+          selectedContact.id === contact.id ? "active" : ""
+        }`}
+        onClick={() => setSelectedContact(contact)}
+      >
+        <img
+          className="foto-do-perfil"
+          src={contact.imgUrl}
+          alt={`foto do ${contact.name}`}
+        />
+        {contact.name}
+      </div>
+    ))}
+  </div>
+);
 
-  // Função para renderizar mensagens com base no contato selecionado
-  const renderMessages = () => {
-    return selectedContact.messages.map((msg, index) => (
-      <div className="imgBox">
-        {msg.sender === "Você" ? "" : <img src={contacts[index].imgUrl} />}
-        <div
-          key={index}
-          className={`message ${msg.sender === "Você" ? "sent" : "received"}`}
-        >
+// Componente para renderizar mensagens do contato selecionado
+const ChatMessages = ({ selectedContact }) => (
+  <div className="chat-messages">
+    {selectedContact.messages.map((msg, index) => (
+      <div className="imgBox" key={index}>
+        {msg.sender === "Você" ? "" : <img src={selectedContact.imgUrl} alt="Contato" />}
+        <div className={`message ${msg.sender === "Você" ? "sent" : "received"}`}>
           {msg.text}
         </div>
       </div>
-    ));
-  };
+    ))}
+  </div>
+);
+
+// Componente principal de Chat
+const ChatApp = () => {
+  const [selectedContact, setSelectedContact] = useState(contacts[0]);
 
   return (
     <div className="chat-container">
-      <div className="contact-list">
-        <div className="contact-header d-flex flex-column align-items-center justify-content-center">
-          <img src={require("../../assets/Vector.png")} />
-          <h2>CHATS</h2>
-        </div>
-        {contacts.map((contact) => (
-          <div
-            key={contact.id}
-            className={`contact-item ${
-              selectedContact.id === contact.id ? "active" : ""
-            }`}
-            onClick={() => setSelectedContact(contact)}
-          >
-            <img
-              className="foto-do-perfil"
-              src={contact.imgUrl}
-              alt="foto do {contact.name}"
-            />
-            {contact.name} {/* Exibir nome do contato na sidebar */}
-          </div>
-        ))}
-      </div>
+      {/* Componente de lista de contatos */}
+      <ContactList
+        contacts={contacts}
+        selectedContact={selectedContact}
+        setSelectedContact={setSelectedContact}
+      />
 
       {/* Área do chat */}
       <div className="chat-area">
         <div className="chat-header">
           <h3>Conversando com: {selectedContact.name}</h3>
         </div>
-        <div className="chat-messages">{renderMessages()}</div>
+        
+        {/* Componente de mensagens */}
+        <ChatMessages selectedContact={selectedContact} />
+
+        {/* Área de input para envio de mensagens */}
         <div className="chat-input">
           <input type="text" placeholder="Digite uma mensagem..." />
           <button>Enviar</button>

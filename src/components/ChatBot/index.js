@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./index.css"
+
 
 const ChatBot = () => {
 
@@ -12,7 +14,7 @@ const ChatBot = () => {
     HarmBlockThreshold,
   } = require("@google/generative-ai");
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
   const genAI = new GoogleGenerativeAI(apiKey);
 
   const model = genAI.getGenerativeModel({
@@ -640,7 +642,9 @@ const ChatBot = () => {
   }
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", width:"100vw" }} className="container-chatbot">
+
+      <h1 className="mb-5">Luna</h1>
       {/* Render input and response history */}
       {inputHistory.map((history, index) => (
         <div key={index}>

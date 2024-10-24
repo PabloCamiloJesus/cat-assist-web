@@ -27,7 +27,7 @@ const Sobrenos = () => {
       <div>
         {/* MVV-SECTION ESTILIZA SEÇÕES, E PY-5 ADICIONA PADDING VERTICAL DE 5 UNIDADES. */}
 
-        <div className="container mt-5">
+        <div className="container mt-5" style={{color:"#000"}}>
           <div className="row text-center">
             {/* Divisão COLUNAS */}
             <div className="col-md-4" style={{ padding: 70 }}>
@@ -96,7 +96,7 @@ const Sobrenos = () => {
                 loading="lazy"
               ></iframe>
             </div>
-            <div className="col-md-6 col-sm-12 p-5 flex-column justify-content-center">
+            <div className="col-md-6 col-sm-12 p-5 flex-column justify-content-center" style={{color:"#000"}}>
               <h3 className="display-4 text-center">Endereço</h3>
               <p className="text-center">
                 Praça Dr. Armando Arruda Pereira, 100 - Santa Terezinha, Santo

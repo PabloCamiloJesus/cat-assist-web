@@ -1,4 +1,3 @@
-
 :root {
   --sesi-red: #bf0b3b;
   --sesi-black: #000000;
@@ -11,16 +10,10 @@
 }
 
 body {
-  
   color: var(--text-color);
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-}
-
-.container-geral {
-  padding: 20px;
-  
 }
 
 .carousel {
@@ -63,14 +56,22 @@ body {
 
 .slide-image {
   border: 2px solid var(--secondary-color);
+  background-size: cover;
 }
 
 .slide {
   position: relative;
   background-size: cover;
-  background-position: center;
 }
 
+.align-center {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
 
 .hidden {
   opacity: 0;
@@ -95,7 +96,7 @@ body {
   font-size: 48px;
   font-weight: 500;
 }
-p{
+p {
   text-align: justify;
 }
 .container-geral li {
@@ -127,21 +128,25 @@ p{
   visibility: visible;
   transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
 }
+.slide {
+  display: flex;
+
+  justify-content: flex-start;
+}
 
 .banner {
   width: 100%;
   height: 100vh;
   display: flex;
   background-color: #000000;
-  align-items: center;
-  justify-content: space-between;
+  align-items: end;
+  justify-content: flex-end;
   background-image: url("../../assets/Group 117.png");
   background-size: cover;
   background-position: center; /* Ajusta a posição da imagem */
   background-repeat: no-repeat;
   text-align: center;
   padding: 20px;
-  
 }
 
 .texto-banner {
@@ -209,12 +214,12 @@ p{
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
   gap: 40px;
 }
 
-.frequent-quest{
+.frequent-quest {
   color: #000;
+  margin-top: 120px;
 }
 
 .perguntas-frequentes-lado-direito img {
@@ -225,17 +230,18 @@ p{
 .perguntas-frequentes-lado-esquerdo {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 500px;
   text-align: center;
 }
 
 .perguntas-frequentes-lado-esquerdo p {
   font-size: 20px;
+  min-width: 90%;
 }
 
 .perguntas-frequentes {
   height: 100vh;
-  margin-bottom: 120px;
+  margin-top: 120px;
 }
 
 .perguntas-frequentes h2 {
@@ -275,7 +281,7 @@ p{
   width: 2px;
   height: 80vh;
   background-color: var(--sesi-white);
-} 
+}
 
 .sobrenos h2 {
   height: 10vh;
@@ -286,7 +292,6 @@ p{
   margin-top: 120px;
   margin-bottom: 120px;
   color: #000;
-  
 }
 
 .sobrenos-vai-esquerdo-conteudo {
@@ -294,21 +299,24 @@ p{
   text-align: center;
 }
 
+.sobrenos-vai-esquerdo-conteudo p {
+  margin-bottom: 40px;
+}
+
 .mt-cust {
-  margin-top: 120px;
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  width: 90%;
 }
 
 .Atendimento-automatizado-conteudo img {
   width: 350px;
 }
 
-@media (min-width: 300px) and (max-width: 757px) {
-  p{
+@media (max-width: 999px) {
+  p {
     word-wrap: break-word; /* Para navegadores mais antigos */
-    overflow-wrap: break-word; /* Para navegadores modernos */  
+    overflow-wrap: break-word; /* Para navegadores modernos */
   }
   .texto-banner {
     width: 100%;
@@ -338,7 +346,48 @@ p{
     margin-left: auto;
   }
 
+  .frequent-quest {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .vai-esquerdo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lado-direito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .frequent-quest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sobrenos-vai-esquerdo-conteudo,
+  .vai-esquerdo img,
+  .AU-rs-cntnt,
+  .atendimento-automatizado-lado-esquerdo-conteudo,
+  .atendimento-automatizado-lado-direito-conteudo {
+    width: 90%;
+    height: max-content;
+  }
+
   .perguntas-frequentes-lado-esquerdo {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
   }
 
@@ -366,9 +415,45 @@ p{
     flex-direction: column;
     height: max-content;
   }
+  .lado-direito{
+    position: relative;
+  }
+
+  .lado-direito .vai-esquerdo{
+    position: relative;
+    order: 2;
+  }
+
+  .vai-esquerdo{
+    display: flex;
+    justify-content: center;
+  }
+
+  .slide {
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    background-size: contain; /* Ajusta o fundo para caber melhor em telas pequenas */
+    background-position: center;
+  }
+
+  .texto-banner h1 {
+    font-size: 1.5rem; /* Reduz o tamanho do título */
+  }
+
+  .texto-banner p {
+    font-size: 1rem; /* Reduz o tamanho do parágrafo */
+    padding: 0 10px; /* Adiciona padding para ajustar o texto */
+  }
+
+  .botao-rosa {
+    font-size: 0.9rem; /* Ajusta o tamanho do botão */
+    padding: 10px 20px;
+  }
 }
 
-@media (min-width:758px) and (max-width: 1414px) {
+@media (min-width: 758px) and (max-width: 1414px) {
+  .slide {
+    width: auto;
+  }
   .Atendimento-automatizado-conteudo {
     display: flex;
     height: max-content;
@@ -396,4 +481,7 @@ p{
     width: 100%;
   }
 
+  /* .lado-direito{
+    width: 50%;
+  } */
 }

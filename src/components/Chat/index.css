@@ -1,3 +1,4 @@
+/* Container geral do chat */
 .chat-container {
   display: flex;
   flex-direction: row;
@@ -8,6 +9,7 @@
   box-sizing: border-box;
 }
 
+/* Lista de contatos */
 .contact-list {
   width: 30%;
   background-color: #fff;
@@ -15,7 +17,6 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow-y: auto;
 }
 
 .contact-item {
@@ -35,6 +36,17 @@
   color: white;
 }
 
+.foto-do-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.contact-header {
+  margin: 20px 0;
+  text-align: center;
+}
+
 /* Área do chat */
 .chat-area {
   width: 70%;
@@ -44,13 +56,16 @@
   box-sizing: border-box;
 }
 
+/* Cabeçalho do chat */
 .chat-header {
   padding: 20px;
   background-color: #BF0B3B;
   color: white;
-  width: 100%;
+  text-align: center;
+  font-weight: bold;
 }
 
+/* Mensagens do chat */
 .chat-messages {
   flex-grow: 1;
   padding: 20px;
@@ -58,6 +73,7 @@
   background-color: #ECECEC;
 }
 
+/* Estilos para a caixa de mensagens */
 .imgBox {
   display: flex;
   margin-bottom: 15px;
@@ -84,8 +100,10 @@
 
 .received {
   background-color: #fff;
+  color: #333;
 }
 
+/* Input de mensagem */
 .chat-input {
   display: flex;
   padding: 10px;
@@ -97,6 +115,7 @@
   padding: 10px;
   border: none;
   border-radius: 4px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .chat-input button {
@@ -107,92 +126,84 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .chat-input button:hover {
   background-color: #273c75;
 }
 
-.foto-do-perfil {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.contact-header {
-  margin: 20px 0;
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
   .chat-container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .contact-list {
-      width: 100%;
-      height: 180px;
-      overflow-y: auto;
+    width: 100%;
+    height: 180px;
+    overflow-y: auto;
   }
 
   .chat-area {
-      width: 100%;
-      height: calc(100vh - 260px);
+    width: 100%;
+    height: calc(100vh - 260px);
   }
 
   .chat-input input {
-      padding: 8px;
+    padding: 8px;
   }
 
   .chat-input button {
-      padding: 8px 16px;
+    padding: 8px 16px;
   }
 
   .imgBox img {
-      width: 35px;
-      height: 35px;
+    width: 35px;
+    height: 35px;
   }
 
   .message {
-      max-width: 80%;
+    max-width: 80%;
   }
 }
 
 @media (max-width: 480px) {
   .chat-container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .contact-list {
-      height: 150px;
+    height: 150px;
   }
 
   .chat-area {
-      height: calc(100vh - 210px);
+    height: calc(100vh - 210px);
   }
 
   .chat-header {
-      padding: 10px;
+    padding: 10px;
   }
 
   .chat-input {
-      padding: 8px;
+    padding: 8px;
   }
 
   .chat-input input {
-      padding: 6px;
+    padding: 6px;
   }
 
   .chat-input button {
-      padding: 6px 12px;
+    padding: 6px 12px;
   }
 
   .imgBox img {
-      width: 30px;
-      height: 30px;
+    width: 30px;
+    height: 30px;
   }
 
   .message {
-      padding: 10px;
-      max-width: 85%;
+    padding: 10px;
+    max-width: 85%;
   }
 }

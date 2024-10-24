@@ -71,7 +71,7 @@ const Header = () => {
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_SESI_vermelho.jpg"
                 alt="SESI Logo"
-                className="sesi-logo"
+                className="sesi-logo ms-5"
               />
             </div>
             <Nav.Link className="nav-link" href="#sobre-nos" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>

@@ -9,7 +9,7 @@ const Perfil = () => {
         <h1 className="perfil-name">Daniel Rosa Silva</h1>
         <img
           className="perfil-image"
-          src="https://media-gru2-1.cdn.whatsapp.net/v/t61.24694-24/311888778_1441975993867102_9029937061399050333_n.jpg?ccb=11-4&oh=01_Q5AaIKR0ozYxcIBefeZ_nJpmYKpJXQfKDpEzZgjvrzDg14UK&oe=670BF9BA&_nc_sid=5e03e0&_nc_cat=109"
+          src={require("../../assets/astronauta-perfil.jpg")}
           alt="Daniel Rosa Silva"
         />
         <button className="perfil-button">

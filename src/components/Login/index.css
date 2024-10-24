@@ -65,6 +65,10 @@ button[type="submit"]:hover {
   width: 20%;
 }
 
+.title{
+  color: #000;
+}
+
 .form-group {
   position: relative;
   width: 100%;

@@ -9,7 +9,9 @@ function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Adicione aqui a lógica de envio do formulário
+    const dadosUsuario = { email, senha };
+    console.log(dadosUsuario);
+    setEmail(''); setSenha(''); // Limpa o formulário após o envio
   };
   
   function playAnim() {
@@ -45,7 +47,7 @@ function Auth() {
         />
       </section>
       <section className="auth-right-section">
-        <h1>{isLogin ? "Faça seu Login" : "Faça seu Cadastro"}</h1>
+        <h1 className="title">{isLogin ? "Faça seu Login" : "Faça seu Cadastro"}</h1>
         <form onSubmit={handleSubmit}>
           {/* Email */}
           <div className="form-group">

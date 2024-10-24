@@ -132,4 +132,22 @@
   
   
 }
+/* Para navegadores baseados em WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 7px; /* Largura da barra de rolagem */
+}
 
+::-webkit-scrollbar-track {
+  background: black; /* Cor do fundo da barra */
+  
+ 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: red; /* Cor da parte deslizante */
+  border-radius: 10px; /* Borda arredondada */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: red; /* Cor ao passar o mouse */
+}
