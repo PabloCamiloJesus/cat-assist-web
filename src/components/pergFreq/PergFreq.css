@@ -51,6 +51,9 @@
     column-gap: 2;
     justify-content: center;
   }
+  .text-center{
+    color: black;
+  }
 
   .caixa input {
     width: 100%;

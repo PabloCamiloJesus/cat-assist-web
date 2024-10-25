@@ -108,7 +108,7 @@ const Home = () => {
 
       {/* Perguntas Frequentes */}
       <div className="perguntas-frequentes">
-        <IntersectionObserverComponent animationClass="animate__fadeInUp">
+        <IntersectionObserverComponent animationClass="animate__fadeIn">
           <div className="frequent-quest">
             <h2>PERGUNTAS FREQUENTES</h2>
 
@@ -196,7 +196,7 @@ const Home = () => {
       </div>
 
       {/* Sobre Nós */}
-      <IntersectionObserverComponent animationClass="animate__fadeInUp">
+      <IntersectionObserverComponent animationClass="animate__fadeIn">
         <div className="sobrenos" id="sobre-nos">
           <h2>Sobre nós</h2>
 

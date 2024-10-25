@@ -179,9 +179,9 @@ button[type="submit"]:hover {
 .auth-left-section {
 
   position: absolute;
-
+  transition: 2.5s all;
   z-index: 3;
-
+  transition: 1s all;
   background-color: #000;
   border-top-right-radius: 45px;
   border-bottom-right-radius: 45px;
@@ -190,7 +190,7 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out; /* Adiciona transição suave */
+  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out, width 0.5s ease-in-out; /* Adiciona transição suave */
   /*  */
 }
 
@@ -202,8 +202,8 @@ button[type="submit"]:hover {
 .anim {
 
   position: absolute;
-
-  animation: 1s teste ease-in-out forwards;
+  transition: all 1.5s;
+  animation: 1.5s teste ease-in-out forwards;
 }
 
 .cadastro-left-section img {
@@ -354,18 +354,24 @@ button[type="submit"]:hover {
 
 .bola{
   position: relative;
-  left: 35%;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  left: 40%;
+  transition:opacity 0.5s ease-in-out;
   
+}
+.google{
+  background-color: white;
+  border: none;
+  border-bottom: gray 1px solid;
 }
 .cadastro-mode {
     background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
+    transition: 2.5s all;
 }
 
 .cadastro-mode .bola {
   opacity: 0.8; /* Suave diminuição de opacidade para efeito */
   transform: translateX(15%); /* Animação de translação */
-  opacity: 0.8; /* Suave diminuição de opacidade para efeito */
+  opacity: 1; /* Suave diminuição de opacidade para efeito */
 }
 
 @keyframes teste {
@@ -388,4 +394,5 @@ button[type="submit"]:hover {
   background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
   width: 100%; /* Faz a seção colorida ocupar toda a largura da tela */
   border-radius: 0; /* Remove o raio da borda quando expandir */
+
 }

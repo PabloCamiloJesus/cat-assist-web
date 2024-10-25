@@ -6,3 +6,22 @@
     margin-top: 200px;
     color: #000;
 }
+.button{
+    display: inline-block;
+    background-color: #bf0b3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button{
+    background-color: #c40813;
+  }
+  .input{
+    border-radius: 5px;
+  }

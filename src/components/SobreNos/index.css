@@ -18,7 +18,9 @@
   height: 100%;
  filter: brightness(29%);   /* DIMINUIR O BRILHO DA IMAGEM */
 }
-
+.bannerconteudo{
+  color: white;
+}
 /* CONTÉUDO DENTRO DO BANNER */
 .bannerconteudo {
   position: absolute;
