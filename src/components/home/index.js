@@ -58,8 +58,9 @@ const Home = () => {
   return (
     <div className="container-geral">
       {/* Ícone do bot */}
-      <a className="icone-do-bot" href="#">
-        <img src="" alt="luna" />
+      <a className="icone-do-bot" href="/chatbot">
+        {/* <img src="" alt="luna" /> */}
+        <p style={{color: "white"}}>Luna</p>
       </a>
 
       {/* Seção do Banner */}
@@ -155,7 +156,7 @@ const Home = () => {
                   Atendimento Online
                 </h2>
                 <div>
-                  <p>
+                  <p style={{color: "white"}}>
                     Você pode falar com um membro da nossa secretaria através do
                     atendimento online durante os seguintes horários:
                   </p>
@@ -180,7 +181,7 @@ const Home = () => {
                 <h2 style={{ textTransform: "uppercase" }}>
                   Atendimento automático
                 </h2>
-                <p>
+                <p style={{color: "white"}}>
                   Conheça Luna, nossa Assistente Virtual, pronta para auxiliá-lo(a)
                   na resolução de suas necessidades. Inteligente e eficiente, Luna está
                   à disposição para oferecer suporte e orientações precisas em diversas

@@ -40,7 +40,7 @@ function Auth() {
           uid: user.uid,
         };
 
-        navigate("/profile", user);
+        navigate("/", user);
       })
       .catch((error) => {
         switch (error.code) {
@@ -88,11 +88,11 @@ function Auth() {
       .then((userCredentials) => {
         const user = userCredentials.user;
 
-        db.collection("users").doc(user.uid).set({
-          username: username,
-          email: email,
-          // imgUrl: imgFilePath,
-        });
+        // db.collection("users").doc(user.uid).set({
+        //   username: username,
+        //   email: email,
+        //   // imgUrl: imgFilePath,
+        // });
 
         navigate("/", user);
       })
@@ -188,8 +188,8 @@ function Auth() {
                 Nome de usuário:
               </label>
               <input
-                type="password"
-                id="password-input-2"
+                type="text"
+                id="username-input-2"
                 className="form-control"
                 placeholder="Nome de usuário:"
                 value={username}
@@ -268,7 +268,38 @@ function Auth() {
         <div className="EntrarComRedesSociais">
           <button
             type="button"
-            onClick={() => signInWithPopup(auth, provider)}
+            onClick={() => {var user = signInWithPopup(auth, provider)
+              .catch((error) => {
+                switch (error.code) {
+                  case "auth/user-not-found":
+                    seterrorMessage(
+                      "Usuário não encontrado. Verifique seu email e tente novamente."
+                    );
+                    break;
+                  case "auth/invalid-credential":
+                    seterrorMessage(
+                      "Usuário não encontrado. Verifique seu email e tente novamente."
+                    );
+                    break;
+                  case "auth/wrong-password":
+                    seterrorMessage(
+                      "Senha incorreta. Verifique sua senha e tente novamente."
+                    );
+                    break;
+                  case "auth/invalid-email":
+                    seterrorMessage(
+                      "Email incorreto. Verifique seu email e tente novamente."
+                    );
+                    break;
+                  default:
+                    seterrorMessage(
+                      `Ocorreu um erro inesperado. Tente novamente mais tarde`
+                    );
+                    break;
+                }
+              })
+
+            }}
             className="google"
           >
             <i className="bi bi-google"></i> <span>Entrar com Google</span>

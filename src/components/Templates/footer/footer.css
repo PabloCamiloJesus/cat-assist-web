@@ -7,8 +7,8 @@
 
 }
 
-.footer a {
-  color: white;
+.footer a, .footer p, .footer h5 {
+  color: white !important;
   text-decoration: none;
 }
 
@@ -218,7 +218,7 @@
   height: 3px;
   background-color: #ff0000;
   overflow: hidden;
-  margin-top: -19px;
+  /* margin-top: -19px; */
 }
 
 .redline::before {

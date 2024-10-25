@@ -10,7 +10,10 @@ h1 {
   font-weight: lighter;
   font-size: 50px;
 }
-
+::-webkit-input-placeholder{
+  color: gray;
+  font-family: 'Raleway', sans-serif;
+}
 button[type="submit"] {
   width: 100%;
   background-color: #000;
@@ -75,7 +78,10 @@ button[type="submit"]:hover {
   max-width: 500px;
   margin-top: 20px;
 }
-
+label{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
 .form-control {
   font-family: 'Raleway', sans-serif;
   width: 350px;
@@ -115,6 +121,7 @@ button[type="submit"]:hover {
 
 #email-input, #password-input{
   border-radius: 0;
+  font-family: 'Raleway', sans-serif;
 }
 .form-control:focus{
   box-shadow: none;
@@ -175,7 +182,9 @@ button[type="submit"]:hover {
   height: 90vh;
   background-color: #f8f9fa;
 }
-
+p{
+  color: black;
+}
 .auth-left-section {
 
   position: absolute;
