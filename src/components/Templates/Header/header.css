@@ -151,3 +151,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: red; /* Cor ao passar o mouse */
 }
+
+#nav-left-rig{
+  display: flex;
+}

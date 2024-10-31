@@ -1,6 +1,5 @@
 // Imports de recursos e de components
 
-import React from "react";
 import Footer from "./components/Templates/footer/footer";
 import Header from "./components/Templates/Header/index";
 import Perfil from "./components/perfil/index";
@@ -13,11 +12,8 @@ import Avaliacao from "./components/Avaliacao/index";
 import Sobrenos from "./components/SobreNos/index";
 import Login from "./components/Login/index";
 import ChatBot from "./components/ChatBot/index";
-// import Teste from "./components/teste/teste"
-// import ScrollableContent from "./components/scrollbar/scrollbar";
-
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 
 function App() {
   // Hook para pegar a rota atual
@@ -25,6 +21,24 @@ function App() {
 
   // Verifica se a rota é "/cadastro" ou "/login"
   const isAuthPage = location.pathname === "/cadastro" || location.pathname === "/login";
+
+  // Estado para controlar se a página está carregada
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+
+  useEffect(() => {
+    // Timeout para simular um atraso no carregamento
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true); // Seta o estado para indicar que a página está carregada
+    }, 1000); // Atraso de 1 segundo
+
+    // Cleanup para limpar o timeout quando o componente desmontar
+    return () => clearTimeout(timer);
+  }, [location.pathname]); // Reexecuta o efeito quando a rota muda
+
+  // Enquanto não estiver carregado, exibe um "loading" ou algo semelhante
+  if (!isPageLoaded) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <div>
@@ -46,7 +60,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sobre-nos" element={<Sobrenos />} />
         <Route path="/chatbot" element={<ChatBot />} />
-        {/* <Route path="/_Dev_teste" element={<Teste />} /> */}
       </Routes>
 
       {/* Exibe o Footer exceto nas rotas /cadastro e /login */}
@@ -64,3 +77,5 @@ function AppWrapper() {
 }
 
 export default AppWrapper;
+
+

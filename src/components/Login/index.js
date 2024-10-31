@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Footer from "./../../components/Templates/footer/footer";
-import "./index.css";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useNavigation } from "react-router-dom";
 import IntersectionObserverComponent from "../animation/useIntersectionObserver.js";
+import "./index.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 
 import { db, auth, provider } from "../../services/firebase/firebase.js";
 
@@ -11,7 +11,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   getAuth,
-  signInWithPopup
+  signInWithPopup,
 } from "firebase/auth";
 
 function Auth() {
@@ -21,9 +21,9 @@ function Auth() {
   const [confSenha, setConfSenha] = useState("");
   const [username, setusername] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
-
   const navigate = useNavigate();
 
+  
   const logIn = () => {
     console.log(
       `email = ${email}, password = ${senha}, confPassword = ${confSenha} `
@@ -35,12 +35,7 @@ function Auth() {
       .then((userCredentials) => {
         const user = userCredentials.user;
 
-        const userInfo = {
-          email: user.email,
-          uid: user.uid,
-        };
-
-        navigate("/", user);
+        navigate("/");
       })
       .catch((error) => {
         switch (error.code) {
@@ -94,7 +89,7 @@ function Auth() {
         //   // imgUrl: imgFilePath,
         // });
 
-        navigate("/", user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -159,24 +154,24 @@ function Auth() {
 
   return (
     // Container Geral
-    <main className="auth-container">
-        <section className="pos-rel"></section>
-        <section
-          id="anim"
-          className={`auth-left-section ${isLogin ? "" : "cadastro-mode"}`}
-        >
-          <img
-            height="50%"
-            src={
-              isLogin
-                ? require("../../assets/login.cadastro/bolabasquete.png")
-                : require("../../assets/login.cadastro/bolafutebol.png")
-            }
-            width="auto"
-            alt={isLogin ? "Bola de basquete" : "Bola de futebol"}
-            className="bola"
-          />
-        </section>
+    <main className="auth-container" id="login">
+      <section className="pos-rel"></section>
+      <section
+        id="anim"
+        className={`auth-left-section ${isLogin ? "" : "cadastro-mode"}`}
+      >
+        <img
+          height="50%"
+          src={
+            isLogin
+              ? require("../../assets/login.cadastro/bolabasquete.png")
+              : require("../../assets/login.cadastro/bolafutebol.png")
+          }
+          width="auto"
+          alt={isLogin ? "Bola de basquete" : "Bola de futebol"}
+          className="bola"
+        />
+      </section>
       <section className="auth-right-section">
         <h1 className="title">
           {isLogin ? "Faça seu Login" : "Faça seu Cadastro"}
@@ -247,11 +242,10 @@ function Auth() {
               />
             </div>
           )}
-
-          <br />
           <a href="#" className="forgot-password">
             Esqueci minha senha
           </a>
+          <br />
 
           <div className="">
             <p style={{ color: "red" }}>{errorMessage}</p>
@@ -268,8 +262,18 @@ function Auth() {
         <div className="EntrarComRedesSociais">
           <button
             type="button"
-            onClick={() => {var user = signInWithPopup(auth, provider)
-              .catch((error) => {
+            onClick={() => {
+              var user = signInWithPopup(auth, provider).then( async () => {
+
+                var userdata = await getAuth();
+                
+                if (user) {
+
+                  navigate("/");
+
+                }
+
+              }).catch((error) => {
                 switch (error.code) {
                   case "auth/user-not-found":
                     seterrorMessage(
@@ -297,16 +301,16 @@ function Auth() {
                     );
                     break;
                 }
-              })
-
+              });
             }}
             className="google"
           >
-            <i className="bi bi-google"></i> <span>Entrar com Google</span>
+            <i class="bi bi-google"></i> <span>Entrar com Google</span>
           </button>
         </div>
 
         {/* Link para alternar entre Login e Cadastro */}
+        <br />
         <p>
           {isLogin ? (
             <>
