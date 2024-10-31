@@ -1,108 +1,81 @@
-import React, { useState } from "react";
-import "./index.css";
-import image from "../../assets/perfil.png";
+import React, { useState } from 'react';
+import { Offcanvas, ListGroup, Container, Row, Col, Form, Button } from 'react-bootstrap';
+import './ChatApp.css'; // Arquivo CSS personalizado
 
-// Dados dos contatos e mensagens
-const contacts = [
-  {
-    id: 1,
-    name: "Contato 1",
-    imgUrl: image,
-    messages: [
-      { sender: "Contato 1", text: "Olá! Como vai você?" },
-      { sender: "Você", text: "Tudo bem, e você?" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Contato 2",
-    imgUrl: image,
-    messages: [
-      { sender: "Contato 2", text: "Oi! Vamos nos encontrar hoje?" },
-      { sender: "Você", text: "Claro! Às 18h?" },
-    ],
-  },
-  {
-    id: 3,
-    name: "Contato 3",
-    imgUrl: image,
-    messages: [
-      { sender: "Contato 3", text: "Ei! Como estão as coisas?" },
-      { sender: "Você", text: "Tudo ótimo, obrigado por perguntar!" },
-    ],
-  },
-];
+function ChatApp() {
+  const [showContacts, setShowContacts] = useState(false);
+  const [activeContact, setActiveContact] = useState('Rosa'); // Nome do contato selecionado
 
-// Componente para renderizar lista de contatos
-const ContactList = ({ contacts, selectedContact, setSelectedContact }) => (
-  <div className="contact-list">
-    <div className="contact-header d-flex flex-column align-items-center justify-content-center">
-      <img src={require("../../assets/Vector.png")} alt="Ícone" />
-      <h2>CHATS</h2>
-    </div>
-    {contacts.map((contact) => (
-      <div
-        key={contact.id}
-        className={`contact-item ${
-          selectedContact.id === contact.id ? "active" : ""
-        }`}
-        onClick={() => setSelectedContact(contact)}
-      >
-        <img
-          className="foto-do-perfil"
-          src={contact.imgUrl}
-          alt={`foto do ${contact.name}`}
-        />
-        {contact.name}
-      </div>
-    ))}
-  </div>
-);
-
-// Componente para renderizar mensagens do contato selecionado
-const ChatMessages = ({ selectedContact }) => (
-  <div className="chat-messages">
-    {selectedContact.messages.map((msg, index) => (
-      <div className="imgBox" key={index}>
-        {msg.sender === "Você" ? "" : <img src={selectedContact.imgUrl} alt="Contato" />}
-        <div className={`message ${msg.sender === "Você" ? "sent" : "received"}`}>
-          {msg.text}
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
-// Componente principal de Chat
-const ChatApp = () => {
-  const [selectedContact, setSelectedContact] = useState(contacts[0]);
+  const handleToggle = () => setShowContacts(!showContacts);
+  
+  // Função para trocar o contato ativo
+  const handleSelectContact = (contactName) => {
+    setActiveContact(contactName);
+    setShowContacts(false); // Fecha a barra de contatos após selecionar
+  };
 
   return (
-    <div className="chat-container">
-      {/* Componente de lista de contatos */}
-      <ContactList
-        contacts={contacts}
-        selectedContact={selectedContact}
-        setSelectedContact={setSelectedContact}
-      />
+    <Container fluid id="chat-container">
+      <Row id="chat-row">
+        {/* Barra de Contatos (visível apenas no desktop) */}
+        <Col xs={3} className="d-none d-md-block contacts-bar" id="contacts-bar">
+          <Button variant="primary" onClick={handleToggle} className="button-contatos" id="contacts-button">
+            Contatos
+          </Button>
+          <Offcanvas show={showContacts} onHide={handleToggle} id="contacts-offcanvas">
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Contatos</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <ListGroup variant="flush" id="contacts-list">
+                <ListGroup.Item action onClick={() => handleSelectContact('Rosa')}>
+                  Rosa
+                </ListGroup.Item>
+                <ListGroup.Item action onClick={() => handleSelectContact('Daniel')}>
+                  Daniel
+                </ListGroup.Item>
+              </ListGroup>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </Col>
 
-      {/* Área do chat */}
-      <div className="chat-area">
-        <div className="chat-header">
-          <h3>Conversando com: {selectedContact.name}</h3>
-        </div>
-        
-        {/* Componente de mensagens */}
-        <ChatMessages selectedContact={selectedContact} />
+        {/* Tela de Chat */}
+        <Col xs={12} md={9} className="chat-window" id="chat-window">
+          {/* Barra superior com nome do contato */}
+          <div className="barra" id="contact-bar">
+            <span className="contact-name" id="contact-name">{activeContact}</span>
 
-        {/* Área de input para envio de mensagens */}
-        <div className="chat-input">
-          <input type="text" placeholder="Digite uma mensagem..." />
-          <button>Enviar</button>
-        </div>
-      </div>
-    </div>
+            {/* Botão "Contatos" (visível apenas em telas pequenas) */}
+            <Button variant="primary" onClick={handleToggle} className="d-md-none" id="mobile-contacts-button">
+              Contatos
+            </Button>
+          </div>
+
+          {/* Caixa de mensagens */}
+          <div className="chat-box" id="chat-box">
+            <div className="message from-them" id="message-from-them">
+              <span>Olá! como posso ajudar?</span>
+            </div>
+            <div className="message from-you" id="message-from-you">
+              <span>Oiee, eu estou tendo problemas com meu login</span>
+            </div>
+            <div className="message from-them" id="message-from-them">
+              <span>Entendi, irei te ajudar a resolver esses problemas!</span>
+            </div>
+            <div className="message from-you" id="message-from-you">
+              <span>Perfeito! eu vou te contar meu problema agora</span>
+            </div>
+          </div>
+
+          {/* Campo de entrada de mensagem */}
+          <Form className="message-input" id="message-input">
+            <Form.Control type="text" placeholder="Escreva sua mensagem..." id="message-input-field" />
+            <Button variant="primary" type="submit" id="send-button">Enviar</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
-};
+}
 
 export default ChatApp;
