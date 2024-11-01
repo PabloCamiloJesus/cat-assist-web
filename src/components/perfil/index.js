@@ -1,17 +1,26 @@
 import React from "react";
 import "./perfil.css";
+import { useNavigate } from "react-router-dom";
+
+import {signOut} from "firebase/auth";
+
+import {app, auth} from "../../services/firebase/firebase"
 
 const Perfil = () => {
 
+  const user = auth.currentUser;
+
+
+
+  const navigate = useNavigate();
   return (
-    <div className="perfil-fullscreen">
+    <div className="perfil-fullscreen" id="perfil">
       {/* nome e foto do usuario */}
       <div className="perfil-header">
-        <h1 className="perfil-name">Daniel Rosa Silva</h1>
         <img
           className="perfil-image"
-          src={require("../../assets/astronauta-perfil.jpg")}
-          alt="Daniel Rosa Silva"
+          src={user?.photoURL}
+          alt={user.displayName}
         />
       </div>
       {/* dados do usuario */}
@@ -19,11 +28,36 @@ const Perfil = () => {
         <div className="perfil-container">
           <div className="perfil-info">
             <div className="perfil-row">
-              <p className="perfil-label">EMAIL:</p>
-              <p className="perfil-value">Daniel@gmail.com</p>
+              <p className="perfil-label">Nome: </p>
+              <p className="perfil-value">{user.displayName}</p>
             </div>
+            <div className="perfil-row">
+              <p className="perfil-label">Email: </p>
+              <p className="perfil-value">{user.email}</p>
+            </div>
+            {/* <div className="perfil-row">
+              <p className="perfil-label">Verificado?</p>
+              <p className="perfil-value">{user.emailVerified}</p>
+            </div>
+            <div className="perfil-row">
+              <p className="perfil-label">Telefone:</p>
+              <p className="perfil-value">{user.phoneNumber}</p>
+            </div> */}
             {/* botao de logout */}
-            <button className="perfil-button">SAIR DA CONTA</button>
+            <button
+              className="perfil-button"
+              onClick={() => {
+                signOut(auth)
+                  .then(function () {
+                    navigate("/");
+                  })
+                  .catch(function (error) {
+                    // An error happened.
+                  });
+              }}
+            >
+              SAIR DA CONTA
+            </button>
           </div>
         </div>
       </div>

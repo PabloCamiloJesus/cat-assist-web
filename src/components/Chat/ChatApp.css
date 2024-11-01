@@ -1,44 +1,44 @@
 /* Container geral do chat */
-.container-fluid {
+#chat-container {
     padding: 0;
     margin: 0;
     height: 100vh;
     display: flex;
 }
 
-.row {
+#chat-row {
     margin: 0;
     flex-grow: 1;
     display: flex;
 }
 
-/* Barra de contatos (lado esquerdo) */
-.col-3 {
-    background-color: #F2F2F2; /* Fundo cinza claro */
+/* Barra de Contatos */
+#contacts-bar {
+    background-color: #F2F2F2;
     padding: 0;
 }
 
-.button-contatos {
+#contacts-button {
     width: 100%;
-    height: 50px;
+    height: 57.5px;
     font-size: 18px;
     text-align: left;
     padding-left: 15px;
-    background-color: #BF0B3B; /* Vermelho vibrante */
-    color: #F2F2F2; /* Branco gelo */
+    background-color: #BF0B3B;
+    color: #F2F2F2;
     border: none;
+    border-radius: 0;
 }
 
-.button-contatos:hover {
+#contacts-button:hover {
     background-color: #BF0B3B;
 }
 
-.offcanvas-body {
-    padding: 0;
-    background-color: #F2F2F2; /* Fundo cinza claro */
+#contacts-offcanvas {
+    background-color: #F2F2F2;
 }
 
-.list-group-item {
+#contacts-list .list-group-item {
     font-size: 18px;
     padding: 15px;
     background-color: #F2F2F2;
@@ -47,52 +47,53 @@
     border: none;
 }
 
-.list-group-item:hover {
-    background-color: #BF0B3B; /* Vermelho vibrante no hover */
+#contacts-list .list-group-item:hover {
+    background-color: #BF0B3B;
 }
 
-/* Janela de chat */
-.chat-window {
-    background-color: #F2F2F2; /* Fundo cinza claro */
-    padding: 20px;
+/* Tela de Chat */
+#chat-window {
+    background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100vh;
-    border-left: 1px solid black;
+    margin: 0;
+    padding: 0;
+    /* border-left: 1px solid black; */
 }
 
-/* Barra superior com o nome do contato */
-.barra {
-    background-color: #BF0B3B; /* Fundo vermelho */
-    color: #F2F2F2; /* Branco gelo */
+/* Barra superior com nome do contato */
+#contact-bar {
+    background-color: #BF0B3B;
+    color: #F2F2F2;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #F2F2F2;
     height: 60px;
+    margin-bottom: 0;
 }
 
-.contact-name {
+#contact-name {
     font-weight: bold;
     font-size: 18px;
 }
 
 /* Área de mensagens */
-.chat-box {
-    padding: 20px;
-    background-color: #ffffff; /* Fundo branco */
-    height: 400px;
+#chat-box {
+    background-color: #ffffff;
+    height: calc(100vh - 120px);
     overflow-y: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 0;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Alinhamento e cores das mensagens */
+/* Mensagens */
 .message {
     max-width: 70%;
     padding: 10px;
@@ -101,61 +102,73 @@
 }
 
 /* Mensagens do outro usuário */
-.message.from-them {
+#message-from-them {
     align-self: flex-start;
-    background-color: #F2F2F2; /* Fundo cinza claro */
-    color: #0D0D0D; /* Texto preto escuro */
+    background-color: #F2F2F2;
+    color: #0D0D0D;
     text-align: left;
 }
 
 /* Mensagens enviadas pelo usuário */
-.message.from-you {
+#message-from-you {
     align-self: flex-end;
-    background-color: #BF0B3B; /* Fundo vermelho */
-    color: #F2F2F2; /* Texto branco gelo */
+    background-color: #BF0B3B;
+    color: #F2F2F2;
     text-align: right;
 }
 
 /* Campo de entrada de mensagem */
-.message-input {
+#message-input {
     display: flex;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
+    background-color: #F2F2F2;
+    border-top: 1px solid #dee2e6;
 }
 
-.message-input input {
+#message-input-field {
     flex-grow: 1;
     border-radius: 20px;
     padding: 10px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     color: #0D0D0D;
     margin-right: 10px;
 }
 
-.message-input input::placeholder {
+#message-input-field::placeholder {
     color: #666;
 }
 
-.message-input button {
+#send-button {
     background-color: #BF0B3B;
     border: none;
     color: #F2F2F2;
     padding: 10px 20px;
     border-radius: 20px;
 }
+/* Limite de largura e centralização em telas menores */
+#chat-container {
+    padding: 0;
+    margin: 0 auto; /* Centraliza o layout */
+    max-width: 1200px; /* Limite de largura máxima */
+    height: 100vh;
+    display: flex;
+}
 
-/* Responsividade */
+#chat-row {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    max-width: 100%; /* Garante que o Row também respeite o limite */
+}
+
+/* Para telas menores */
 @media (max-width: 768px) {
-    .button-contatos {
-        display: none;
+    #chat-container {
+        padding: 0 10px; /* Ajuste de padding lateral em telas menores */
     }
-
-    .barra {
-        justify-content: space-between;
-    }
-
-    .chat-box {
-        height: calc(100vh - 120px);
+    #chat-window, #contacts-bar {
+        width: 100%; /* O chat e a barra de contatos ocupam toda a largura */
+        max-width: 100%; /* Limita para não estourar */
     }
 }

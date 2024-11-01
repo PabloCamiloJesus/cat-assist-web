@@ -130,7 +130,8 @@ label {
   box-shadow: none;
   border-color: #000;
 }
-input {
+
+input{
   border-radius: 0 !important ;
 }
 .form-control:focus ~ .custom-label,
@@ -202,9 +203,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out,
-    width 0.5s ease-in-out; /* Adiciona transição suave */
-  /*  */
+  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out, width 0.5s ease-in-out; 
 }
 
 .pos-rel {
@@ -386,7 +385,9 @@ p {
   transition: 0.5s;
   border-bottom: gray 1px solid;
 }
+
 .google:hover {
+
   background-color: black;
   transition: 0.5s;
   border-color: black;
@@ -395,8 +396,9 @@ p {
 .cadastro-mode {
   background-color: #bf0b3b;
   /* Cor vermelha para o modo de cadastro */
-  transition: 2.5s all;
+  transition: 2.5s all;  
 }
+
 
 .cadastro-mode .bola {
   opacity: 0.8; /* Suave diminuição de opacidade para efeito */

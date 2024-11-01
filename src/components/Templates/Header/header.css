@@ -92,7 +92,7 @@
 }
 
 /* Para esconder a navegação em telas menores */
-@media (min-width:300px) and (max-width: 757px) {
+@media (min-width:300px) and (max-width: 880px) {
   #nav-left-right .nav-link {
     display: none; 
   }
@@ -125,7 +125,7 @@
 }
 }
 
-@media (min-width: 758px) {
+@media (min-width: 880px) {
   .hamburger-dropdown {
     display: none; /* Esconde o dropdown em telas grandes */
   }
@@ -150,4 +150,8 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: red; /* Cor ao passar o mouse */
+}
+
+#nav-left-rig{
+  display: flex;
 }

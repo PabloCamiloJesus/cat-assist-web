@@ -1,28 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
-import "./header.css"; // Para estilização personalizada
-import { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import IntersectionObserverComponent from "../../animation/useIntersectionObserver";
+import { auth } from "../../../services/firebase/firebase";
+import "./header.css";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-
-  // Alterar entre abrir e fechar o dropdown
-  const toggleDropdown = () => {
-    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
-  };
+  const [SignedUser, setUser] = useState(null); // Initialize as null to check for login status
+  const [loading, setLoading] = useState(true); // Loading state to handle waiting
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Detecta a mudança de rota e, se for a página inicial, rola para o topo
   useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const currentUser = await auth.currentUser;
+        
+        setUser(currentUser);
+
+        
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setLoading(false); // Set loading to false once done
+      }
+    };
+
     if (location.pathname === "/") {
-      window.scrollTo(0, 0); // Move o scroll para o topo
+      window.scrollTo(0, 0); // Move the scroll to the top
     }
+
+    fetchUser();
   }, [location]);
 
+  // Toggle dropdown
+  const toggleDropdown = () => {
+    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
+  };
+
+
+
+  // Navigation handler
   const handleNavigation = (e, path, sectionId) => {
     e.preventDefault();
     if (location.pathname === "/") {
@@ -35,38 +55,68 @@ const Header = () => {
     }
   };
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <IntersectionObserverComponent>
       <Navbar expand="lg" className="custom-navbar d-flex" variant="dark">
         <Container id="navbar-responsive">
-          {/* Botão de hambúrguer que aciona o dropdown em telas menores */}
-          <Dropdown className="hamburger-dropdown" show={showDropdown} onToggle={toggleDropdown}>
+          <Dropdown
+            className="hamburger-dropdown"
+            show={showDropdown}
+            onToggle={toggleDropdown}
+          >
             <Dropdown.Toggle
               variant="dark"
               id="dropdown-basic"
               onClick={toggleDropdown}
               className="hamburger-toggle"
             >
-              ☰ {/* Ícone do hambúrguer */}
+              ☰
             </Dropdown.Toggle>
 
-            <Dropdown.Menu className="custom-dropdown-menu" id="dropdown-menu">
-              <Dropdown.Item href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>HOME</Dropdown.Item>
-              <Dropdown.Item href="#atendimento" onClick={(e) => handleNavigation(e, '/', '#atendimento')}>ATENDIMENTOS</Dropdown.Item>
-              <Dropdown.Item href="#contato" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>SOBRE NÓS</Dropdown.Item>
+            <Dropdown.Menu
+              className="custom-dropdown-menu"
+              id="dropdown-menu"
+            >
+              <Dropdown.Item
+                href="#home"
+                onClick={(e) => handleNavigation(e, "/", "#home")}
+              >
+                HOME
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#atendimento"
+                onClick={(e) => handleNavigation(e, "/", "#atendimento")}
+              >
+                ATENDIMENTOS
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#contato"
+                onClick={(e) => handleNavigation(e, "/", "#sobre-nos")}
+              >
+                SOBRE NÓS
+              </Dropdown.Item>
               <Dropdown.Item to="#perfil">PERFIL</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
-          {/* Menus de navegação que aparecem na versão desktop */}
           <Nav id="nav-left-right">
-            <Nav.Link className="nav-link" href="#home" onClick={(e) => handleNavigation(e, '/', '#home')}>
+            <Nav.Link
+              className="nav-link"
+              href="#home"
+              onClick={(e) => handleNavigation(e, "/", "#home")}
+            >
               HOME
             </Nav.Link>
-            <Nav.Link className="nav-link" href="#atendimento" onClick={(e) => handleNavigation(e, '/', '#atendimento')}>
+            <Nav.Link
+              className="nav-link"
+              onClick={(e) => handleNavigation(e, "/", "#atendimento")}
+            >
               ATENDIMENTOS
             </Nav.Link>
-            {/* Logo centralizado */}
             <div className="navbar-logo">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_SESI_vermelho.jpg"
@@ -74,12 +124,21 @@ const Header = () => {
                 className="sesi-logo ms-5"
               />
             </div>
-            <Nav.Link className="nav-link" href="#sobre-nos" onClick={(e) => handleNavigation(e, '/sobre-nos', '#sobre-nos')}>
+            <Nav.Link
+              className="nav-link"
+              onClick={(e) => handleNavigation(e, "/sobre-nos", "#sobre-nos")}
+            >
               SOBRE NÓS
             </Nav.Link>
-            <Link className="nav-link" to="/perfil">
-              PERFIL
-            </Link>
+            {SignedUser ? (
+              <Link className="nav-link" to="/perfil">
+                PERFIL
+              </Link>
+            ) : (
+              <Link className="nav-link" to="/login">
+                LOGIN
+              </Link>
+            )}
           </Nav>
         </Container>
       </Navbar>
