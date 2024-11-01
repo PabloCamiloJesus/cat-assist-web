@@ -2,25 +2,28 @@ import React from "react";
 import "./perfil.css";
 import { useNavigate } from "react-router-dom";
 
-import {signOut} from "firebase/auth";
+import { signOut } from "firebase/auth";
 
-import {app, auth} from "../../services/firebase/firebase"
+import { app, auth } from "../../services/firebase/firebase";
 
 const Perfil = () => {
-
   const user = auth.currentUser;
 
-
-
   const navigate = useNavigate();
+
+  if (!auth.currentUser) {
+    navigate("/login");
+  }
+
   return (
     <div className="perfil-fullscreen" id="perfil">
+      <div className="filtro-dark"></div>
       {/* nome e foto do usuario */}
       <div className="perfil-header">
         <img
           className="perfil-image"
           src={user?.photoURL}
-          alt={user.displayName}
+          alt={user?.displayName}
         />
       </div>
       {/* dados do usuario */}
@@ -45,6 +48,7 @@ const Perfil = () => {
             </div> */}
             {/* botao de logout */}
             <button
+            type="submit"
               className="perfil-button"
               onClick={() => {
                 signOut(auth)

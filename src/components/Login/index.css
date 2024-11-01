@@ -131,7 +131,7 @@ label {
   border-color: #000;
 }
 
-input{
+input {
   border-radius: 0 !important ;
 }
 .form-control:focus ~ .custom-label,
@@ -190,6 +190,20 @@ input{
 p {
   color: black;
 }
+.auth-right-section.loading {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #555;
+}
 .auth-left-section {
   position: absolute;
   transition: 2.5s all;
@@ -203,7 +217,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out, width 0.5s ease-in-out; 
+  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out,
+    width 0.5s ease-in-out;
 }
 
 .pos-rel {
@@ -312,7 +327,7 @@ p {
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-  .auth-left-section{
+  .auth-left-section {
     height: 200px;
     width: 415px;
     display: flex;
@@ -323,37 +338,34 @@ p {
     top: 0;
     animation: none;
   }
-  .auth-right-section{
+  .auth-right-section {
     margin-top: 50%;
-
   }
   .bola {
     display: flex !important;
     position: static !important;
     width: 120px !important;
     height: 120px !important;
+  
   }
   .auth-right-section {
-    
     display: flex !important;
     justify-content: space-evenly !important;
     align-items: center !important;
     margin-left: 0;
     width: 50%;
   }
-  .auth-container{
+  .auth-container {
     display: flex !important;
-    justify-content: center  !important;
+    justify-content: center !important;
     width: 100% !important;
     overflow-x: hidden;
-
   }
-  form{
+  form {
     margin: 0 !important;
     padding: 0 !important;
-
   }
-  .pos-rel{
+  .pos-rel {
     visibility: hidden;
     width: 0;
     height: 0;
@@ -375,7 +387,7 @@ p {
 .bola {
   position: relative;
   left: 35%;
-  transition: opacity 0.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 .google {
   background-color: white;
@@ -387,7 +399,6 @@ p {
 }
 
 .google:hover {
-
   background-color: black;
   transition: 0.5s;
   border-color: black;
@@ -396,9 +407,8 @@ p {
 .cadastro-mode {
   background-color: #bf0b3b;
   /* Cor vermelha para o modo de cadastro */
-  transition: 2.5s all;  
+  transition: 2.5s all;
 }
-
 
 .cadastro-mode .bola {
   opacity: 0.8; /* Suave diminuição de opacidade para efeito */
@@ -424,4 +434,16 @@ p {
   background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
   width: 100%; /* Faz a seção colorida ocupar toda a largura da tela */
   border-radius: 0; /* Remove o raio da borda quando expandir */
+}
+.bola {
+  transition: all  1.5s ease-in-out;
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 1;
 }

@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.filtro-dark{
+  position: absolute;
+  z-index: -2;
+  width: 99.6vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.7);
+}
+
 .perfil-fullscreen {
   display: flex;
   justify-content: center;
@@ -12,20 +20,20 @@
   min-height: 100vh;
   position: relative;
   background-color: #00000050;
+  background-image: url('../../assets/background-pista-atletismo.avif');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: brightness(0.5);
+  z-index: -1;
+  background-attachment: fixed;
 }
 
 .perfil-fullscreen::before {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://img.freepik.com/fotos-premium/uma-faixa-vermelha-com-linhas-brancas_928715-1404.jpg?ga=GA1.1.1151205147.1710421356&semt=ais_hybrid');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.5);
-  z-index: -1;
   
 }
 
@@ -91,8 +99,6 @@
   object-fit: cover;
   margin-right: 30px;
 }
-
-
 
 .perfil-info {
   flex: 1;

@@ -12,14 +12,14 @@
   border-bottom: 3px solid red;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 10px;
   
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  
+  width: 150px;
 }
 
 .sesi-logo {
@@ -28,9 +28,8 @@
 
 #nav-left-right {
   display: flex;
-  gap: 30px; /* Espaçamento entre os itens de navegação */
   font-size: 16px;
-  width: 100%;
+  min-width: auto;
   justify-content: space-evenly;
 }
 
@@ -91,23 +90,38 @@
 
 }
 
+#navbar-responsive{
+  display: flex;
+  gap:40px; 
+  justify-content: space-around;
+}
+
 /* Para esconder a navegação em telas menores */
 @media (min-width:300px) and (max-width: 880px) {
   #nav-left-right .nav-link {
     display: none; 
   }
 
+  #nav-left-right{
+    display: block;
+  }
+
   .navbar-nav{
     display: none;
+  }
+
+  .custom-navbar{
+    display: flex;
   }
 
   #navbar-responsive{
     display: flex;
     flex-wrap: nowrap;
+    width: 100%;
   }
   
   #dropdown-menu{
-    margin-left: -95px;
+    margin-left: -125px;
     transition: .3s ease-in-out;
     
   }
@@ -150,8 +164,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: red; /* Cor ao passar o mouse */
-}
-
-#nav-left-rig{
-  display: flex;
 }

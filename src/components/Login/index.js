@@ -22,8 +22,18 @@ function Auth() {
   const [username, setusername] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  
+  const toggleAuthMode = () => {
+    setLoading(true);
+    setIsLogin(!isLogin);
+
+    // Desativa o loading após 2 segundos
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
   const logIn = () => {
     console.log(
       `email = ${email}, password = ${senha}, confPassword = ${confSenha} `
@@ -121,6 +131,7 @@ function Auth() {
             );
             break;
         }
+        setLoading(false);
       });
   };
 
@@ -169,181 +180,144 @@ function Auth() {
           }
           width="auto"
           alt={isLogin ? "Bola de basquete" : "Bola de futebol"}
-          className="bola"
+          className={`bola ${isLogin ? "fade-in" : "fade-out"}`}
         />
       </section>
-      <section className="auth-right-section">
-        <h1 className="title">
-          {isLogin ? "Faça seu Login" : "Faça seu Cadastro"}
-        </h1>
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
-            <div className="form-group">
-              <label htmlFor="password-input" className="custom-label">
-                Nome de usuário:
-              </label>
-              <input
-                type="text"
-                id="username-input-2"
-                className="form-control"
-                placeholder="Nome de usuário:"
-                value={username}
-                onChange={(e) => setusername(e.target.value)}
-                required
-              />
-            </div>
-          )}
-
-          {/* Email */}
-          <div className="form-group">
-            <label htmlFor="email-input" className="custom-label">
-              Email:
-            </label>
-            <input
-              type="text"
-              id="email-input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              placeholder="Email:"
-              required
-            />
+      <section className={`auth-right-section ${loading ? "loading" : ""}`}>
+        {loading ? (
+          <div class="loader">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
           </div>
+        ) : (
+          <>
+            <h1 className="title">
+              {isLogin ? "Faça seu Login" : "Faça seu Cadastro"}
+            </h1>
+            <form onSubmit={handleSubmit}>
+              {!isLogin && (
+                <div className="form-group">
+                  <label htmlFor="username-input-2" className="custom-label">
+                    Nome de usuário:
+                  </label>
+                  <input
+                    type="text"
+                    id="username-input-2"
+                    className="form-control"
+                    placeholder="Nome de usuário:"
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
 
-          {/* Senha */}
-          <div className="form-group">
-            <label htmlFor="password-input" className="custom-label">
-              Senha:
-            </label>
-            <input
-              type="password"
-              id="password-input"
-              className="form-control"
-              placeholder="Senha:"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
-          </div>
+              <div className="form-group">
+                <label htmlFor="email-input" className="custom-label">
+                  Email:
+                </label>
+                <input
+                  type="text"
+                  id="email-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                  placeholder="Email:"
+                  required
+                />
+              </div>
 
-          {!isLogin && (
-            <div className="form-group">
-              <label htmlFor="password-input" className="custom-label">
-                Confirmar senha:
-              </label>
-              <input
-                type="password"
-                id="password-input-2"
-                className="form-control"
-                placeholder="Confirmar senha:"
-                value={confSenha}
-                onChange={(e) => setConfSenha(e.target.value)}
-                required
-              />
-            </div>
-          )}
-          <a href="#" className="forgot-password">
-            Esqueci minha senha
-          </a>
-          <br />
+              <div className="form-group">
+                <label htmlFor="password-input" className="custom-label">
+                  Senha:
+                </label>
+                <input
+                  type="password"
+                  id="password-input"
+                  className="form-control"
+                  placeholder="Senha:"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  required
+                />
+              </div>
 
-          <div className="">
-            <p style={{ color: "red" }}>{errorMessage}</p>
-          </div>
+              {!isLogin && (
+                <div className="form-group">
+                  <label htmlFor="password-input-2" className="custom-label">
+                    Confirmar senha:
+                  </label>
+                  <input
+                    type="password"
+                    id="password-input-2"
+                    className="form-control"
+                    placeholder="Confirmar senha:"
+                    value={confSenha}
+                    onChange={(e) => setConfSenha(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
 
-          <button
-            type="submit"
-            onClick={() => (isLogin ? logIn() : register())}
-          >
-            {isLogin ? "Entrar" : "Cadastrar"}
-          </button>
-        </form>
-
-        <div className="EntrarComRedesSociais">
-          <button
-            type="button"
-            onClick={() => {
-              var user = signInWithPopup(auth, provider).then( async () => {
-
-                var userdata = await getAuth();
-                
-                if (user) {
-
-                  navigate("/");
-
-                }
-
-              }).catch((error) => {
-                switch (error.code) {
-                  case "auth/user-not-found":
-                    seterrorMessage(
-                      "Usuário não encontrado. Verifique seu email e tente novamente."
-                    );
-                    break;
-                  case "auth/invalid-credential":
-                    seterrorMessage(
-                      "Usuário não encontrado. Verifique seu email e tente novamente."
-                    );
-                    break;
-                  case "auth/wrong-password":
-                    seterrorMessage(
-                      "Senha incorreta. Verifique sua senha e tente novamente."
-                    );
-                    break;
-                  case "auth/invalid-email":
-                    seterrorMessage(
-                      "Email incorreto. Verifique seu email e tente novamente."
-                    );
-                    break;
-                  default:
-                    seterrorMessage(
-                      `Ocorreu um erro inesperado. Tente novamente mais tarde`
-                    );
-                    break;
-                }
-              });
-            }}
-            className="google"
-          >
-            <i class="bi bi-google"></i> <span>Entrar com Google</span>
-          </button>
-        </div>
-
-        {/* Link para alternar entre Login e Cadastro */}
-        <br />
-        <p>
-          {isLogin ? (
-            <>
-              Não tem cadastro?{" "}
-              <a
-                href="#"
-                onClick={() => {
-                  playAnim();
-                  // setTimeout(() => {
-                  //   setIsLogin(false);
-                  // }, 1000);
-                }}
-              >
-                Crie uma conta
+              <a href="#" className="forgot-password">
+                Esqueci minha senha
               </a>
-            </>
-          ) : (
-            <>
-              Já tem conta?{" "}
-              <a
-                href="#"
-                onClick={() => {
-                  playAnim();
-                  // setTimeout(() => {
-                  //   setIsLogin(true);
-                  // }, 1000);
-                }}
+
+              <div className="error-message">
+                <p style={{ color: "red" }}>{errorMessage}</p>
+              </div>
+
+              <button className="button" type="submit" disabled={loading}>
+                {isLogin ? "Entrar" : "Cadastrar"}
+              </button>
+            </form>
+
+            <div className="EntrarComRedesSociais">
+              <button
+                type="button"
+                onClick={() => signInWithPopup(auth, provider).then( async (e) => {
+                  var res = await auth.currentUser
+
+                  navigate("/")
+                }).catch()}
+                className="google"
               >
-                Faça login
-              </a>
-            </>
-          )}
-        </p>
+                <i className="bi bi-google"></i> <span>Entrar com Google</span>
+              </button>
+            </div>
+
+            <p>
+              {isLogin ? (
+                <>
+                  Não tem cadastro?{" "}
+                  <a
+                    href="#"
+                    onClick={() => {
+                      toggleAuthMode();
+                      playAnim();
+                    }}
+                  >
+                    Crie uma conta
+                  </a>
+                </>
+              ) : (
+                <>
+                  Já tem conta?{" "}
+                  <a
+                    href="#"
+                    onClick={() => {
+                      toggleAuthMode();
+                      playAnim();
+                    }}
+                  >
+                    Faça login
+                  </a>
+                </>
+              )}
+            </p>
+          </>
+        )}
       </section>
     </main>
   );

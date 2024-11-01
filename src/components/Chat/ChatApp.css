@@ -12,6 +12,10 @@
     display: flex;
 }
 
+button[type="submit"] {
+    width: 100px !important;
+  }
+
 /* Barra de Contatos */
 #contacts-bar {
     background-color: #F2F2F2;
@@ -145,6 +149,8 @@
     color: #F2F2F2;
     padding: 10px 20px;
     border-radius: 20px;
+
+    width: 100px !important;
 }
 /* Limite de largura e centralização em telas menores */
 #chat-container {
@@ -161,6 +167,8 @@
     display: flex;
     max-width: 100%; /* Garante que o Row também respeite o limite */
 }
+
+
 
 /* Para telas menores */
 @media (max-width: 768px) {

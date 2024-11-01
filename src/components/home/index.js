@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "animate.css";
 import IntersectionObserverComponent from "../animation/useIntersectionObserver";
 
 const Home = () => {
-  const location = useLocation();
 
+
+
+  
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  
   // Detecta a mudança de rota e, se for a página inicial, rola para o topo
   useEffect(() => {
     if (location.pathname === "/") {
@@ -58,10 +64,13 @@ const Home = () => {
   return (
     <div className="container-geral">
       {/* Ícone do bot */}
-      <a className="icone-do-bot" href="/chatbot">
-        {/* <img src="" alt="luna" /> */}
-        <p style={{color: "white"}}>Luna</p>
-      </a>
+      <Link to="/chatbot" className="icone-do-bot">
+        <img
+          src="https://i.pinimg.com/736x/94/a8/d6/94a8d60c5f5dbed03a1f72c0c79680ff.jpg"
+          alt="luna"
+        />
+      </Link>
+      
 
       {/* Seção do Banner */}
       <IntersectionObserverComponent
@@ -77,7 +86,7 @@ const Home = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "94vh",
-              width:"100%",
+              width: "100%",
               position: "relative",
             }}
           >
@@ -156,7 +165,7 @@ const Home = () => {
                   Atendimento Online
                 </h2>
                 <div>
-                  <p style={{color: "white"}}>
+                  <p style={{ color: "white" }}>
                     Você pode falar com um membro da nossa secretaria através do
                     atendimento online durante os seguintes horários:
                   </p>
@@ -181,11 +190,12 @@ const Home = () => {
                 <h2 style={{ textTransform: "uppercase" }}>
                   Atendimento automático
                 </h2>
-                <p style={{color: "white"}}>
-                  Conheça Luna, nossa Assistente Virtual, pronta para auxiliá-lo(a)
-                  na resolução de suas necessidades. Inteligente e eficiente, Luna está
-                  à disposição para oferecer suporte e orientações precisas em diversas
-                  situações. Experimente agora e descubra como Luna pode facilitar sua experiência.
+                <p style={{ color: "white" }}>
+                  Conheça Luna, nossa Assistente Virtual, pronta para
+                  auxiliá-lo(a) na resolução de suas necessidades. Inteligente e
+                  eficiente, Luna está à disposição para oferecer suporte e
+                  orientações precisas em diversas situações. Experimente agora
+                  e descubra como Luna pode facilitar sua experiência.
                 </p>
                 <Link to="/chatbot" className="botao-rosa botao">
                   Assistente virtual
@@ -205,7 +215,14 @@ const Home = () => {
             <div className="lado-direito d-flex justify-content-evenly">
               <div className="sobrenos-vai-esquerdo-conteudo ms-4">
                 <p>
-                Bem-vindo à nossa plataforma! Somos uma equipe apaixonada por tecnologia, inovação e atendimento eficiente. Nosso objetivo é transformar a maneira como você interage com serviços digitais, proporcionando uma experiência otimizada e intuitiva. Com um foco voltado para soluções de comunicação modernas e integradas, trabalhamos constantemente para garantir que você tenha acesso fácil e rápido às informações que precisa.
+                  Bem-vindo à nossa plataforma! Somos uma equipe apaixonada por
+                  tecnologia, inovação e atendimento eficiente. Nosso objetivo é
+                  transformar a maneira como você interage com serviços
+                  digitais, proporcionando uma experiência otimizada e
+                  intuitiva. Com um foco voltado para soluções de comunicação
+                  modernas e integradas, trabalhamos constantemente para
+                  garantir que você tenha acesso fácil e rápido às informações
+                  que precisa.
                 </p>
                 <a href="/sobre-nos" className="botao-preto botao">
                   Sobre nós

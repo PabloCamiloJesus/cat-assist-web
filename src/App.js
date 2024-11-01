@@ -23,17 +23,7 @@ function App() {
   const isAuthPage = location.pathname === "/cadastro" || location.pathname === "/login";
 
   // Estado para controlar se a página está carregada
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Timeout para simular um atraso no carregamento
-    const timer = setTimeout(() => {
-      setIsPageLoaded(true); // Seta o estado para indicar que a página está carregada
-    }, 1000); // Atraso de 1 segundo
-
-    // Cleanup para limpar o timeout quando o componente desmontar
-    return () => clearTimeout(timer);
-  }, [location.pathname]); // Reexecuta o efeito quando a rota muda
+  const [isPageLoaded, setIsPageLoaded] = useState(true);
 
   // Enquanto não estiver carregado, exibe um "loading" ou algo semelhante
   if (!isPageLoaded) {
@@ -77,5 +67,3 @@ function AppWrapper() {
 }
 
 export default AppWrapper;
-
-

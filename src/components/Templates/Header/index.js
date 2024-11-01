@@ -16,11 +16,11 @@ const Header = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        
         const currentUser = await auth.currentUser;
         
         setUser(currentUser);
 
-        
       } catch (error) {
         console.error("Error fetching user:", error);
       } finally {
@@ -61,8 +61,8 @@ const Header = () => {
 
   return (
     <IntersectionObserverComponent>
-      <Navbar expand="lg" className="custom-navbar d-flex" variant="dark">
-        <Container id="navbar-responsive">
+      <nav expand="lg" className="custom-navbar align-items-center justify-content-between w-100 " variant="dark" id="navbar-responsive">
+        
           <Dropdown
             className="hamburger-dropdown"
             show={showDropdown}
@@ -103,7 +103,7 @@ const Header = () => {
             </Dropdown.Menu>
           </Dropdown>
 
-          <Nav id="nav-left-right">
+          <Nav class="w-100 align-items-center" id="nav-left-right">
             <Nav.Link
               className="nav-link"
               href="#home"
@@ -121,7 +121,7 @@ const Header = () => {
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_SESI_vermelho.jpg"
                 alt="SESI Logo"
-                className="sesi-logo ms-5"
+                className="sesi-logo"
               />
             </div>
             <Nav.Link
@@ -140,8 +140,8 @@ const Header = () => {
               </Link>
             )}
           </Nav>
-        </Container>
-      </Navbar>
+        
+      </nav>
     </IntersectionObserverComponent>
   );
 };
