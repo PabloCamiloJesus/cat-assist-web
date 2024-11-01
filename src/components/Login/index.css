@@ -10,9 +10,11 @@ h1 {
   font-weight: lighter;
   font-size: 50px;
 }
-::-webkit-input-placeholder{
-  color: gray;
-  font-family: 'Raleway', sans-serif;
+
+::placeholder {
+  color: gray !important;
+  font-family: "Raleway", sans-serif !important;
+  font-weight: 300 !important;
 }
 button[type="submit"] {
   width: 100%;
@@ -68,7 +70,7 @@ button[type="submit"]:hover {
   width: 20%;
 }
 
-.title{
+.title {
   color: #000;
 }
 
@@ -78,19 +80,19 @@ button[type="submit"]:hover {
   max-width: 500px;
   margin-top: 20px;
 }
-label{
-  font-family: 'Raleway', sans-serif;
+label {
+  font-family: "Raleway", sans-serif;
   font-weight: 300;
 }
 .form-control {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   width: 350px;
   border: none;
   border-bottom: 2px solid #000;
   padding: 8px 4px;
   background-color: transparent;
   font-size: 20px;
-  color: #000;
+  color: gray;
 }
 
 .form-control:focus {
@@ -119,16 +121,18 @@ label{
   opacity: 0;
 }
 
-#email-input, #password-input{
+#email-input,
+#password-input {
   border-radius: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
-.form-control:focus{
+.form-control:focus {
   box-shadow: none;
   border-color: #000;
-
 }
-
+input {
+  border-radius: 0 !important ;
+}
 .form-control:focus ~ .custom-label,
 .form-control:not(:placeholder-shown) ~ .custom-label {
   top: -10px;
@@ -162,7 +166,7 @@ label{
   padding: 10px;
   font-size: 16px;
   gap: 10px;
-  color: #0A0909;
+  color: #0a0909;
   text-decoration: none;
 }
 
@@ -182,11 +186,10 @@ label{
   height: 90vh;
   background-color: #f8f9fa;
 }
-p{
+p {
   color: black;
 }
 .auth-left-section {
-
   position: absolute;
   transition: 2.5s all;
   z-index: 3;
@@ -199,17 +202,17 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out, width 0.5s ease-in-out; /* Adiciona transição suave */
+  transition: transform 0.5s ease-in-out, background-color 2.5s ease-in-out,
+    width 0.5s ease-in-out; /* Adiciona transição suave */
   /*  */
 }
 
 .pos-rel {
-  width: 30%; 
+  width: 30%;
   position: relative;
 }
 
 .anim {
-
   position: absolute;
   transition: all 1.5s;
   animation: 1.5s teste ease-in-out forwards;
@@ -237,7 +240,7 @@ p{
 }
 
 .cadastro-input {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   width: 350px;
   border: none;
   border-bottom: 2px solid #000;
@@ -296,7 +299,7 @@ p{
   padding: 10px;
   font-size: 16px;
   gap: 10px;
-  color: #0A0909;
+  color: #0a0909;
   text-decoration: none;
 }
 
@@ -308,48 +311,57 @@ p{
   border-left: 1px solid gray;
 }
 
-/* Responsividade para ambas as páginas */
+/* Responsividade para telas menores */
 @media (max-width: 768px) {
-  .test-container, .cadastro-container {
-    flex-direction: column;
-    width: 100%;
-    gap: 100px;
+  .auth-left-section{
+    height: 200px;
+    width: 415px;
+    display: flex;
+    /* align-items: center; */
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 0;
+    top: 0;
+    animation: none;
   }
+  .auth-right-section{
+    margin-top: 50%;
 
-  .container_esquerda, .container_direita, 
-  .cadastro-left-section, .cadastro-right-section {
-    border: none;
-    padding: 10px;
-    width: 100%;
   }
-
-  .container_esquerda, .cadastro-left-section {
-    border-bottom: 1px solid #000;
-    min-height: 250px;
-    width: 95%;
-    border-radius: 0;
-    justify-content: center;
-    align-items: center;
+  .bola {
+    display: flex !important;
+    position: static !important;
+    width: 120px !important;
+    height: 120px !important;
   }
-
-  .form-group, .cadastro-form-group {
-    max-width: 95%;
+  .auth-right-section {
+    
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    margin-left: 0;
+    width: 50%;
   }
+  .auth-container{
+    display: flex !important;
+    justify-content: center  !important;
+    width: 100% !important;
+    overflow-x: hidden;
 
-  .container_esquerda img, .cadastro-left-section img {
-    position: static;
-    max-width: 180px;
   }
+  form{
+    margin: 0 !important;
+    padding: 0 !important;
 
-  .EntrarComRedesSociais a, .cadastro-social-media a {
-    width: 100%;
-    margin: 10px 0;
+  }
+  .pos-rel{
+    visibility: hidden;
+    width: 0;
+    height: 0;
   }
 }
 
-
-
-.auth-container{
+.auth-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -361,20 +373,29 @@ p{
   transition: background-color 0.5s ease;
 }
 
-.bola{
+.bola {
   position: relative;
-  left: 40%;
-  transition:opacity 0.5s ease-in-out;
-  
+  left: 35%;
+  transition: opacity 0.5s ease-in-out;
 }
-.google{
+.google {
   background-color: white;
-  border: none;
+  border: solid 1px #000;
+  margin: 5px;
+  padding: 5px;
+  transition: 0.5s;
   border-bottom: gray 1px solid;
 }
+.google:hover {
+  background-color: black;
+  transition: 0.5s;
+  border-color: black;
+  color: white;
+}
 .cadastro-mode {
-    background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
-    transition: 2.5s all;
+  background-color: #bf0b3b;
+  /* Cor vermelha para o modo de cadastro */
+  transition: 2.5s all;
 }
 
 .cadastro-mode .bola {
@@ -384,11 +405,10 @@ p{
 }
 
 @keyframes teste {
-
-  0% { 
+  0% {
     width: 30%;
   }
-  
+
   50% {
     width: 100%;
   }
@@ -396,12 +416,10 @@ p{
   100% {
     width: 30%;
   }
-
 }
 
 .cadastro-mode .auth-left-section {
   background-color: #bf0b3b; /* Cor vermelha para o modo de cadastro */
   width: 100%; /* Faz a seção colorida ocupar toda a largura da tela */
   border-radius: 0; /* Remove o raio da borda quando expandir */
-
 }

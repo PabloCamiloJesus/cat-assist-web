@@ -682,42 +682,45 @@ const ChatBot = () => {
   }
 
   return (
-    <div
-      style={{ height: "100vh", width: "100vw" }}
-      className="container-chatbot"
-    >
-      <h1 className="mb-5">Luna</h1>
-      {/* Render input and response history */}
-      {inputHistory.map((history, index) => (
-        <div key={index}>
-          <p>
-            <strong>You:</strong> {history.userInput}
-          </p>
-          <p>
-            <strong>Bot:</strong> {history.botResponse}
-          </p>
-        </div>
-      ))}
-
-      {/* Latest response */}
-      <p>{response}</p>
-
-      {/* Input field and send button */}
-      <input
-        placeholder="Escreva sua mensagem"
-        className="input"
-        type="text"
-        value={input}
-        onKeyPress={(key) => {
-          if (key.key === "Enter") {
-            run();
-          }
-        }}
-        onChange={(e) => setInput(e.target.value)}
+    <div className="container-chatbot">
+      <img
+        src="https://i.pinimg.com/736x/94/a8/d6/94a8d60c5f5dbed03a1f72c0c79680ff.jpg" 
+        alt="Assistente"
+        className="assistant-image"
       />
-      <button type="button" className="button" onClick={async () => run()}>
-        Enviar
-      </button>
+      <div className="chat-container">
+        <h1>LUNA</h1>
+        <div className="chat-box">
+          {/* Renderizar histórico de mensagens */}
+          {inputHistory.map((history, index) => (
+            <div key={index}>
+              <div className="message user-message">{history.userInput}</div>
+              <div className="message bot-message">{history.botResponse}</div>
+            </div>
+          ))}
+        </div>
+
+          <div className="message bot-message">{response}</div>
+
+        {/* Campo de input e botão de envio */}
+        <div className="input-container">
+          <input
+            placeholder="Escreva sua mensagem"
+            className="input"
+            type="text"
+            value={input}
+            onKeyPress={(key) => {
+              if (key.key === "Enter") {
+                run();
+              }
+            }}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button type="button" className="button" onClick={run}>
+            Enviar
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

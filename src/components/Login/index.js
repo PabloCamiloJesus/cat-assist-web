@@ -302,7 +302,7 @@ function Auth() {
             }}
             className="google"
           >
-            <i className="bi bi-google"></i> <span>Entrar com Google</span>
+            <i class="bi bi-google"></i> <span>Entrar com Google</span>
           </button>
         </div>
 

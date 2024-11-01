@@ -1,27 +1,102 @@
-.container-chatbot{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 200px;
-    color: #000;
+.container-chatbot {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffff;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
-.button{
-    display: inline-block;
-    background-color: #bf0b3b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button{
-    background-color: #c40813;
-  }
-  .input{
-    border-radius: 5px;
-  }
+
+/* Imagem do assistente */
+.assistant-image {
+  width: 350px;
+  margin-right: 20px;
+}
+
+/* Caixa de chat */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Título */
+.chat-container h1 {
+  background-color: #bf0b3b;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  padding: 15px 0;
+  margin: 0;
+}
+
+/* Área de mensagens */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+/* Mensagens */
+.message {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.bot-message {
+  background-color: #ffffff;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  font-size: 14px;
+  max-width: 70%;
+}
+
+.user-message {
+  background-color: #c40813;
+  color: white;
+  padding: 10px 15px;
+  align-self: flex-end;
+  border-radius: 15px 15px 0 15px;
+  font-size: 14px;
+  max-width: 70%;
+}
+
+/* Input e botão de envio */
+.input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.button {
+  background-color: #c40813;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #bf0b3b;
+}
