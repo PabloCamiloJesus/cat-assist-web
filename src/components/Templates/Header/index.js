@@ -103,7 +103,7 @@ const Header = () => {
             </Dropdown.Menu>
           </Dropdown>
 
-          <Nav class="w-100 align-items-center" id="nav-left-right">
+          <Nav className="w-100 align-items-center" id="nav-left-right">
             <Nav.Link
               className="nav-link"
               href="#home"

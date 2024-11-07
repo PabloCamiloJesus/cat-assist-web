@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, setPersistence, browserLocalPersistence } from "firebase/auth";
 import firebase from "firebase/compat/app";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,6 +21,16 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+// Definindo a persistência da autenticação para 'local'
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("Persistência de sessão configurada para 'local'.");
+  })
+  .catch((error) => {
+    console.error("Erro ao configurar persistência de sessão:", error);
+  });
+
 
 export const db = getFirestore(app);
 
