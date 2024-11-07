@@ -1034,17 +1034,7 @@ const ChatBot = () => {
             {text: "comece"},
           ],
         },
-        {
-          role: "model",
-          parts: [
-            {
-              fileData: {
-                mimeType: files[0].mimeType,
-                fileUri: files[0].uri,
-              },
-            },
-          ],
-        },
+       
         {
           role: "user",
           parts: [
