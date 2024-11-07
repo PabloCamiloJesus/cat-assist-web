@@ -169,7 +169,7 @@ function Auth() {
       <section className="pos-rel"></section>
       <section
         id="anim"
-        className={`auth-left-section ${isLogin ? "" : "cadastro-mode"}`}
+        className={`auth-left-section ${isLogin ? "" : "cadastro-mode"} animate__animated animate__fadeInLeftBig`}
       >
         <img
           height="50%"
@@ -180,10 +180,10 @@ function Auth() {
           }
           width="auto"
           alt={isLogin ? "Bola de basquete" : "Bola de futebol"}
-          className={`bola ${isLogin ? "fade-in" : "fade-out"}`}
+          className={`bola ${isLogin ? "fade-in" : "fade-out"} animate__animated animate__fadeInLeftBig`}
         />
       </section>
-      <section className={`auth-right-section ${loading ? "loading" : ""}`}>
+      <section className={`auth-right-section ${loading ? "loading" : ""} animate__animated animate__fadeIn animate__slower`}>
         {loading ? (
           <div class="loader">
             <div class="ball"></div>

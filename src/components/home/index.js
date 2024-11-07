@@ -5,11 +5,6 @@ import "animate.css";
 import IntersectionObserverComponent from "../animation/useIntersectionObserver";
 
 const Home = () => {
-
-
-
-  
-
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -20,13 +15,14 @@ const Home = () => {
     }
   }, [location]);
 
-  const [activeSlide, setActiveSlide] = useState(0);
+
+    const [activeSlide, setActiveSlide] = useState(0);
 
   const slides = [
     {
       title: "",
       description: "",
-      link: "#",
+      link: "#atendimento",
       linkText: "Saiba-mais",
       backgroundColor: "rgba(0, 0, 0, 0.7)", // Fundo escuro
       backgroundImage: require("../../assets/banner/Luna-Banner.png"),
@@ -35,7 +31,7 @@ const Home = () => {
     {
       title: "",
       description: "",
-      link: "#",
+      link: "#Perg-Freque",
       linkText: "Pergunte!!",
       backgroundColor: "rgba(255, 102, 0, 0.7)", // Fundo laranja
       backgroundImage: require("../../assets/banner/Perguntas-frequentes.png"),
@@ -117,7 +113,7 @@ const Home = () => {
       </IntersectionObserverComponent>
 
       {/* Perguntas Frequentes */}
-      <div className="perguntas-frequentes">
+      <div id="Perg-Freque" className="perguntas-frequentes">
         <IntersectionObserverComponent animationClass="animate__fadeIn">
           <div className="frequent-quest">
             <h2>PERGUNTAS FREQUENTES</h2>

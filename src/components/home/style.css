@@ -487,3 +487,27 @@ p {
     width: 50%;
   } */
 }
+/* Estilo do container dos slides */
+.slide-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Estilo dos slides */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Slide ativo terá opacidade 1 */
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}

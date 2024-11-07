@@ -20,9 +20,9 @@ function PergFreq() {
       
       
       <div className="card card-body" id='lista-pergunta'>
-      <h2 className="text-center mb-4">Perguntas Frequentes</h2> 
+      <h2 className="text-center mb-4 animate__animated animate__fadeInUp">Perguntas Frequentes</h2> 
         {/* Caixa com dropbox de perguntas */}
-        <div className="list-group list-group-flush">
+        <div className="list-group list-group-flush animate__animated animate__fadeInUp">
           {[
             { question: "Como faço a carteirinha?", answer: "trazendo os documentos tais e documentos lá." },
             { question: "Qual horário a secretaria está aberta?", answer: "A secretaria está aberta das 8h às 17h." },
@@ -48,7 +48,7 @@ function PergFreq() {
         </div>
 
         {/* Caixa de Sugestão */}
-        <div className="caixa card-body d-flex text-center g-5">
+        <div className="caixa card-body d-flex text-center g-5 animate__animated animate__fadeInUp ">
           <input type="text" id="suggestion-input" className="form-control mb-3" placeholder="Adicione sua pergunta aqui..." />
           <button className="btn btn-danger p-2">ENVIAR</button>
         </div>

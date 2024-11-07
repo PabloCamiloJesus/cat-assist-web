@@ -18,25 +18,26 @@ const Perfil = () => {
   return (
     <div className="perfil-fullscreen" id="perfil">
       <div className="filtro-dark"></div>
-      {/* nome e foto do usuario */}
-      <div className="perfil-header">
-        <img
-          className="perfil-image"
-          src={user?.photoURL}
-          alt={user?.displayName}
-        />
-      </div>
+
       {/* dados do usuario */}
       <div className="perfil-content">
         <div className="perfil-container">
           <div className="perfil-info">
+          <div className="perfil-header">
+                <img
+                  className="perfil-image"
+                  src={user?.photoURL}
+                  alt={user?.displayName}
+                />
+              </div>
             <div className="perfil-row">
+
               <p className="perfil-label">Nome: </p>
-              <p className="perfil-value">{user.displayName}</p>
+              <p className="perfil-value">{user?.displayName}</p>
             </div>
             <div className="perfil-row">
               <p className="perfil-label">Email: </p>
-              <p className="perfil-value">{user.email}</p>
+              <p className="perfil-value">{user?.email}</p>
             </div>
             {/* <div className="perfil-row">
               <p className="perfil-label">Verificado?</p>
@@ -48,7 +49,7 @@ const Perfil = () => {
             </div> */}
             {/* botao de logout */}
             <button
-            type="submit"
+              type="button"
               className="perfil-button"
               onClick={() => {
                 signOut(auth)

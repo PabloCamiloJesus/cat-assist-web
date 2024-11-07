@@ -171,6 +171,7 @@ button[type="submit"] {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-direction: row;
   transition: 0.5s linear;
 }
 
@@ -183,7 +184,7 @@ button[type="submit"] {
 }
 
 .ball {
-  background: #000;
+  background: #666666b3;
 }
 
 .ball:nth-child(2) {

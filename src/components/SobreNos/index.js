@@ -10,7 +10,7 @@ const Sobrenos = () => {
       <div className="img-fluid" id="banner">
         {/* BACKGROUND */}
         <img
-          src="https://cronos-media.sesisenaisp.org.br//api/media/1-0/files?img=img_4_200103_5ed77bc3-b7bf-4533-b46d-a7ffbe6cce3c_o.jpg&tipo=m"
+          src={require('../../assets/banner_sobnos.jpeg')}
           alt="Sobre Nós"
           className="img-fluid bannerimg"
         />
@@ -18,9 +18,9 @@ const Sobrenos = () => {
         {/* CONTEÚDO DENTRO DO BANNER */}
         <div className="bannerconteudo text-center">
           {/*TÍTULO*/}
-          <h1 className="display-1">Sobre Nós</h1>
+          <h1 className="display-1 animate__animated animate__fadeInUp">Sobre Nós</h1>
           {/* SUBTÍTULO */}
-          <p>Um pouco sobre o que somos e o que pretendemos alcançar</p>
+          <p className="animate__animated animate__fadeInUp">Um pouco sobre o que somos e o que pretendemos alcançar</p>
         </div>
       </div>
       {/* PARTE DE MISSÃO, VISÃO E VALORES*/}
