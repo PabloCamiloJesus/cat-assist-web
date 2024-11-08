@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { onAuthStateChanged } from "firebase/auth";
 import "firebase/compat/firestore";
+import "./ChatApp.css";
+import "./index.css";
 
 function Chat() {
   const [employees, setEmployeeId] = useState([]);
@@ -102,7 +104,7 @@ function Chat() {
 
   return (
     <Container fluid id="chat-container">
-      <div className="chat-box">
+      <div className="chat-box-chat">
         {employees.map((employee, index) => {
           return (
             <div key={index}>
@@ -115,6 +117,7 @@ function Chat() {
                           setChatId(employee.id);
                           setChatter(employee2.name);
                         }}
+                        className="btn-acc"
                       >
                         {employee2.name ? employee2.name : "Default"}
                       </button>

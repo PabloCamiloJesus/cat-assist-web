@@ -1,58 +1,30 @@
 /* Container geral do chat */
 #chat-container {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1200px;
     height: 100vh;
     display: flex;
+    
 }
 
 #chat-row {
     margin: 0;
     flex-grow: 1;
     display: flex;
+    max-width: 100%;
 }
 
-button[type="submit"] {
+/* Botão de Envio */
+button[type="submit"],
+#send-button {
     width: 100px !important;
-  }
+}
 
 /* Barra de Contatos */
 #contacts-bar {
     background-color: #F2F2F2;
     padding: 0;
-}
-
-#contacts-button {
-    width: 100%;
-    height: 57.5px;
-    font-size: 18px;
-    text-align: left;
-    padding-left: 15px;
-    background-color: #BF0B3B;
-    color: #F2F2F2;
-    border: none;
-    border-radius: 0;
-}
-
-#contacts-button:hover {
-    background-color: #BF0B3B;
-}
-
-#contacts-offcanvas {
-    background-color: #F2F2F2;
-}
-
-#contacts-list .list-group-item {
-    font-size: 18px;
-    padding: 15px;
-    background-color: #F2F2F2;
-    color: #0D0D0D;
-    cursor: pointer;
-    border: none;
-}
-
-#contacts-list .list-group-item:hover {
-    background-color: #BF0B3B;
 }
 
 /* Tela de Chat */
@@ -63,7 +35,6 @@ button[type="submit"] {
     height: 100vh;
     margin: 0;
     padding: 0;
-    /* border-left: 1px solid black; */
 }
 
 /* Barra superior com nome do contato */
@@ -79,13 +50,8 @@ button[type="submit"] {
     margin-bottom: 0;
 }
 
-#contact-name {
-    font-weight: bold;
-    font-size: 18px;
-}
-
 /* Área de mensagens */
-#chat-box {
+#messages-box {
     background-color: #ffffff;
     height: calc(100vh - 120px);
     overflow-y: auto;
@@ -95,6 +61,9 @@ button[type="submit"] {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    word-wrap: break-word; /* Quebra automaticamente palavras longas */
+    word-break: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Garante que as palavras quebrem no limite */
 }
 
 /* Mensagens */
@@ -102,7 +71,9 @@ button[type="submit"] {
     max-width: 70%;
     padding: 10px;
     border-radius: 15px;
-    word-wrap: break-word;
+    word-wrap: break-word; /* Quebra automaticamente palavras longas */
+    word-break: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Garante que as palavras quebrem no limite */
 }
 
 /* Mensagens do outro usuário */
@@ -143,40 +114,30 @@ button[type="submit"] {
     color: #666;
 }
 
-#send-button {
-    background-color: #BF0B3B;
-    border: none;
-    color: #F2F2F2;
-    padding: 10px 20px;
-    border-radius: 20px;
-
-    width: 100px !important;
-}
-/* Limite de largura e centralização em telas menores */
-#chat-container {
-    padding: 0;
-    margin: 0 auto; /* Centraliza o layout */
-    max-width: 1200px; /* Limite de largura máxima */
-    height: 100vh;
-    display: flex;
-}
-
-#chat-row {
-    margin: 0;
-    flex-grow: 1;
-    display: flex;
-    max-width: 100%; /* Garante que o Row também respeite o limite */
-}
-
-
-
-/* Para telas menores */
+/* Responsividade para Telas Menores */
 @media (max-width: 768px) {
     #chat-container {
-        padding: 0 10px; /* Ajuste de padding lateral em telas menores */
+        padding: 0 10px;
+        max-width: 100%;
     }
-    #chat-window, #contacts-bar {
-        width: 100%; /* O chat e a barra de contatos ocupam toda a largura */
-        max-width: 100%; /* Limita para não estourar */
+
+    #chat-window,
+    #contacts-bar {
+        width: 100%;
     }
+
+    #send-button {
+        width: auto !important;
+    }
+}
+.chat-box-chat{
+    padding: 0;
+    margin: 0;
+}
+.btn-acc{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: #0D0D0D solid 1px;
+    border
 }
