@@ -15,8 +15,11 @@ import ChatBot from "./components/ChatBot/index";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 
+import {auth} from "./services/firebase/firebase"
+
 function App() {
   // Hook para pegar a rota atual
+
   const location = useLocation();
 
   // Verifica se a rota é "/cadastro" ou "/login"
@@ -24,11 +27,31 @@ function App() {
 
   // Estado para controlar se a página está carregada
   const [isPageLoaded, setIsPageLoaded] = useState(true);
+  
+  const [SignedUser, setUser] = useState(null); // Initialize as null to check for login status
+  const [loading, setLoading] = useState(true); // Loading state to handle waiting
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        
+        const currentUser = await auth.currentUser;
+        
+        setUser(currentUser);
+
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setLoading(false); // Set loading to false once done
+      }
+    };
+  })
+  
   // Enquanto não estiver carregado, exibe um "loading" ou algo semelhante
   if (!isPageLoaded) {
     return <div>Carregando...</div>;
   }
+
 
   return (
     <div>

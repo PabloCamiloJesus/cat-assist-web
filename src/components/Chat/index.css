@@ -1,7 +1,7 @@
 /* Container geral do chat */
-.chat-container {
+#chat-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: calc(100vh - 60px);
   background-color: #fff;
   margin: 0;
