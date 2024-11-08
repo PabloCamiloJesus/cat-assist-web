@@ -2,151 +2,150 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import {
   collection,
-  doc,
   addDoc,
-  setDoc,
   onSnapshot,
   query,
   where,
-  orderBy
+  serverTimestamp,
 } from "firebase/firestore";
 import { auth, db } from "../../services/firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import { onAuthStateChanged } from "firebase/auth";
+import "firebase/compat/firestore";
 
 function Chat() {
-  // const [user, setUser] = useState(auth.currentUser);
   const [employees, setEmployeeId] = useState([]);
   const [messages, setMessages] = useState([]);
-
-  const [clientMessages, setClientMessages] = useState([]);
-  const [employeeMessages, setEmployeeMessages] = useState([]);
-
   const [newMessage, setNewMessage] = useState("");
 
-  var navigate = useNavigate();
-  const [employeeId, setEmployeeChatId] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [clientId, setClientChatId] = useState(null);
+  const [employeeId, setEmployeeChatId] = useState(null);
+
+  const [chatterName, setChatter] = useState("Funcionário");
   const [chatId, setChatId] = useState(null);
 
-  const [user, setUser] = useState(auth.currentUser); // Initialize as null to check for login status
-  const [loading, setLoading] = useState(true); // Loading state to handle waiting
-  // const [isAdmin, setAdminState] = useState(auth.currentUser.uid); // Initialize as null to check for login status
+  const navigate = useNavigate();
 
-  // Carrega as mensagens entre cliente e funcionário em tempo real
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const currentUser = await auth.currentUser;
-
-        await setUser(currentUser);
-        await setClientChatId(currentUser.uid);
-        //// console.log(user);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      } finally {
-        setLoading(false); // Set loading to false once done
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setClientChatId(auth.currentUser.uid);
+        setUser(auth.currentUser);
+        setLoading(false);
+      } else {
+        setLoading(true);
+        // User is signed out
+        // ...
       }
-    };
-
-    fetchUser();
-
-    const fetchEmployees = () => {
-      const employees2 = query(collection(db, "chats"));
-
-      const employyes = onSnapshot(employees2, (snapshot) => {
-        const employeesarr = snapshot.docs.map((doc) => doc.data());
-        setEmployeeId(employeesarr);
-        // // console.log(employees);
-      });
-    };
-
-    fetchEmployees();
-  }, [clientId, employeeId, employees]);
+    });
+  }, []);
 
   useEffect(() => {
+    if (chatId) {
+      const messagesQuery = query(
+        collection(db, "messages"),
+        where("chatId", "==", chatId)
+      );
 
-    // console.log(chatId);
-    const q = query(
-      collection(db, "messages"),
-      where("chatId", "==", chatId),
-      // orderBy("timestamp", "asc")
-    );
+      const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
+        const messagesArray = snapshot.docs.map((doc) => doc.data());
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const messagesArray = snapshot.docs.map((doc) => doc.data());
-      setMessages(messagesArray);
-      // console.log(messages);
-    });
+        var var2 = messagesArray.sort((a, b) => a.timestamp - b.timestamp);
 
-    var updatemsg = messages;
+        setMessages(var2);
+      });
+    }
+  }, [chatId]);
 
-    setMessages(updatemsg);
-
-    // fetchMessages();
-  });
-
-  // Função para enviar nova mensagem
   const sendMessage = async () => {
     if (newMessage.trim()) {
-      var data = await {
-        chatId: chatId, // ID do cliente
-        // employeeId: employeeId, // ID do cliente
-        // clientId: clientId, // ID do cliente
-        senderId: clientId, // ID do cliente
+      var data = {
+        chatId: chatId,
+        senderId: clientId,
         text: newMessage,
-        timestamp: new Date().toISOString(),
+        timestamp: serverTimestamp(),
       };
 
-      // anta
-
-      // console.log(data);
-
-      await setDoc(doc(db, "messages", data.timestamp), data);
+      await addDoc(collection(db, "messages"), data);
       setNewMessage("");
-
-      // // console.log(messages);
     }
   };
 
-  if (loading) return <p>carregando</p>;
+  useEffect(() => {
+    const employeesQuery = query(collection(db, "chats"));
+
+    const felicidade = onSnapshot(employeesQuery, (snapshot) => {
+      const employeesArr = snapshot.docs
+        .map((doc) => doc.data())
+        .filter((chat) => chat.users.some((user) => user.id === clientId));
+
+      setEmployeeId(employeesArr);
+
+      employeesArr.map((employee) => {
+        employee["users"].map((employee2) => {
+          if (clientId != null) {
+            if (employee2.id != clientId) {
+              setEmployeeChatId(employee2.id);
+              // setChatter(employee2.name);
+            }
+          }
+        });
+      });
+    });
+  }, [employees]);
+
+  if (loading) return <p>Carregando...</p>;
 
   return (
     <Container fluid id="chat-container">
       <div className="chat-box">
-        {employees.map((employee, index) => (
-          <button
-            key={index}
-            onClick={async (employee2) => {
-              // console.log("employee data ");
-              // console.log(employee);
-              await setChatId(employee.id);
-              // console.log("employee id ");
-              // console.log(employeeId);
-              // console.log("chat Id ");
-              // console.log(chatId);
-            }}
-          >
-            {employee.clientId}
-          </button>
+        {employees.map((employee, index) => {
+          return (
+            <div key={index}>
+              {employee["users"].map((employee2, index2) => {
+                return (
+                  <div key={index2}>
+                    {employee2.id != clientId && employee2.id != clientId && (
+                      <button
+                        onClick={() => {
+                          setChatId(employee.id);
+                          setChatter(employee2.name);
+                        }}
+                      >
+                        {employee2.name ? employee2.name : "Default"}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        className="messages-box"
+        style={{ height: "400px", overflowY: "scroll" }}
+      >
+        {messages.map((msg, index) => (
+          <p key={index}>
+            <strong>
+              {msg.senderId === clientId
+                ? auth.currentUser.displayName
+                : chatterName}
+              {": "}
+            </strong>
+            {msg.text}
+          </p>
         ))}
       </div>
-      <div className="chat-box">
-        <div>
-          {messages.map((msg, index) => (
-            <p key={index}>
-              <strong>
-                {msg.senderId && msg.senderId === clientId
-                  ? "Você: "
-                  : "Funcionário: "}
-              </strong>
-              {msg.text}
-            </p>
-          ))}
-        </div>
-      </div>
+
       <Form
         className="message-input"
-        id="message-input"
         onSubmit={(e) => {
           e.preventDefault();
           sendMessage();
@@ -157,9 +156,8 @@ function Chat() {
           placeholder="Escreva sua mensagem..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          id="message-input-field"
         />
-        <Button variant="primary" type="submit" id="send-button">
+        <Button variant="primary" type="submit">
           Enviar
         </Button>
       </Form>

@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./perfil.css";
 import { useNavigate } from "react-router-dom";
-
-import { signOut } from "firebase/auth";
-
-import { app, auth } from "../../services/firebase/firebase";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../services/firebase/firebase";
 
 const Perfil = () => {
-  const user = auth.currentUser;
-
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  if (!auth.currentUser) {
-    navigate("/login");
+  // Monitora o estado de autenticação
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser); // Se o usuário estiver logado, salva no estado
+      } else {
+        navigate("/login"); // Redireciona para a página de login se não houver usuário
+      }
+    });
+
+    // Limpeza do listener ao desmontar o componente
+    return () => unsubscribe();
+  }, [navigate]);
+
+  const handleSignOut = () => {
+    console.log("signed out")
+    signOut(auth)
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Erro ao sair: ", error);
+      });
+  };
+
+  if (!user) {
+    return null; // Exibe nada enquanto o estado de autenticação é carregado
   }
 
   return (
@@ -23,45 +45,28 @@ const Perfil = () => {
       <div className="perfil-content">
         <div className="perfil-container">
           <div className="perfil-info">
-          <div className="perfil-header">
-                <img
-                  className="perfil-image"
-                  src={user?.photoURL}
-                  alt={user?.displayName}
-                />
-              </div>
+            <div className="perfil-header">
+              <img
+                className="perfil-image"
+                src={user.photoURL}
+                alt={user.displayName}
+              />
+            </div>
             <div className="perfil-row">
-
               <p className="perfil-label">Nome: </p>
-              <p className="perfil-value">{user?.displayName}</p>
+              <p className="perfil-value">{user.displayName}</p>
             </div>
             <div className="perfil-row">
               <p className="perfil-label">Email: </p>
-              <p className="perfil-value">{user?.email}</p>
+              <p className="perfil-value">{user.email}</p>
             </div>
-            {/* <div className="perfil-row">
-              <p className="perfil-label">Verificado?</p>
-              <p className="perfil-value">{user.emailVerified}</p>
-            </div>
-            <div className="perfil-row">
-              <p className="perfil-label">Telefone:</p>
-              <p className="perfil-value">{user.phoneNumber}</p>
-            </div> */}
-            {/* botao de logout */}
             <button
               type="button"
               className="perfil-button"
-              onClick={() => {
-                signOut(auth)
-                  .then(function () {
-                    navigate("/");
-                  })
-                  .catch(function (error) {
-                    // An error happened.
-                  });
-              }}
+              disabled={false}
+              onClick={() => handleSignOut()}
             >
-              SAIR DA CONTA
+              Sair da conta
             </button>
           </div>
         </div>
