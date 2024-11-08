@@ -62,8 +62,10 @@ const Home = () => {
       {/* Ícone do bot */}
       <Link to="/chatbot" className="icone-do-bot">
         <img
-          src="https://i.pinimg.com/736x/94/a8/d6/94a8d60c5f5dbed03a1f72c0c79680ff.jpg"
+          src={require('../../assets/Luna.gif')}
           alt="luna"
+          height={80}
+          width={80}
         />
       </Link>
       

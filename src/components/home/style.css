@@ -119,6 +119,10 @@ p {
   z-index: 3;
   cursor: pointer;
 }
+.icone-do-bot img{
+  width: 150px;
+  height: 100px;
+}
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -453,8 +457,8 @@ p {
 }
 
 @media (min-width: 758px) and (max-width: 1414px) {
-  .slide {
-    width: auto;
+  .slide img  {
+    max-width: 758px;
   }
   .Atendimento-automatizado-conteudo {
     display: flex;
