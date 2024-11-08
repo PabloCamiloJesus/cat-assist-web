@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import {
   collection,
   addDoc,
@@ -103,8 +104,12 @@ function Chat() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <Container fluid id="chat-container">
+    <Container id="chat-container">
       <div className="chat-box-chat">
+        <div className="icon">
+          <i class="text-center bi bi-chat-square-dots"></i>
+          <p>CHATS</p>
+        </div>
         {employees.map((employee, index) => {
           return (
             <div key={index}>
@@ -130,40 +135,49 @@ function Chat() {
         })}
       </div>
 
-      <div
-        className="messages-box"
-        style={{ height: "400px", overflowY: "scroll" }}
-      >
-        {messages.map((msg, index) => (
-          <p key={index}>
-            <strong>
-              {msg.senderId === clientId
-                ? auth.currentUser.displayName
-                : chatterName}
-              {": "}
-            </strong>
-            {msg.text}
-          </p>
-        ))}
-      </div>
+      <div class="messages-container">
+        <div
+          className="messages-box"
+          style={{ width: "81.5vw", height: "83.4vh", overflowY: "scroll" }}
+        >
+          {messages.map((msg, index) => (
+            <p
+              key={index}
+              className={
+                msg.senderId === clientId ? "user-message" : "other-message"
+              }
+            >
+              <strong>
+                {msg.senderId === clientId ? "" : chatterName + ": "}
+              </strong>
+              {msg.text}
+            </p>
+          ))}
+        </div>
+        <Form
+          className="message-input"
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
+        >
+          {chatId != null && (
+            <div style={{ display: "flex", justifyContent:"space-between" }}>
+              <Form.Control
+                type="text"
+                placeholder="Escreva sua mensagem..."
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                id="Input"
+              />
 
-      <Form
-        className="message-input"
-        onSubmit={(e) => {
-          e.preventDefault();
-          sendMessage();
-        }}
-      >
-        <Form.Control
-          type="text"
-          placeholder="Escreva sua mensagem..."
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-        />
-        <Button variant="primary" type="submit">
-          Enviar
-        </Button>
-      </Form>
+              <Button className="btn-env" variant="primary" type="submit">
+                Enviar
+              </Button>
+            </div>
+          )}
+        </Form>
+      </div>
     </Container>
   );
 }

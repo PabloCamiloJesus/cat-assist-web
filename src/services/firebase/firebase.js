@@ -9,12 +9,12 @@ import firebase from "firebase/compat/app";
 // Import the functions you need from the SDKs you need
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEtSv0xgbsmQl6cZeqJ0qKbeS9sawDQcI",
-  authDomain: "cat-assist-e210b.firebaseapp.com",
-  projectId: "cat-assist-e210b",
-  storageBucket: "cat-assist-e210b.appspot.com",
-  messagingSenderId: "1082914937728",
-  appId: "1:1082914937728:web:e7f4990fa4efde561a3f65"
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID
 };
 
 // Initialize Firebase

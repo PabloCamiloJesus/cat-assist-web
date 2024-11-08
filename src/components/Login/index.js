@@ -35,9 +35,6 @@ function Auth() {
   };
 
   const logIn = () => {
-    console.log(
-      `email = ${email}, password = ${senha}, confPassword = ${confSenha} `
-    );
 
     console.log("evento numero 1");
 

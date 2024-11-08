@@ -51,19 +51,19 @@ button[type="submit"],
 }
 
 /* Área de mensagens */
-#messages-box {
+.messages-box {
     background-color: #ffffff;
-    height: calc(100vh - 120px);
     overflow-y: auto;
     border-radius: 0;
-    margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     word-wrap: break-word; /* Quebra automaticamente palavras longas */
     word-break: break-word; /* Quebra palavras longas */
-    overflow-wrap: break-word; /* Garante que as palavras quebrem no limite */
+}
+
+.message-container{
+    padding: 50px;
 }
 
 /* Mensagens */
@@ -133,11 +133,110 @@ button[type="submit"],
 .chat-box-chat{
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: auto;
+    width: 250px;
+    border-right: solid 1px #4646465a;
 }
 .btn-acc{
+    background-color: white;
+    border:none;
+    border-bottom: #66666667 solid 1px;
+    margin-right:10px ;
+    word-break: break-all;
     width: 100%;
-    background-color: transparent;
-    border: none;
-    border-bottom: #0D0D0D solid 1px;
-    border
+    padding: 5px;
+    height: 40px;
+    font-size: larger;
+    transition: 0.5s;
+    width: 260px;
+
+}
+#chat-container{
+    margin: 0 !important;
+    width: 100% !important;
+}
+.icon{
+    width: 250px;
+    height: 80px;
+    background-color: #000000c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.icon i{
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    order: 2;
+    transform: matrix3d(0, 0, 1);
+    display: grid;
+    place-items: center;
+
+}
+
+.icon p{
+    font-size: 20px;
+    color: #fff;
+    order: 1;
+    margin: 0;
+}
+.btn-acc:hover{
+    background-color: #46464682;
+    transition: 0.5s;
+    color: white;
+}
+.btn-acc:focus{
+    background-color: #0D0D0D;
+    color: white;
+    transition: 0.5s;
+}
+
+.messages-container{
+      width: 100vw; 
+       
+
+}
+.message-input{
+    display: flex;
+    background-color: #b1b1b16f;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    flex-direction: row !important;
+    margin-top: 0 !important;
+    
+}
+#Input{
+    border: solid #000 1px;
+    width: 900px !important;
+    height: 90%;
+    margin-right:10px ;
+    border-radius: 5px !important;
+    background-color: white;
+    /* padding-left: 100px; */
+    
+}
+.messages-box{
+    width: 103%;
+    
+}
+
+.user-message{
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 50%;
+}
+
+.other-message{
+    padding:20px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    max-width: 50%;
 }
