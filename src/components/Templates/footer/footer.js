@@ -61,7 +61,7 @@ const LogoAndContact = () => (
     <p className="mt-2 text-center">
       TELEFONE
       <br />
-      (XX) XXXXX-XXXXX
+      (11) 4996-8600
     </p>
   </div>
 );
@@ -78,8 +78,8 @@ const SesiInfo = () => (
     <p className="text-center">
       E-MAIL
       <br />
-      <a href="mailto:xxxxx@xxxx.com" className="text-white">
-        xxxxx@xxxx.com
+      <a href="mailto:susandre@sesisp.org.br" className="text-white">
+      susandre@sesisp.org.br
       </a>
     </p>
   </div>
