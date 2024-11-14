@@ -53,13 +53,18 @@ button[type="submit"],
 /* Área de mensagens */
 .messages-box {
     background-color: #ffffff;
-    overflow-y: auto;
+    overflow-y: hidden;
     border-radius: 0;
-    padding: 4px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
+    width: 83vw;
     word-wrap: break-word; /* Quebra automaticamente palavras longas */
     word-break: break-word; /* Quebra palavras longas */
+}
+
+.messages-box::-webkit-scrollbar{
+    color: transparent;
 }
 
 .message-container{
@@ -99,6 +104,7 @@ button[type="submit"],
     padding: 10px;
     background-color: #F2F2F2;
     border-top: 1px solid #dee2e6;
+    width: 83vw;
 }
 
 #message-input-field {
@@ -117,7 +123,7 @@ button[type="submit"],
 /* Responsividade para Telas Menores */
 @media (max-width: 768px) {
     #chat-container {
-        padding: 0 10px;
+        padding: 0 7px;
         max-width: 100%;
     }
 
@@ -152,9 +158,10 @@ button[type="submit"],
     height: 40px;
     font-size: larger;
     transition: 0.5s;
-    width: 260px;
+    
 
 }
+
 #chat-container{
     margin: 0 !important;
     width: 100% !important;
@@ -198,9 +205,12 @@ button[type="submit"],
 }
 
 .messages-container{
-      width: 100vw; 
-       
+    width: 99vw; 
+    
 
+}
+.messages-box{
+    padding: 30px;  
 }
 .message-input{
     display: flex;
@@ -215,17 +225,12 @@ button[type="submit"],
 }
 #Input{
     border: solid #000 1px;
-    width: 1200px;
-    max-width: 1130px ;
+    width: 75vw;
     height: 90%;
     margin-right:10px ;
     border-radius: 5px !important;
     background-color: white;
     /* padding-left: 100px; */
-    
-}
-.messages-box{
-    width: 103%;
     
 }
 
@@ -247,17 +252,99 @@ button[type="submit"],
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 81.5vw;
 }
 
 .chat-default img{
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 60%;
 }
 
 .chat-default p{
     font-size: 24px;
     
 }
-@media (min-width: 758px) and (max-width: 1414px) {
+
+/* Estilos para tela de dispositivos móveis */
+@media (max-width: 900px) {
+   
+    
+    #chat-container {
+        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 0vw !important;
+  
+    }
+
+    /* Barra de contatos como backdrop */
+    .chat-box-chat {
+        position: fixed;
+        width: 100vw;
+        max-width: 300px;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.85); /* Transparente */
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Botão para abrir a barra de contatos */
+    #toggle-contacts {
+        display: inline-block;
+        background-color: #000000c9;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Quando a barra de contatos estiver aberta */
+    .chat-box-chat.open {
+        transform: translateX(0);
+    }
+
+    /* Estilos gerais de chat responsivo */
+    .messages-container {
+        width: 100vw;
+        padding: 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .message-input {
+        width: 100%;
+    }
+
+    #Input {
+        width: 70%;
+        margin-right: 10px;
+     
+    }
+    #Input p{
+       
+        font-size: 50px;
+    }
+
+    .messages-box {
+        width: 100vw;
+    }
+
+    .chat-default img {
+        width: 80%;
+        height: auto;
+    }
+
+    .butaoss{
+        background-color: red ; 
+        border: 0px;
+        color: white;
+        border-radius: 0%;
+    }
     
 }
+

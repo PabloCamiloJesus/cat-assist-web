@@ -11,9 +11,7 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../../services/firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import firebase from "firebase/compat/app";
 import { onAuthStateChanged } from "firebase/auth";
-import "firebase/compat/firestore";
 import "./ChatApp.css";
 import "./index.css";
 
@@ -41,8 +39,6 @@ function Chat() {
         setLoading(false);
       } else {
         setLoading(true);
-        // User is signed out
-        // ...
       }
     });
   }, []);
@@ -56,17 +52,15 @@ function Chat() {
 
       const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
         const messagesArray = snapshot.docs.map((doc) => doc.data());
-
-        var var2 = messagesArray.sort((a, b) => a.timestamp - b.timestamp);
-
-        setMessages(var2);
+        const sortedMessages = messagesArray.sort((a, b) => a.timestamp - b.timestamp);
+        setMessages(sortedMessages);
       });
     }
   }, [chatId]);
 
   const sendMessage = async () => {
     if (newMessage.trim()) {
-      var data = {
+      const data = {
         chatId: chatId,
         senderId: clientId,
         text: newMessage,
@@ -81,86 +75,123 @@ function Chat() {
   useEffect(() => {
     const employeesQuery = query(collection(db, "chats"));
 
-    const felicidade = onSnapshot(employeesQuery, (snapshot) => {
+    const unsubscribe = onSnapshot(employeesQuery, (snapshot) => {
       const employeesArr = snapshot.docs
         .map((doc) => doc.data())
         .filter((chat) => chat.users.some((user) => user.id === clientId));
 
       setEmployeeId(employeesArr);
 
-      employeesArr.map((employee) => {
-        employee["users"].map((employee2) => {
-          if (clientId != null) {
-            if (employee2.id != clientId) {
-              setEmployeeChatId(employee2.id);
-              // setChatter(employee2.name);
-            }
+      employeesArr.forEach((employee) => {
+        employee["users"].forEach((employee2) => {
+          if (clientId && employee2.id !== clientId) {
+            setEmployeeChatId(employee2.id);
           }
         });
       });
     });
   }, [employees]);
 
-  if (loading) return <p>Carregando...</p>;
+  // if (loading) return <p>Carregando...</p>;
 
   return (
     <Container id="chat-container">
-      <div className="chat-box-chat">
-        <div className="icon">
-          <i class="text-center bi bi-chat-square-dots"></i>
-          <p>CHATS</p>
+      {/* Offcanvas Toggle Button - Only Visible on Small Screens */}
+      <button
+        className="butaoss btn d-md-none"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#chatOffcanvas"
+        aria-controls="chatOffcanvas"
+      >
+        Abrir Chats
+      </button>
+
+      {/* Offcanvas for Chats - Visible on Small Screens */}
+      <div
+        className="offcanvas offcanvas-start d-md-none"
+        id="chatOffcanvas"
+        data-bs-scroll="true"
+        tabIndex="-1"
+        aria-labelledby="chatOffcanvasLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 id="chatOffcanvasLabel">Chats</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-        {employees.map((employee, index) => {
-          return (
+        <div className="offcanvas-body">
+          {employees.map((employee, index) => (
             <div key={index}>
-              {employee["users"].map((employee2, index2) => {
-                return (
-                  <div key={index2}>
-                    {employee2.id != clientId && employee2.id != clientId && (
-                      <button
-                        onClick={() => {
-                          setChatId(employee.id);
-                          setChatter(employee2.name);
-                        }}
-                        className="btn-acc"
-                      >
-                        {employee2.name ? employee2.name : "Default"}
-                      </button>
-                    )}
-                  </div>
-                );
-              })}
+              {employee["users"].map((employee2, index2) => (
+                <div key={index2}>
+                  {employee2.id !== clientId && (
+                    <button
+                      onClick={() => {
+                        setChatId(employee.id);
+                        setChatter(employee2.name);
+                      }}
+                      className="btn-acc"
+                      data-bs-dismiss="offcanvas"
+                    >
+                      {employee2.name ? employee2.name : "Default"}
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
-      <div class="messages-container">
-        <div
-          className="messages-box"
-          style={{ width: "81.5vw", height: "83.4vh", overflowY: "scroll" }}
-        >
-          {chatId ? (
-            messages.map((msg, index) => (
+      {/* Chat List - Visible on Larger Screens */}
+      <div className="chat-box-chat d-none d-md-block">
+        <div className="icon">
+          <i className="text-center bi bi-chat-square-dots"></i>
+          <p>CHATS</p>
+        </div>
+        {employees.map((employee, index) => (
+          <div key={index}>
+            {employee["users"].map((employee2, index2) => (
+              <div key={index2}>
+                {employee2.id !== clientId && (
+                  <button
+                    onClick={() => {
+                      setChatId(employee.id);
+                      setChatter(employee2.name);
+                    }}
+                    className="botaao btn-acc"
+                  >
+                    {employee2.name ? employee2.name : "Default"}
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="messages-container">
+        {chatId ? (
+          <div
+            className="messages-box"
+            style={{  height: "80.4vh", overflowY: "scroll",}}
+          >
+            {messages.map((msg, index) => (
               <p
                 key={index}
-                className={
-                  msg.senderId === clientId ? "user-message" : "other-message"
-                }
+                className={msg.senderId === clientId ? "user-message" : "other-message"}
               >
-                <strong>
-                  {msg.senderId === clientId ? "" : chatterName + ": "}
-                </strong>
+                <strong>{msg.senderId === clientId ? "" : `${chatterName}: `}</strong>
                 {msg.text}
               </p>
-            ))
-          ) : (
-            <div className="chat-default">
-              <img src={require("../../assets/chat-default.png")} alt="" />
-              <p>DEFAULT </p>
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="chat-default">
+            <img src={require("../../assets/default-chat.png")} alt="" />
+            <p>Estamos aqui para tirar dúvidas!</p>
+          </div>
+        )}
         <Form
           className="message-input"
           onSubmit={(e) => {
@@ -168,7 +199,7 @@ function Chat() {
             sendMessage();
           }}
         >
-          {chatId != null && (
+          {chatId && (
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Form.Control
                 type="text"
@@ -177,12 +208,7 @@ function Chat() {
                 onChange={(e) => setNewMessage(e.target.value)}
                 id="Input"
               />
-
-              <Button
-                className="botaors btn-env"
-                variant="primary"
-                type="submit"
-              >
+              <Button className="botaors btn-env" variant="primary" type="submit">
                 Enviar
               </Button>
             </div>
