@@ -140,19 +140,26 @@ function Chat() {
           className="messages-box"
           style={{ width: "81.5vw", height: "83.4vh", overflowY: "scroll" }}
         >
-          {messages.map((msg, index) => (
-            <p
-              key={index}
-              className={
-                msg.senderId === clientId ? "user-message" : "other-message"
-              }
-            >
-              <strong>
-                {msg.senderId === clientId ? "" : chatterName + ": "}
-              </strong>
-              {msg.text}
-            </p>
-          ))}
+          {chatId ? (
+            messages.map((msg, index) => (
+              <p
+                key={index}
+                className={
+                  msg.senderId === clientId ? "user-message" : "other-message"
+                }
+              >
+                <strong>
+                  {msg.senderId === clientId ? "" : chatterName + ": "}
+                </strong>
+                {msg.text}
+              </p>
+            ))
+          ) : (
+            <div className="chat-default">
+              <img src={require("../../assets/chat-default.png")} alt="" />
+              <p>DEFAULT </p>
+            </div>
+          )}
         </div>
         <Form
           className="message-input"
@@ -162,7 +169,7 @@ function Chat() {
           }}
         >
           {chatId != null && (
-            <div style={{ display: "flex", justifyContent:"space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Form.Control
                 type="text"
                 placeholder="Escreva sua mensagem..."
@@ -171,7 +178,11 @@ function Chat() {
                 id="Input"
               />
 
-              <Button className="btn-env" variant="primary" type="submit">
+              <Button
+                className="botaors btn-env"
+                variant="primary"
+                type="submit"
+              >
                 Enviar
               </Button>
             </div>

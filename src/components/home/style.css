@@ -22,7 +22,7 @@ body {
 }
 
 .icone-do-bot img {
-  width: 100%;
+  width: 220px;
   height: 100%;
   border-radius: 50%;
 }
@@ -119,10 +119,7 @@ p {
   z-index: 3;
   cursor: pointer;
 }
-.icone-do-bot img{
-  width: 150px;
-  height: 100px;
-}
+
 .hidden {
   opacity: 0;
   visibility: hidden;

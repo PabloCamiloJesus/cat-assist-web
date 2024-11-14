@@ -6,7 +6,7 @@
   max-width: 1200px;
   height: 100vh;
   display: flex;
-  
+
   
 }
 
@@ -18,10 +18,12 @@
 }
 
 /* Botão de Envio */
-button[type="submit"],
+.botaors[type="submit"],
 #send-button {
   width: 100px !important;
 }
+
+
 
 /* Barra de Contatos */
 #contacts-bar {
@@ -63,9 +65,7 @@ button[type="submit"],
   display: flex;
   flex-direction: column;
   gap: 10px;
-  word-wrap: break-word; /* Quebra automaticamente palavras longas */
-  word-break: break-word; /* Quebra palavras longas */
-  overflow-wrap: break-word; /* Garante que as palavras quebrem no limite */
+
 }
 
 /* Mensagens */
