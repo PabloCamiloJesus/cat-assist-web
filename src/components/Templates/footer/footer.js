@@ -48,13 +48,13 @@ const LogoAndContact = () => (
       style={{ width: "150px", height: "70px" }}
     />
     <div className="social-icons">
-      <a href="#instagram" className="text-white mx-2">
+      <a href="https://www.instagram.com/sesisp.santoandre/" className="text-white mx-2">
         <FaInstagram size={24} />
       </a>
-      <a href="#telefone" className="text-white mx-2">
+      <a href="https://w.app/sesicatassist" className="text-white mx-2">
         <FaWhatsapp size={24} />
       </a>
-      <a href="#email" className="text-white mx-2">
+      <a href="mailto:susandre@sesisp.org.br" className="text-white mx-2">
         <FaEnvelope size={24} />
       </a>
     </div>
