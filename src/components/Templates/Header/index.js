@@ -16,14 +16,8 @@ const Header = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(auth.currentUser);
-        setLoading(false);
-      } else {
-        setLoading(true);
-        // User is signed out
-        // ...
-      }
+      setUser(auth.currentUser);
+      setLoading(false);
     });
 
     if (location.pathname === "/") {

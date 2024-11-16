@@ -8,20 +8,38 @@ import { useNavigation } from "react-router-dom";
 import { db, auth, provider } from "../../services/firebase/firebase.js";
 
 import {
+  collection,
+  query,
+  onSnapshot,
+  where,
+  addDoc,
+  deleteDoc,
+  getDocs,
+  doc
+} from "firebase/firestore";
+
+import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   getAuth,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
+
+import { v4 as uuidv4 } from "uuid";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true); // Alterna entre Login e Cadastro
+
+  const [username, setusername] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confSenha, setConfSenha] = useState("");
-  const [username, setusername] = useState("");
+  const photoURL = "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg";
+
   const [errorMessage, seterrorMessage] = useState("");
   const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
 
   const toggleAuthMode = () => {
@@ -34,6 +52,64 @@ function Auth() {
     }, 1000);
   };
 
+  const updateEmployees = async () => {
+    const employeesQuery = query(collection(db, "employee"));
+
+    onSnapshot(employeesQuery, async (snapshot) => {
+      const employeesArray = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        Id: doc.id,
+      }));
+
+      const currentUserId = auth.currentUser.uid;
+      const currentUserName = auth.currentUser.displayName;
+      const currentUserEmail = auth.currentUser.email;
+
+      const chatsQuery = query(collection(db, "chats"));
+      const chatsSnapshot = await getDocs(chatsQuery);
+
+      const chatsArray = chatsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      const validEmployeeIds = employeesArray.map((employee) => employee.employeeId);
+
+      employeesArray.forEach(async (employee) => {
+        if (employee.employeeId !== currentUserId) {
+          const existingChat = chatsArray.find((chat) => {
+            const userIds = chat.users.map((user) => user.id);
+            return (
+              userIds.includes(currentUserId) &&
+              userIds.includes(employee.employeeId) &&
+              userIds.length === 2
+            );
+          });
+
+          if (!existingChat) {
+            const chatData = {
+              id: uuidv4(),
+              users: [
+                {
+                  name: currentUserName,
+                  email: currentUserEmail,
+                  id: currentUserId,
+                },
+                {
+                  name: employee.name,
+                  email: employee.email,
+                  id: employee.employeeId,
+                },
+              ],
+            };
+
+            await addDoc(collection(db, "chats"), chatData);
+          }
+        }
+      });
+    });
+  };
+
   const logIn = () => {
 
     console.log("evento numero 1");
@@ -41,6 +117,8 @@ function Auth() {
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredentials) => {
         const user = userCredentials.user;
+
+        updateEmployees();
 
         navigate("/");
       })
@@ -87,14 +165,18 @@ function Auth() {
     }
 
     createUserWithEmailAndPassword(auth, email, senha)
-      .then((userCredentials) => {
+      .then(async (userCredentials) => {
         const user = userCredentials.user;
 
-        // db.collection("users").doc(user.uid).set({
-        //   username: username,
-        //   email: email,
-        //   // imgUrl: imgFilePath,
-        // });
+        await updateProfile(auth.currentUser, {
+          displayName: username,
+          photoURL: photoURL
+        })
+
+        setusername("");
+        setEmail("");
+        setSenha("");
+        setConfSenha("");
 
         navigate("/");
       })
@@ -265,7 +347,7 @@ function Auth() {
                 <p style={{ color: "red" }}>{errorMessage}</p>
               </div>
 
-              <button className="button" type="submit" disabled={loading}>
+              <button className="button" type="submit" onClick={() => { isLogin ? logIn() : register() }} disabled={loading}>
                 {isLogin ? "Entrar" : "Cadastrar"}
               </button>
             </form>
@@ -273,8 +355,10 @@ function Auth() {
             <div className="EntrarComRedesSociais">
               <button
                 type="button"
-                onClick={() => signInWithPopup(auth, provider).then( async (e) => {
+                onClick={() => signInWithPopup(auth, provider).then(async (e) => {
                   var res = await auth.currentUser
+
+                  await updateEmployees();
 
                   navigate("/")
                 }).catch()}

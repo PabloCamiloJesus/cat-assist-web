@@ -7,6 +7,7 @@ import {
   onSnapshot,
   query,
   where,
+  deleteDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import { auth, db } from "../../services/firebase/firebase";
@@ -44,6 +45,7 @@ function Chat() {
   }, []);
 
   useEffect(() => {
+
     if (chatId) {
       const messagesQuery = query(
         collection(db, "messages"),
@@ -75,10 +77,16 @@ function Chat() {
   useEffect(() => {
     const employeesQuery = query(collection(db, "chats"));
 
-    const unsubscribe = onSnapshot(employeesQuery, (snapshot) => {
+    onSnapshot(employeesQuery, (snapshot) => {
       const employeesArr = snapshot.docs
         .map((doc) => doc.data())
-        .filter((chat) => chat.users.some((user) => user.id === clientId));
+        .filter((chat) =>
+          chat.users.some((user) =>
+            Object.values(user).some((value) => value === clientId)
+          )
+        );
+
+
 
       setEmployeeId(employeesArr);
 
@@ -149,32 +157,34 @@ function Chat() {
           <i className="text-center bi bi-chat-square-dots"></i>
           <p>CHATS</p>
         </div>
-        {employees.map((employee, index) => (
-          <div key={index}>
-            {employee["users"].map((employee2, index2) => (
-              <div key={index2}>
-                {employee2.id !== clientId && (
-                  <button
-                    onClick={() => {
-                      setChatId(employee.id);
-                      setChatter(employee2.name);
-                    }}
-                    className="botaao btn-acc"
-                  >
-                    {employee2.name ? employee2.name : "Default"}
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
+        <div className="scroll">
+          {employees.map((employee, index) => (
+            <div key={index}>
+              {employee["users"].map((employee2, index2) => (
+                <div key={index2}>
+                  {employee2.id !== clientId && (
+                    <button
+                      onClick={() => {
+                        setChatId(employee.id);
+                        setChatter(employee2.name);
+                      }}
+                      className="botaao btn-acc"
+                    >
+                      {employee2.name ? employee2.name : "Default"}
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="messages-container">
         {chatId ? (
           <div
             className="messages-box"
-            style={{  height: "80.4vh", overflowY: "scroll",}}
+            style={{ height: "80.4vh", overflowY: "scroll", }}
           >
             {messages.map((msg, index) => (
               <p
