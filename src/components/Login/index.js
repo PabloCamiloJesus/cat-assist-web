@@ -347,7 +347,7 @@ function Auth() {
                 <p style={{ color: "red" }}>{errorMessage}</p>
               </div>
 
-              <button className="button" type="submit" onClick={() => { isLogin ? logIn() : register() }} disabled={loading}>
+              <button type="submit" onClick={() => { isLogin ? logIn() : register() }} disabled={loading}>
                 {isLogin ? "Entrar" : "Cadastrar"}
               </button>
             </form>

@@ -28,7 +28,6 @@
   width: 100%;
   max-width: 700px;
   height: 75vh;
-  overflow-y: scroll;
 }
 
 .chat-container::-webkit-scrollbar{
@@ -39,9 +38,8 @@
 .luna-perfil{
   display:none;
   height: 40px;
-  width: 40px;
   border-radius: 50%;
-	animation: float 6s ease-in-out infinite;
+	/* animation: float 6s ease-in-out infinite; */
   /* animation-name: float; */
   transform: translateY(0px);
   filter: drop-shadow( 0 4px 8px rgba(0, 0, 0, 0.2)) !important;
@@ -150,9 +148,6 @@
 
 .button:hover {
   background-color: #bf0b3b !important;
-}
-button[type="submit"] {
-  width: 100% !important;
 }
 
 @media (max-width:758px){

@@ -7,18 +7,11 @@ import ReactMarkdown from "react-markdown";
 const ChatBot = () => {
   const [inputHistory, setInputHistory] = useState([]); // Histórico de mensagens
   const [input, setInput] = useState(""); // Entrada do usuário
+  const [sending, setSending] = useState(false); // Entrada do usuário
   const chatBoxRef = useRef(null); // Referência para rolar o chat para o final automaticamente
   const [hasBotImage, setHasBotImage] = useState(false); // Novo estado para controlar a posição da imagem
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Função para adicionar uma nova mensagem ao histórico
-  const handleSendMessage = () => {
-    if (input.trim()) {
-      setInputHistory([...inputHistory]);
-      setInput(""); // Limpa o campo de entrada
-    }
-  };
 
   // Rola o chat para o final sempre que o histórico é atualizado
   useEffect(() => {
@@ -49,6 +42,7 @@ const ChatBot = () => {
 
   async function run() {
     console.log("message sent is " + input);
+    setSending(true);
 
     const chatSession = model.startChat({
       generationConfig,
@@ -1676,6 +1670,7 @@ const ChatBot = () => {
       console.error("Error fetching response:", error);
     }
 
+    setSending(false);
     setInput(""); // Limpa o campo de entrada
   }
 
@@ -1749,7 +1744,7 @@ const ChatBot = () => {
             type="text"
             value={input}
             onKeyPress={(key) => {
-              if (key.key === "Enter") {
+              if (key.key === "Enter" && !sending) {
                 run();
               }
             }}
@@ -1758,7 +1753,8 @@ const ChatBot = () => {
           <button
             type="button"
             className="button animate__animated animate__fadeInLeftBig"
-            onClick={run}
+            disabled={sending}
+            onClick={() => {run()}}
           >
             Enviar
           </button>

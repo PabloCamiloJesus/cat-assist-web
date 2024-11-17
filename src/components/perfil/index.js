@@ -12,15 +12,14 @@ const Perfil = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser); // Se o usuário estiver logado, salva no estado
+        setUser(currentUser);
       } else {
-        navigate("/login"); // Redireciona para a página de login se não houver usuário
+        navigate("/login");
       }
     });
 
-    // Limpeza do listener ao desmontar o componente
     return () => unsubscribe();
-  }, [navigate]);
+  }, [auth]);
 
   const handleSignOut = () => {
     console.log("signed out")

@@ -13,7 +13,6 @@ import {
 import { auth, db } from "../../services/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import "./ChatApp.css";
 import "./index.css";
 
 function Chat() {
@@ -52,7 +51,7 @@ function Chat() {
         where("chatId", "==", chatId)
       );
 
-      const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
+      onSnapshot(messagesQuery, (snapshot) => {
         const messagesArray = snapshot.docs.map((doc) => doc.data());
         const sortedMessages = messagesArray.sort((a, b) => a.timestamp - b.timestamp);
         setMessages(sortedMessages);
@@ -86,8 +85,6 @@ function Chat() {
           )
         );
 
-
-
       setEmployeeId(employeesArr);
 
       employeesArr.forEach((employee) => {
@@ -103,10 +100,10 @@ function Chat() {
   // if (loading) return <p>Carregando...</p>;
 
   return (
-    <Container id="chat-container">
+    <div id="chat-container" className="">
       {/* Offcanvas Toggle Button - Only Visible on Small Screens */}
       <button
-        className="butaoss btn d-md-none"
+        className="butaoss btn"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#chatOffcanvas"
@@ -117,7 +114,7 @@ function Chat() {
 
       {/* Offcanvas for Chats - Visible on Small Screens */}
       <div
-        className="offcanvas offcanvas-start d-md-none"
+        className="offcanvas offcanvas-start"
         id="chatOffcanvas"
         data-bs-scroll="true"
         tabIndex="-1"
@@ -184,12 +181,11 @@ function Chat() {
         {chatId ? (
           <div
             className="messages-box"
-            style={{ height: "80.4vh", overflowY: "scroll", }}
           >
             {messages.map((msg, index) => (
               <p
                 key={index}
-                className={msg.senderId === clientId ? "user-message" : "other-message"}
+                className={"message-common " + (msg.senderId === clientId ? 'user-message' : 'other-message')}
               >
                 <strong>{msg.senderId === clientId ? "" : `${chatterName}: `}</strong>
                 {msg.text}
@@ -210,22 +206,22 @@ function Chat() {
           }}
         >
           {chatId && (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Form.Control
+            <div className="input-area">
+              <input
                 type="text"
                 placeholder="Escreva sua mensagem..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 id="Input"
               />
-              <Button className="botaors btn-env" variant="primary" type="submit">
+              <button className="botaors btn-env" variant="primary" type="submit">
                 Enviar
-              </Button>
+              </button>
             </div>
           )}
         </Form>
       </div>
-    </Container>
+    </div>
   );
 }
 
