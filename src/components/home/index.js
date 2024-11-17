@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <div className="container-geral">
       {/* Ícone do bot */}
-      <Link to="/chatbot" className="icone-do-bot">
+      <Link to="/chatbot" title="Luna Assistente" className="icone-do-bot">
         <img
           src={require('../../assets/Luna.gif')}
           alt="luna"

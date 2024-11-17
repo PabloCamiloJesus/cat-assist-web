@@ -2,11 +2,16 @@
   --sesi-red: #bf0b3b;
   --sesi-black: #000000;
   --sesi-white: #ffffff;
-  --primary-color: #ff4081; /* Rosa vibrante para botões e destaques */
-  --secondary-color: #ffffff; /* Branco para textos e fundos */
-  --background-color: #121212; /* Fundo escuro */
-  --text-color: #f5f5f5; /* Texto claro */
-  --hover-color: #ff80ab; /* Cor de hover para botões */
+  --primary-color: #ff4081;
+  /* Rosa vibrante para botões e destaques */
+  --secondary-color: #ffffff;
+  /* Branco para textos e fundos */
+  --background-color: #121212;
+  /* Fundo escuro */
+  --text-color: #f5f5f5;
+  /* Texto claro */
+  --hover-color: #ff80ab;
+  /* Cor de hover para botões */
 }
 
 body {
@@ -23,7 +28,7 @@ body {
 
 .icone-do-bot img {
   width: 220px;
-  height: 100%;
+  height: max-content;
   border-radius: 50%;
 }
 
@@ -39,7 +44,7 @@ body {
   margin-top: 10px;
 }
 
-#slide-button{
+#slide-button {
   margin-bottom: 40px;
 }
 
@@ -98,9 +103,11 @@ body {
   font-size: 48px;
   font-weight: 500;
 }
+
 p {
   text-align: justify;
 }
+
 .container-geral li {
   text-align: left;
 }
@@ -131,6 +138,7 @@ p {
   visibility: visible;
   transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
 }
+
 .slide {
   display: flex;
 
@@ -146,7 +154,8 @@ p {
   justify-content: flex-end;
   background-image: url("../../assets/Group 117.png");
   background-size: cover;
-  background-position: center; /* Ajusta a posição da imagem */
+  background-position: center;
+  /* Ajusta a posição da imagem */
   background-repeat: no-repeat;
   text-align: center;
   padding: 20px;
@@ -318,9 +327,12 @@ p {
 
 @media (max-width: 999px) {
   p {
-    word-wrap: break-word; /* Para navegadores mais antigos */
-    overflow-wrap: break-word; /* Para navegadores modernos */
+    word-wrap: break-word;
+    /* Para navegadores mais antigos */
+    overflow-wrap: break-word;
+    /* Para navegadores modernos */
   }
+
   .texto-banner {
     width: 100%;
     margin-left: 0px;
@@ -418,45 +430,53 @@ p {
     flex-direction: column;
     height: max-content;
   }
-  .lado-direito{
+
+  .lado-direito {
     position: relative;
   }
 
-  .lado-direito .vai-esquerdo{
+  .lado-direito .vai-esquerdo {
     position: relative;
     order: 2;
   }
 
-  .vai-esquerdo{
+  .vai-esquerdo {
     display: flex;
     justify-content: center;
   }
 
   .slide {
-    height: 100vh; /* Ocupa 100% da altura da tela */
-    background-size: contain; /* Ajusta o fundo para caber melhor em telas pequenas */
+    height: 100vh;
+    /* Ocupa 100% da altura da tela */
+    background-size: contain;
+    /* Ajusta o fundo para caber melhor em telas pequenas */
     background-position: center;
   }
 
   .texto-banner h1 {
-    font-size: 1.5rem; /* Reduz o tamanho do título */
+    font-size: 1.5rem;
+    /* Reduz o tamanho do título */
   }
 
   .texto-banner p {
-    font-size: 1rem; /* Reduz o tamanho do parágrafo */
-    padding: 0 10px; /* Adiciona padding para ajustar o texto */
+    font-size: 1rem;
+    /* Reduz o tamanho do parágrafo */
+    padding: 0 10px;
+    /* Adiciona padding para ajustar o texto */
   }
 
   .botao-rosa {
-    font-size: 0.9rem; /* Ajusta o tamanho do botão */
+    font-size: 0.9rem;
+    /* Ajusta o tamanho do botão */
     padding: 10px 20px;
   }
 }
 
 @media (min-width: 758px) and (max-width: 1414px) {
-  .slide img  {
+  .slide img {
     max-width: 758px;
   }
+
   .Atendimento-automatizado-conteudo {
     display: flex;
     height: max-content;
@@ -488,6 +508,7 @@ p {
     width: 50%;
   } */
 }
+
 /* Estilo do container dos slides */
 .slide-container {
   position: relative;
