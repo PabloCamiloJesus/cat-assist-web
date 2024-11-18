@@ -97,7 +97,7 @@
 }
 
 /* Para esconder a navegação em telas menores */
-@media (min-width:300px) and (max-width: 880px) {
+@media (max-width: 880px) {
   #nav-left-right .nav-link {
     display: none; 
   }
