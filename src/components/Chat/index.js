@@ -39,6 +39,7 @@ function Chat() {
         setLoading(false);
       } else {
         setLoading(true);
+        navigate("/login");
       }
     });
   }, []);
@@ -116,6 +117,7 @@ function Chat() {
       <div
         className="offcanvas offcanvas-start"
         id="chatOffcanvas"
+        style={{ width: "100%" }}
         data-bs-scroll="true"
         tabIndex="-1"
         aria-labelledby="chatOffcanvasLabel"
@@ -214,7 +216,7 @@ function Chat() {
                 onChange={(e) => setNewMessage(e.target.value)}
                 id="Input"
               />
-              <button className="botaors btn-env" variant="primary" type="submit">
+              <button className="send-button botaors btn-env" variant="primary" type="submit">
                 Enviar
               </button>
             </div>

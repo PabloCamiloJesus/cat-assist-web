@@ -48,8 +48,12 @@
 
   .caixa{
     display: flex;
-    column-gap: 2;
+    align-items: center;
     justify-content: center;
+
+    gap: 10px;
+
+    padding: 10px;
   }
   .text-center{
     color: black;

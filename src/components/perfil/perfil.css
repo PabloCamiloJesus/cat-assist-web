@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px;
+  padding: 20px;
 }
 
 .perfil-header {
@@ -195,6 +195,7 @@
   .perfil-content {
     order: 2;
     width: 100%;
+    margin: 20px;
   }
 
   .perfil-info {
@@ -208,13 +209,7 @@
 
 @media (max-width: 480px) {
   .perfil-container {
-    margin-top: -25px; /* para ajustar a altura do content */
-    width: 80%;
-    max-width: 360px;
-    padding: 15px;
-  }
-  .perfil-container{
-    width: 500px;
+    width: 100%;
   }
 
   .perfil-image {
@@ -248,7 +243,6 @@
 }
 
 .loadera {
-  content: '';
   border: 5px solid #333;
   border-radius: 30px;
   height: 5px;

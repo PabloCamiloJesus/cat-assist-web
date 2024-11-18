@@ -223,7 +223,6 @@
 }
 
 .redline::before {
-  content: '';
   position: absolute;
   bottom: 0;
   right: 100%;

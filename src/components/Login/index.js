@@ -21,7 +21,6 @@ import {
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
@@ -347,7 +346,7 @@ function Auth() {
                 <p style={{ color: "red" }}>{errorMessage}</p>
               </div>
 
-              <button type="submit" onClick={() => { isLogin ? logIn() : register() }} disabled={loading}>
+              <button className="button-submit-login" type="submit" onClick={() => { isLogin ? logIn() : register() }} disabled={loading}>
                 {isLogin ? "Entrar" : "Cadastrar"}
               </button>
             </form>

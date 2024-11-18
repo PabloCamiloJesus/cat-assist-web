@@ -4,10 +4,8 @@ import Footer from "./components/Templates/footer/footer";
 import Header from "./components/Templates/Header/index";
 import Perfil from "./components/perfil/index";
 import PergFreq from "./components/pergFreq/PergFreq";
-import Cadastro from "./components/Cadastro/index";
 import Home from "./components/home/index";
 import Chat from "./components/Chat/index";
-import Default from "./components/ChatDefault/index";
 import Avaliacao from "./components/Avaliacao/index";
 import Sobrenos from "./components/SobreNos/index";
 import Login from "./components/Login/index";
@@ -21,37 +19,13 @@ function App() {
   // Hook para pegar a rota atual
 
   const location = useLocation();
+  
+  useEffect(() => {
+      window.scrollTo(0, 0); // Move o scroll para o topo
+  }, [location]);
 
   // Verifica se a rota é "/cadastro" ou "/login"
   const isAuthPage = location.pathname === "/cadastro" || location.pathname === "/login";
-
-  // Estado para controlar se a página está carregada
-  const [isPageLoaded, setIsPageLoaded] = useState(true);
-  
-  const [SignedUser, setUser] = useState(null); // Initialize as null to check for login status
-  const [loading, setLoading] = useState(true); // Loading state to handle waiting
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        
-        const currentUser = await auth.currentUser;
-        
-        setUser(currentUser);
-
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      } finally {
-        setLoading(false); // Set loading to false once done
-      }
-    };
-  })
-  
-  // Enquanto não estiver carregado, exibe um "loading" ou algo semelhante
-  if (!isPageLoaded) {
-    return <div>Carregando...</div>;
-  }
-
 
   return (
     <div>
@@ -66,10 +40,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/perguntas" element={<PergFreq />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/avaliacao" element={<Avaliacao />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/chat-default" element={<Default />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sobre-nos" element={<Sobrenos />} />
         <Route path="/chatbot" element={<ChatBot />} />

@@ -77,18 +77,28 @@ const Header = () => {
               HOME
             </Dropdown.Item>
             <Dropdown.Item
-              href="#atendimento"
+              href="/#atendimento"
               onClick={(e) => handleNavigation(e, "/", "#atendimento")}
             >
               ATENDIMENTOS
             </Dropdown.Item>
             <Dropdown.Item
-              href="#contato"
+              href="/#sobre-nos"
               onClick={(e) => handleNavigation(e, "/", "#sobre-nos")}
             >
               SOBRE NÓS
             </Dropdown.Item>
-            <Dropdown.Item to="#perfil">PERFIL</Dropdown.Item>
+            <Dropdown.Item>
+              {SignedUser ? (
+                <Link className="nav-link" to="/perfil">
+                  PERFIL
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  LOGIN
+                </Link>
+              )}
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 

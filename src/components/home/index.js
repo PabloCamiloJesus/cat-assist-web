@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "animate.css";
 import IntersectionObserverComponent from "../animation/useIntersectionObserver";
 
 const Home = () => {
-  const location = useLocation();
+
   const navigate = useNavigate();
+
+  const [activeSlide, setActiveSlide] = useState(0);
   
-  // Detecta a mudança de rota e, se for a página inicial, rola para o topo
-  useEffect(() => {
-    if (location.pathname === "/") {
-      window.scrollTo(0, 0); // Move o scroll para o topo
-    }
-  }, [location]);
-
-
-    const [activeSlide, setActiveSlide] = useState(0);
-
   const slides = [
     {
       title: "",
@@ -40,8 +32,6 @@ const Home = () => {
     {
       title: "",
       description: "",
-      // link: "",
-      // linkText: "",
       backgroundColor: "rgba(0, 153, 204, 0.7)", // Fundo azul claro
       backgroundImage: require("../../assets/banner/esportes.png"),
       image: "",
@@ -75,17 +65,12 @@ const Home = () => {
         animationClass="animate__slow animate__fadeIn"
         id="container-banner"
       >
-        <div className="carousel col-sm-12">
+        <div className="carousel">
           <div
             className="slide animate__animated animate__fadeIn animate__slow"
             style={{
               backgroundColor: slides[activeSlide].backgroundColor,
               backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 90%, white 100%), url(${slides[activeSlide].backgroundImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              height: "94vh",
-              width: "100%",
-              position: "relative",
             }}
           >
             {/* Texto e Botão */}
@@ -211,7 +196,7 @@ const Home = () => {
 
           <div className="d-flex justify-content-evenly g-5">
             <div className="lado-direito d-flex justify-content-evenly">
-              <div className="sobrenos-vai-esquerdo-conteudo ms-4">
+              <div className="sobrenos-vai-esquerdo-conteudo">
                 <p>
                   Bem-vindo à nossa plataforma! Somos uma equipe apaixonada por
                   tecnologia, inovação e atendimento eficiente. Nosso objetivo é
