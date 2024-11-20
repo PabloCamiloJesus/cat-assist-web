@@ -80,7 +80,7 @@
 /* Área de mensagens */
 .messages-box {
     background-color: #ffffff;
-    overflow-y: hidden;
+    overflow-y: scroll;
     border-radius: 0;
     display: flex;
     flex-direction: column;
@@ -247,10 +247,7 @@
 }
 
 .message-common {
-
-    display: flex;
     font-size: 17px;
-
 }
 
 .other-message {
