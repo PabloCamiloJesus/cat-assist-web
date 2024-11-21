@@ -23,6 +23,17 @@
 
 }
 
+.chat-header {
+
+    width: 100% ;
+
+    padding: 20px;
+    
+    color: white;
+    background-color: #BF0B3B;
+
+}
+
 /* Botão de Envio */
 .input-area {
     display: flex;
@@ -148,7 +159,10 @@
     align-items: center;
     height: 100%;
     width: 250px;
-    border: solid 1px #4646465a;
+}
+
+.d-none {
+    display: none;
 }
 
 .btn-acc {
@@ -159,17 +173,16 @@
     word-break: break-all;
     width: 100%;
     padding: 5px;
-    height: 40px;
+    min-height: 40px;
     font-size: larger;
     transition: 0.5s;
-
 
 }
 
 .icon {
     width: 250px;
     height: 80px;
-    background-color: #000000c9;
+    background-color: #000000ad;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -216,8 +229,6 @@
     max-width: 1200px;
     align-items: flex-start;
     justify-content: flex-start;
-    
-    border: solid 1px #4646465a;
 
 }
 
@@ -302,7 +313,7 @@
     /* Botão para abrir a barra de contatos */
     #toggle-contacts {
         display: inline-block;
-        background-color: #000000c9;
+        background-color: #BF0B3B;
         color: #fff;
         border: none;
         font-size: 18px;
@@ -353,3 +364,12 @@
     }
 
 }
+
+.notification-badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8em;
+    padding: 0.2em 0.5em;
+    margin-left: 10px;
+  }

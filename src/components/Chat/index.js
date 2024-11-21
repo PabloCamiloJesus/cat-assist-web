@@ -45,7 +45,6 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-
     if (chatId) {
       const messagesQuery = query(
         collection(db, "messages"),
@@ -54,7 +53,9 @@ function Chat() {
 
       onSnapshot(messagesQuery, (snapshot) => {
         const messagesArray = snapshot.docs.map((doc) => doc.data());
-        const sortedMessages = messagesArray.sort((a, b) => a.timestamp - b.timestamp);
+        const sortedMessages = messagesArray.sort(
+          (a, b) => a.timestamp - b.timestamp
+        );
         setMessages(sortedMessages);
       });
     }
@@ -124,7 +125,11 @@ function Chat() {
       >
         <div className="offcanvas-header">
           <h5 id="chatOffcanvasLabel">Chats</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="offcanvas"
+          ></button>
         </div>
         <div className="offcanvas-body">
           {employees.map((employee, index) => (
@@ -180,16 +185,19 @@ function Chat() {
       </div>
 
       <div className="messages-container">
+        <div className={"chat-header " + (chatId ? "" : "d-none")}>
+          <strong>{chatterName}</strong>
+        </div>
         {chatId ? (
-          <div
-            className="messages-box"
-          >
+          <div className="messages-box">
             {messages.map((msg, index) => (
               <p
                 key={index}
-                className={"message-common " + (msg.senderId === clientId ? 'user-message' : 'other-message')}
+                className={
+                  "message-common " +
+                  (msg.senderId === clientId ? "user-message" : "other-message")
+                }
               >
-                <strong>{msg.senderId === clientId ? "" : `${chatterName}: `}</strong>
                 {msg.text}
               </p>
             ))}
@@ -216,7 +224,11 @@ function Chat() {
                 onChange={(e) => setNewMessage(e.target.value)}
                 id="Input"
               />
-              <button className="send-button botaors btn-env" variant="primary" type="submit">
+              <button
+                className="send-button botaors btn-env"
+                variant="primary"
+                type="submit"
+              >
                 Enviar
               </button>
             </div>
