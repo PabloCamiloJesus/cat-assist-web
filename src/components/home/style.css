@@ -218,7 +218,8 @@ p {
 }
 
 .botao-preto:hover {
-  color: #bf0b3b;
+  color: #f5f5f5;
+  background-color: #bf0b3b;
 }
 
 .white-btn {

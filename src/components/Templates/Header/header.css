@@ -38,11 +38,12 @@
   font-weight: bold;
   text-transform: uppercase;
   transition: color 0.3s ease;
-  
+  transition: 1s;
 }
 
 .nav-link:hover {
   color: red !important;
+  transition: 1s;
 }
 
 .dropdown-menu{
