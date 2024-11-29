@@ -171,7 +171,7 @@ const Home = () => {
                   alt="icone de atendente virtual artificial"
                 />
                 <h2 style={{ textTransform: "uppercase" }}>
-                  Atendimento automático
+                  Atendimento automatizado
                 </h2>
                 <p style={{ color: "white" }}>
                   Conheça Luna, nossa Assistente Virtual, pronta para

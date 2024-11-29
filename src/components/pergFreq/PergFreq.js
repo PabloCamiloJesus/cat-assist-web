@@ -49,10 +49,10 @@ function PergFreq() {
         </div>
 
         {/* Caixa de Sugestão */}
-        <div className="caixa text-center animate__animated animate__fadeInUp ">
+        {/* <div className="caixa text-center animate__animated animate__fadeInUp ">
           <input type="text" id="suggestion-input" className="form-control" placeholder="Adicione sua pergunta aqui..." />
           <button className="btn btn-danger p-2">ENVIAR</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

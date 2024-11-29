@@ -338,10 +338,6 @@ function Auth() {
                 </div>
               )}
 
-              <a href="#" className="forgot-password">
-                Esqueci minha senha
-              </a>
-
               <div className="error-message">
                 <p style={{ color: "red" }}>{errorMessage}</p>
               </div>

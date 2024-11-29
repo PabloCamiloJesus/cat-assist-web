@@ -10,7 +10,7 @@
 
 /* Imagem do assistente */
 .assistant-image {
-  width: 350px;
+  width: 600px;
   /* height: 350px; */
   margin-right: 20px;
 	animation: float 6s ease-in-out infinite;
@@ -26,8 +26,9 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 700px;
-  height: 75vh;
+  max-width: 100%;
+  margin-top: -73px;
+  height: 90%;
 }
 
 .chat-container::-webkit-scrollbar{
@@ -157,6 +158,7 @@
     min-height: 100vh;
     border-radius: 0;
     margin-bottom: 0;
+    margin-top: 0;
   }
 
   .assistant-image{
