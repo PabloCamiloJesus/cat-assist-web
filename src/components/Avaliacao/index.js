@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./style.css";
 import { FaStar } from "react-icons/fa";
 import { collection, addDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";

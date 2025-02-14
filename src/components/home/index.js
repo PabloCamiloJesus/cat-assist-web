@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import "animate.css";
-import IntersectionObserverComponent from "../animation/useIntersectionObserver";
+import IntersectionObserverComponent from "../Animation/useIntersectionObserver";
 
 const Home = () => {
 

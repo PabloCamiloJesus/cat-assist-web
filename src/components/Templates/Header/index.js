@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import IntersectionObserverComponent from "../../animation/useIntersectionObserver";
+import IntersectionObserverComponent from "../../Animation/useIntersectionObserver";
 import { auth } from "../../../services/firebase/firebase";
-import "./header.css";
+import "./style.css";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Header = () => {

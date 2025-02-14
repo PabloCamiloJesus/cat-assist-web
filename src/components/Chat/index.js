@@ -13,7 +13,7 @@ import {
 import { auth, db } from "../../services/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import "./index.css";
+import "./style.css";
 
 function Chat() {
   const [employees, setEmployeeId] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./perfil.css";
+import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../services/firebase/firebase";

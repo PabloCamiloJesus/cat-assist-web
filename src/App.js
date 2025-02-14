@@ -1,15 +1,15 @@
 // Imports de recursos e de components
 
-import Footer from "./components/Templates/footer/footer";
-import Header from "./components/Templates/Header/index";
-import Perfil from "./components/perfil/index";
-import PergFreq from "./components/pergFreq/PergFreq";
-import Home from "./components/home/index";
-import Chat from "./components/Chat/index";
-import Avaliacao from "./components/Avaliacao/index";
-import Sobrenos from "./components/SobreNos/index";
-import Login from "./components/Login/index";
-import ChatBot from "./components/ChatBot/index";
+import Footer from "./components/Templates/Footer";
+import Header from "./components/Templates/Header";
+import Perfil from "./components/Perfil";
+import PergFreq from "./components/PergFreq";
+import Home from "./components/Home/index";
+import Chat from "./components/Chat";
+import Avaliacao from "./components/Avaliacao";
+import Sobrenos from "./components/SobreNos";
+import Login from "./components/Login";
+import ChatBot from "./components/ChatBot";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; //BOOTSTRAP
 import "bootstrap/dist/js/bootstrap.bundle";
-import "../SobreNos/index.css"; //CSS
+import "../SobreNos/style.css"; //CSS
 
 const Sobrenos = () => {
   return (

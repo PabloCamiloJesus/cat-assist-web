@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./footer.css"; // Seu arquivo CSS personalizado
+import "./style.css"; // Seu arquivo CSS personalizado
 import { FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 // Componente para o menu de serviços

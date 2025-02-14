@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Footer from "./../../components/Templates/footer/footer";
-import IntersectionObserverComponent from "../animation/useIntersectionObserver.js";
-import "./index.css";
+import Footer from "../Templates/Footer";
+import IntersectionObserverComponent from "../Animation/useIntersectionObserver.js";
+import "./style.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useNavigation } from "react-router-dom";
 

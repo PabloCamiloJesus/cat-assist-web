@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './PergFreq.css'; // Certifique-se de ter esse arquivo
+import './style.css'; // Certifique-se de ter esse arquivo
 
 
 function PergFreq() {

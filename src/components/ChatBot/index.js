@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./index.css";
+import "./style.css";
 import { replace } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
