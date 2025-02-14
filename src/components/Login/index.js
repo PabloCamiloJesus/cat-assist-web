@@ -253,8 +253,8 @@ function Auth() {
           height="50%"
           src={
             isLogin
-              ? require("../../assets/login.cadastro/bolabasquete.png")
-              : require("../../assets/login.cadastro/bolafutebol.png")
+              ? require("../../assets/login-cadastro-images/bolabasquete.png")
+              : require("../../assets/login-cadastro-images/bolafutebol.png")
           }
           width="auto"
           alt={isLogin ? "Bola de basquete" : "Bola de futebol"}

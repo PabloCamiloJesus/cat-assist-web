@@ -10,7 +10,7 @@ const Sobrenos = () => {
       <div className="img-fluid" id="banner">
         {/* BACKGROUND */}
         <img
-          src={require('../../assets/banner_sobnos.jpeg')}
+          src={require('../../assets/sobrenos-images/banner_sobrenos.jpeg')}
           alt="Sobre Nós"
           className="img-fluid bannerimg"
         />

@@ -13,7 +13,6 @@
 
 .left-container{
     width: 50%;
-    background-color: url('../../assets/perfil-icon.png');
     position: relative;
     display: flex;
     align-items: center;

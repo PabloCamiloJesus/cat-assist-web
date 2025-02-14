@@ -17,8 +17,8 @@ const Home = () => {
       link: "#atendimento",
       linkText: "Saiba-mais",
       backgroundColor: "rgba(0, 0, 0, 0.7)", // Fundo escuro
-      backgroundImage: require("../../assets/banner/Luna-Banner.png"),
-      image: "",
+      backgroundImage: require("../../assets/home-images/assistente-virtual.png"),
+      
     },
     {
       title: "",
@@ -26,15 +26,15 @@ const Home = () => {
       link: "#Perg-Freque",
       linkText: "Pergunte!!",
       backgroundColor: "rgba(255, 102, 0, 0.7)", // Fundo laranja
-      backgroundImage: require("../../assets/banner/Perguntas-frequentes.png"),
-      image: "",
+      backgroundImage: require("../../assets/home-images/perguntas-frequentes.png"),
+      
     },
     {
       title: "",
       description: "",
       backgroundColor: "rgba(0, 153, 204, 0.7)", // Fundo azul claro
-      backgroundImage: require("../../assets/banner/esportes.png"),
-      image: "",
+      backgroundImage: require("../../assets/home-images/esportes.png"),
+      
     },
   ];
 
@@ -52,7 +52,7 @@ const Home = () => {
       {/* Ícone do bot */}
       <Link to="/chatbot" title="Luna Assistente" className="icone-do-bot">
         <img
-          src={require('../../assets/Luna.gif')}
+          src={require('../../assets/luna.gif')}
           alt="luna"
           height={80}
           width={80}
@@ -108,8 +108,8 @@ const Home = () => {
             <div className="d-flex mt-cust mt-5">
               <div className="perguntas-frequentes-lado-direito lado-direito">
                 <img
-                  src={require("../../assets/duvidas.png")}
-                  alt="mulher deitada em uma estrela"
+                  src={require("../../assets/home-images/duvidas.png")}
+                  alt="mulher ao lado de uma caixa de perguntas"
                 />
               </div>
               <div className="vai-esquerdo">
@@ -141,7 +141,7 @@ const Home = () => {
             <div className="lado-direito">
               <div className="atendimento-automatizado-lado-esquerdo-conteudo">
                 <img
-                  src={require("../../assets/image 28.png")}
+                  src={require("../../assets/home-images/online-atendimento.png")}
                   alt="icone de atendente virtual humana"
                 />
                 <h2 style={{ textTransform: "uppercase" }}>
@@ -167,7 +167,7 @@ const Home = () => {
             <div className="vai-esquerdo">
               <div className="atendimento-automatizado-lado-direito-conteudo">
                 <img
-                  src={require("../../assets/image 27.png")}
+                  src={require("../../assets/home-images/IA_Atendimento.png")}
                   alt="icone de atendente virtual artificial"
                 />
                 <h2 style={{ textTransform: "uppercase" }}>
@@ -213,7 +213,7 @@ const Home = () => {
               </div>
               <div className="vai-esquerdo">
                 <img
-                  src={require("../../assets/ilustracao-do-conceito-de-equipa.png")}
+                  src={require("../../assets/home-images/landpage-sobrenos.png")}
                   alt="mulher escrevendo em caderno"
                   width={500}
                   height={500}

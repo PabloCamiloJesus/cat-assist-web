@@ -204,7 +204,7 @@ function Chat() {
           </div>
         ) : (
           <div className="chat-default">
-            <img src={require("../../assets/default-chat.png")} alt="" />
+            <img src={require("../../assets/chat-online-images/default-chat.png")} alt="" />
             <p>Estamos aqui para tirar dúvidas!</p>
           </div>
         )}

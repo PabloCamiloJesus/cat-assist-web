@@ -62,7 +62,7 @@ const Avaliacao = () => {
       <div className="container-fluid" id="container-rating">
         <div className="left-container">
           <img
-            src={require("../../assets/background-rating.jpg")}
+            src={require("../../assets/avaliacao-images/background-rating.jpg")}
             alt="Alanzoka"
             className="left-img"
           />

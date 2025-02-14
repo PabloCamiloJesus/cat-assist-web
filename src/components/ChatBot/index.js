@@ -2064,7 +2064,7 @@ const ChatBot = () => {
   return (
     <div className="container-chatbot animate__animated animate__fadeInLeftBig">
       <img
-        src={require("../../assets/Luna.gif")}
+        src={require("../../assets/luna.gif")}
         alt="Assistente"
         className="assistant-image animate__animated animate__fadeInRight"
       />
@@ -2072,7 +2072,7 @@ const ChatBot = () => {
         <h1>
           <span className="luna-title animate__animated animate__fadeInLeftBig">
             <img
-              src={require("../../assets/Luna.gif")}
+              src={require("../../assets/luna.gif")}
               className="luna-perfil"
               alt="Luna"
             />
