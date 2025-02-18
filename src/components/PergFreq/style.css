@@ -1,84 +1,46 @@
-.perg{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 400;
-    border: 2px black;
-    transition: 1.5s;
-    padding: 20px;
-    
+.perguntas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400;
+  border: 2px black;
+  transition: 1.5s ease;
+  padding: 20px;
+
 }
 
-  .card {
-    border-radius: 0.5rem;
-  }
-  
-  .card-body {
-    padding: 1.5rem;
-    gap: 50px;
-  }
+.card {
+  border-radius: 0.5rem;
+}
 
-  #lista-pergunta{
-    width: 75%;
-    margin-bottom: 30px;
-  }
-  
-  .list-group-item {
-    cursor: pointer;
-  }
-  
-  .list-group-item-action {
-    border: none;
-    background-color: #f8f9fa;
-    transition: background-color 0.3s;
-  }
-  
-  .list-group-item-action:hover {
-    background-color: #e9ecef;
-  }
-  
-  .collapse.show {
-    display: block;
-  }
-  
-  .text-danger {
-    color: #dc3545;
-  }
+.card-body {
+  padding: 1.5rem;
+  gap: 50px;
+}
 
-  .caixa{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.list-group-item {
+  cursor: pointer;
+}
 
-    gap: 10px;
+.list-group-item-action {
+  border: none;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s;
+}
 
-    padding: 10px;
-  }
-  .text-center{
-    color: black;
-  }
+.list-group-item-action:hover {
+  background-color: #e9ecef;
+}
 
-  .caixa input {
-    width: 100%;
-    max-width: 600px;
-  }
-  
-  .caixa input::placeholder {
-    font-size: 16px; /* Tamanho de fonte padrão do placeholder */
-  }
-  
-  @media (max-width: 768px) {
-    .caixa input {
-      max-width: 100%;
-      font-size: 20px;
-    }
-  
-    .caixa input::placeholder {
-      font-size: 15px; /* Tamanho menor para o placeholder em telas pequenas */
-    }
-  }
-  #suggestion-input{
-    border-radius: 0;
-    
-  }
+.collapse.show {
+  display: block;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-center {
+  color: black;
+}

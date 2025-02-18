@@ -21,15 +21,14 @@ function PergFreq() {
     { question: "Como funciona o sistema do Sesi?", answer: "O sistema do Sesi é integrado com várias unidades." },
     { question: "Quais são os planos?", answer: "Temos planos mensais, trimestrais e anuais." }
   ];
- 
+
   return (
-    <div className="perg container mt-5">
+    <div className="perguntas container mt-5">
       {/* Título acima do card */}
-      
-      
-      
+
       <div className="card card-body">
-      <h2 className="text-center mb-4 animate__animated animate__fadeInUp">Perguntas Frequentes</h2> 
+        <h2 className="text-center mb-4 animate__animated animate__fadeInUp">Perguntas Frequentes</h2>
+
         {/* Caixa com dropbox de perguntas */}
         <div className="list-group list-group-flush animate__animated animate__fadeInUp">
           {QnA.map((item, index) => (
@@ -47,12 +46,6 @@ function PergFreq() {
             </div>
           ))}
         </div>
-
-        {/* Caixa de Sugestão */}
-        {/* <div className="caixa text-center animate__animated animate__fadeInUp ">
-          <input type="text" id="suggestion-input" className="form-control" placeholder="Adicione sua pergunta aqui..." />
-          <button className="btn btn-danger p-2">ENVIAR</button>
-        </div> */}
       </div>
     </div>
   );
