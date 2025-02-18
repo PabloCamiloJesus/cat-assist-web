@@ -12,11 +12,11 @@ const Sobrenos = () => {
         <img
           src={require('../../assets/sobrenos-images/banner_sobrenos.jpeg')}
           alt="Sobre Nós"
-          className="img-fluid bannerimg"
+          className="img-fluid banner-img"
         />
 
         {/* CONTEÚDO DENTRO DO BANNER */}
-        <div className="bannerconteudo text-center">
+        <div className="banner-conteudo text-center">
           {/*TÍTULO*/}
           <h1 className="display-1 animate__animated animate__fadeInUp">Sobre Nós</h1>
           {/* SUBTÍTULO */}
