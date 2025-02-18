@@ -11,14 +11,10 @@
   background-color: #000;
   border-bottom: 3px solid red;
   display: flex;
-  justify-content: space-between;
   padding: 10px;
-  
 }
 
 .navbar-logo {
-  display: flex;
-  align-items: center;
   width: 150px;
 }
 
@@ -29,32 +25,22 @@
 #nav-left-right {
   display: flex;
   font-size: 16px;
-  min-width: auto;
   justify-content: space-evenly;
 }
 
-.nav-link {
-  color: #fff !important;
-  font-weight: bold;
-  text-transform: uppercase;
+.nav-link span {
+  color: #fff;
   transition: color 0.3s ease;
   transition: 1s;
 }
 
-.nav-link:hover {
+.nav-link span:hover {
   color: red !important;
   transition: 1s;
 }
 
-.dropdown-menu{
-  z-index: 5;
-}
-
 /* Estilo para o dropdown do botão de hambúrguer */
 .hamburger-dropdown .hamburger-toggle {
-  background: none;
-  border: none;
-  color: #fff;
   font-size: 1.5rem;
   padding: 0;
   display: flex;
@@ -62,21 +48,9 @@
   transition: .3s ease-in-out;
 }
 
-.custom-dropdown-menu {
-  background-color: #000;
-  border: 1px solid red;
-  text-align: center;
-  padding: 0;
-  border-radius: 10px;
-  
-}
-
 .custom-dropdown-menu .dropdown-item {
   color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
   background-color: #000;
-  height:35%;
   transition: .3s ease-in-out;
   font-weight: 300;
 }
@@ -86,83 +60,60 @@
   background-color: #000;
 }
 
-#dropdown-menu{
+#dropdown-menu {
   padding: 0;
-
-}
-
-#navbar-responsive{
-  display: flex;
-  gap:40px; 
-  justify-content: space-around;
 }
 
 /* Para esconder a navegação em telas menores */
 @media (max-width: 880px) {
   #nav-left-right .nav-link {
-    display: none; 
+    display: none;
   }
 
-  #nav-left-right{
+  #nav-left-right {
     display: block;
   }
 
-  .navbar-nav{
-    display: none;
-  }
-
-  .custom-navbar{
+  .custom-navbar {
     display: flex;
   }
 
-  #navbar-responsive{
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-  }
-  
-  #dropdown-menu{
-    margin-left: -125px;
-    transition: .3s ease-in-out;
-    
+  .hamburger-dropdown {
+    order: 2;
+
   }
 
-  .navbar-logo img{
-    order: 1;
-  }
-  .hamburger-dropdown{
-    order:2;
-    
-  }
-  .middle-line {
-    display: none;
- 
-}
 }
 
 @media (min-width: 880px) {
   .hamburger-dropdown {
-    display: none; /* Esconde o dropdown em telas grandes */
+    display: none;
+    /* Esconde o dropdown em telas grandes */
   }
-  
-  
+
+
 }
+
 /* Para navegadores baseados em WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
-  width: 7px; /* Largura da barra de rolagem */
+  width: 7px;
+  /* Largura da barra de rolagem */
 }
 
 ::-webkit-scrollbar-track {
-  background: black; /* Cor do fundo da barra */
-  
- 
+  background: black;
+  /* Cor do fundo da barra */
+
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: red; /* Cor da parte deslizante */
-  border-radius: 10px; /* Borda arredondada */
+  background-color: red;
+  /* Cor da parte deslizante */
+  border-radius: 10px;
+  /* Borda arredondada */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: red; /* Cor ao passar o mouse */
+  background: red;
+  /* Cor ao passar o mouse */
 }

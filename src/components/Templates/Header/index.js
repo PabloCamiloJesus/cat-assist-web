@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
+import { Nav, Dropdown } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import IntersectionObserverComponent from "../../Animation/useIntersectionObserver";
 import { auth } from "../../../services/firebase/firebase";
@@ -108,13 +108,13 @@ const Header = () => {
             href="#home"
             onClick={(e) => handleNavigation(e, "/", "#home")}
           >
-            HOME
+            <span>HOME</span>
           </Nav.Link>
           <Nav.Link
             className="nav-link"
             onClick={(e) => handleNavigation(e, "/", "#atendimento")}
           >
-            ATENDIMENTOS
+            <span>ATENDIMENTOS</span>
           </Nav.Link>
           <div className="navbar-logo">
             <img
@@ -127,15 +127,15 @@ const Header = () => {
             className="nav-link"
             onClick={(e) => handleNavigation(e, "/sobre-nos", "#sobre-nos")}
           >
-            SOBRE NÓS
+            <span>SOBRE NÓS</span>
           </Nav.Link>
           {SignedUser ? (
             <Link className="nav-link" to="/perfil">
-              PERFIL
+              <span>PERFIL</span>
             </Link>
           ) : (
             <Link className="nav-link" to="/login">
-              LOGIN
+              <span>LOGIN</span>
             </Link>
           )}
         </Nav>
