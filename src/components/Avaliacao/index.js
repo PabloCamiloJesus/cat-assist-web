@@ -66,7 +66,7 @@ const Avaliacao = () => {
             alt="Alanzoka"
             className="left-img"
           />
-          <div className="redfilter">.</div>
+          <div className="redfilter"></div>
         </div>
 
         {/* Verifica se a avaliação foi enviada */}

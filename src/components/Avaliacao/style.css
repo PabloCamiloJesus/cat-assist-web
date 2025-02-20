@@ -16,18 +16,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: none;
     mask-image: linear-gradient(to left, transparent 0%, black 100%);
-      mask-size: cover;
+    mask-size: cover;
+    
 }
 
 .left-img{
-    height: 80%;
+    height: 70%;
     width: 100%;
-    z-index: 1;
-    position: absolute;
-    
 }
 
 .redfilter{
@@ -35,21 +31,17 @@
     width: 100%;
     opacity: 0.8;
     background: linear-gradient(to right, #BF0B3B, #fff);
-    z-index: 3;
     position: absolute;
-    
 }
 
 .right-container{
     font-family: 'Raleway';
-    height: 100vh;
     width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 150px;
-    border:none;
 }
 .right-container h3{
     text-align: center;
@@ -60,11 +52,12 @@
     display: flex;
     justify-content: center;
     align-items:center;
-    
+    border: none;
 }
 
 .text-suggestion{
     font-size: 16px;
+    color: #000;
 }
 
 .right-container textarea{
@@ -106,7 +99,6 @@
         width: 100%;
         padding: 0;
         margin: 0;
-        
     }
 
     #container-rating{
@@ -123,8 +115,10 @@
         max-width: 100%;
         width: min-content;
         padding: 5px;
-        /* margin-top: 30px; */
-    
+    }
+
+    .right-container textarea{
+        width: 100%;
     }
 
     #thanks-message{
