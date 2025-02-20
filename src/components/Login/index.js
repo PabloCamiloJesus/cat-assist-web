@@ -276,9 +276,6 @@ function Auth() {
             <form onSubmit={handleSubmit}>
               {!isLogin && (
                 <div className="form-group">
-                  <label htmlFor="username-input-2" className="custom-label">
-                    Nome de usuário:
-                  </label>
                   <input
                     type="text"
                     id="username-input-2"
@@ -292,9 +289,7 @@ function Auth() {
               )}
 
               <div className="form-group">
-                <label htmlFor="email-input" className="custom-label">
-                  Email:
-                </label>
+                
                 <input
                   type="text"
                   id="email-input"
@@ -307,9 +302,7 @@ function Auth() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password-input" className="custom-label">
-                  Senha:
-                </label>
+                
                 <input
                   type="password"
                   id="password-input"
@@ -323,9 +316,7 @@ function Auth() {
 
               {!isLogin && (
                 <div className="form-group">
-                  <label htmlFor="password-input-2" className="custom-label">
-                    Confirmar senha:
-                  </label>
+                  
                   <input
                     type="password"
                     id="password-input-2"
