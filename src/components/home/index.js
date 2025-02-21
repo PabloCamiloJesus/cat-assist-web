@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [activeSlide, setActiveSlide] = useState(0);
-  
+
   const slides = [
     {
       title: "",
@@ -18,7 +18,7 @@ const Home = () => {
       linkText: "Saiba-mais",
       backgroundColor: "rgba(0, 0, 0, 0.7)", // Fundo escuro
       backgroundImage: require("../../assets/home-images/assistente-virtual.png"),
-      
+
     },
     {
       title: "",
@@ -27,14 +27,14 @@ const Home = () => {
       linkText: "Pergunte!!",
       backgroundColor: "rgba(255, 102, 0, 0.7)", // Fundo laranja
       backgroundImage: require("../../assets/home-images/perguntas-frequentes.png"),
-      
+
     },
     {
       title: "",
       description: "",
       backgroundColor: "rgba(0, 153, 204, 0.7)", // Fundo azul claro
       backgroundImage: require("../../assets/home-images/esportes.png"),
-      
+
     },
   ];
 
@@ -58,7 +58,7 @@ const Home = () => {
           width={80}
         />
       </Link>
-      
+
 
       {/* Seção do Banner */}
       <IntersectionObserverComponent
@@ -88,7 +88,7 @@ const Home = () => {
               {activeSlide !== 2 && (
                 <a
                   href={slides[activeSlide].link}
-                  className="botao-rosa"
+                  className="botao-rosa botao"
                   id="slide-button"
                 >
                   {slides[activeSlide].linkText}
@@ -102,89 +102,88 @@ const Home = () => {
       {/* Perguntas Frequentes */}
       <div id="Perg-Freque" className="perguntas-frequentes">
         <IntersectionObserverComponent animationClass="animate__fadeIn">
-          <div className="frequent-quest">
-            <h2>PERGUNTAS FREQUENTES</h2>
 
-            <div className="d-flex mt-cust mt-5">
-              <div className="perguntas-frequentes-lado-direito lado-direito">
+          <h2>PERGUNTAS FREQUENTES</h2>
+
+          <div className="d-flex mt-5">
+
+            <div className="container-frequent">
+              <div className="frequent-left">
                 <img
                   src={require("../../assets/home-images/duvidas.png")}
                   alt="mulher ao lado de uma caixa de perguntas"
                 />
               </div>
-              <div className="vai-esquerdo">
-                <div className="perguntas-frequentes-lado-esquerdo">
-                  <h3>Dúvidas:</h3>
-                  <p>
-                    Se tiver alguma dúvida ou necessitar de assistência, nosso
-                    ChatBox está disponível para auxiliá-lo de forma clara e
-                    eficaz. Sinta-se à vontade para enviar suas perguntas, e
-                    estaremos prontos para garantir que você tenha a melhor
-                    experiência possível.
-                  </p>
-                  <div style={{ marginTop: 20 }}>
-                    <Link to="/perguntas" className="link-pergunta">
-                      <a className="botao-preto botao">Pergunte</a>
-                    </Link>
-                  </div>
+              <div className="frequent-right">
+                <h3>Dúvidas:</h3>
+                <p>
+                  Se tiver alguma dúvida ou necessitar de assistência, nosso
+                  ChatBox está disponível para auxiliá-lo de forma clara e
+                  eficaz. Sinta-se à vontade para enviar suas perguntas, e
+                  estaremos prontos para garantir que você tenha a melhor
+                  experiência possível.
+                </p>
+                <div style={{ marginTop: 20 }}>
+                  <a href="/perguntas" className="botao-preto botao">Pergunte</a>
                 </div>
               </div>
+
             </div>
           </div>
         </IntersectionObserverComponent>
       </div>
 
       {/* Atendimento Online e Automático */}
-      <div className="atendimento-online-div" id="atendimento">
+      <div id="atendimento">
         <IntersectionObserverComponent animationClass="animate__fadeInUp">
-          <div className="d-flex Atendimento-automatizado-conteudo">
-            <div className="lado-direito">
-              <div className="atendimento-automatizado-lado-esquerdo-conteudo">
-                <img
-                  src={require("../../assets/home-images/online-atendimento.png")}
-                  alt="icone de atendente virtual humana"
-                />
-                <h2 style={{ textTransform: "uppercase" }}>
-                  Atendimento Online
-                </h2>
-                <div>
-                  <p style={{ color: "white" }}>
-                    Você pode falar com um membro da nossa secretaria através do
-                    atendimento online durante os seguintes horários:
-                  </p>
-                  <ul>
-                    <li>Terça a Sexta: das 8h às 20h</li>
-                    <li>Sábado: das 8h ao 12hrs</li>
-                    <li>Domingo e Segunda: Fechado</li>
-                  </ul>
-                </div>
-                <a href="/chat" className="white-btn botao">
-                  Suporte
-                </a>
+          <div className="container-atendimento">
+            <div className="atendimento-left">
+
+              <img
+                src={require("../../assets/home-images/online-atendimento.png")}
+                alt="icone de atendente virtual humana"
+              />
+              <h2 style={{ textTransform: "uppercase" }}>
+                Atendimento Online
+              </h2>
+              <div>
+                <p style={{ color: "white" }}>
+                  Você pode falar com um membro da nossa secretaria através do
+                  atendimento online durante os seguintes horários:
+                </p>
+                <ul>
+                  <li>Terça a Sexta: das 8h às 20h</li>
+                  <li>Sábado: das 8h ao 12hrs</li>
+                  <li>Domingo e Segunda: Fechado</li>
+                </ul>
               </div>
+              <a href="/chat" className="botao-rosa botao">
+                Suporte
+              </a>
+
             </div>
             <div className="middle-line"></div>
-            <div className="vai-esquerdo">
-              <div className="atendimento-automatizado-lado-direito-conteudo">
-                <img
-                  src={require("../../assets/home-images/IA_Atendimento.png")}
-                  alt="icone de atendente virtual artificial"
-                />
-                <h2 style={{ textTransform: "uppercase" }}>
-                  Atendimento automatizado
-                </h2>
-                <p style={{ color: "white" }}>
-                  Conheça Luna, nossa Assistente Virtual, pronta para
-                  auxiliá-lo(a) na resolução de suas necessidades. Inteligente e
-                  eficiente, Luna está à disposição para oferecer suporte e
-                  orientações precisas em diversas situações. Experimente agora
-                  e descubra como Luna pode facilitar sua experiência.
-                </p>
-                <Link to="/chatbot" className="botao-rosa botao">
-                  Assistente virtual
-                </Link>
-              </div>
+            <div className="atendimento-right">
+
+              <img
+                src={require("../../assets/home-images/IA_Atendimento.png")}
+                alt="icone de atendente virtual artificial"
+              />
+              <h2 style={{ textTransform: "uppercase" }}>
+                Atendimento automatizado
+              </h2>
+              <p style={{ color: "white" }}>
+                Conheça Luna, nossa Assistente Virtual, pronta para
+                auxiliá-lo(a) na resolução de suas necessidades. Inteligente e
+                eficiente, Luna está à disposição para oferecer suporte e
+                orientações precisas em diversas situações. Experimente agora
+                e descubra como Luna pode facilitar sua experiência.
+              </p>
+              <Link to="/chatbot" className="botao-rosa botao">
+                Assistente virtual
+              </Link>
             </div>
+
           </div>
         </IntersectionObserverComponent>
       </div>
@@ -192,34 +191,29 @@ const Home = () => {
       {/* Sobre Nós */}
       <IntersectionObserverComponent animationClass="animate__fadeIn">
         <div className="sobrenos" id="sobre-nos">
-          <h2>Sobre nós</h2>
-
-          <div className="d-flex justify-content-evenly g-5">
-            <div className="lado-direito d-flex justify-content-evenly">
-              <div className="sobrenos-vai-esquerdo-conteudo">
-                <p>
-                  Bem-vindo à nossa plataforma! Somos uma equipe apaixonada por
-                  tecnologia, inovação e atendimento eficiente. Nosso objetivo é
-                  transformar a maneira como você interage com serviços
-                  digitais, proporcionando uma experiência otimizada e
-                  intuitiva. Com um foco voltado para soluções de comunicação
-                  modernas e integradas, trabalhamos constantemente para
-                  garantir que você tenha acesso fácil e rápido às informações
-                  que precisa.
-                </p>
-                <a href="/sobre-nos" className="botao-preto botao">
-                  Sobre nós
-                </a>
-              </div>
-              <div className="vai-esquerdo">
-                <img
-                  src={require("../../assets/home-images/landpage-sobrenos.png")}
-                  alt="mulher escrevendo em caderno"
-                  width={500}
-                  height={500}
-                />
-              </div>
-            </div>
+          <div className="About-left">
+            <h2>Sobre nós</h2>
+            <p>
+              Bem-vindo à nossa plataforma! Somos uma equipe apaixonada por
+              tecnologia, inovação e atendimento eficiente. Nosso objetivo é
+              transformar a maneira como você interage com serviços
+              digitais, proporcionando uma experiência otimizada e
+              intuitiva. Com um foco voltado para soluções de comunicação
+              modernas e integradas, trabalhamos constantemente para
+              garantir que você tenha acesso fácil e rápido às informações
+              que precisa.
+            </p>
+            <a href="/sobre-nos" className="botao-preto botao">
+              Sobre nós
+            </a>
+          </div>
+          <div className="About-right">
+            <img
+              src={require("../../assets/home-images/landpage-sobrenos.png")}
+              alt="mulher escrevendo em caderno"
+              width={450}
+              height={450}
+            />
           </div>
         </div>
       </IntersectionObserverComponent>

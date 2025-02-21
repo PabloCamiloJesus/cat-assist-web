@@ -55,7 +55,15 @@
 }
 
 /* Responsividade para telas menores que 1000px */
-@media (max-width: 999px) {
+@media (max-width: 757px) {
+  #container-footer{
+    display: flex;
+    flex-direction: column;
+  }
+  .footer{
+    display: flex;
+    flex-direction: column;
+  }
   .menu-toggle {
     display: flex; /* Exibir o botão de toggle em telas menores */
     justify-content: center;
@@ -82,7 +90,7 @@
 
 }
 /* Ensure the services menu is always visible on larger screens */
-@media (min-width: 1001px) {
+@media (min-width: 758px) {
   .list-unstyled {
     display: flex; /* Ensure it's always visible */
   }

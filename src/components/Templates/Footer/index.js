@@ -101,7 +101,7 @@ const Footer = () => {
           <span></span>
         </div>
         <div className="below-footer">
-          <div className="d-flex align-items-center justify-content-around row text-center mt-3" id="container-footer">
+          <div className="d-flex align-items-center justify-content-around text-center mt-3" id="container-footer">
             {/* Coluna 1: Menu de Serviços */}
             <div className="col-md-3 text-center mb-4 mb-md-0">
               <ServiceMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
