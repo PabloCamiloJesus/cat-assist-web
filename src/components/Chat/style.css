@@ -9,26 +9,19 @@
     justify-content: center;
 }
 
-#chat-row {
-    margin: 0;
-    flex-grow: 1;
-    display: flex;
-    max-width: 100%;
-}
-
 .scroll {
-
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 
 }
 
+.scroll ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
 .chat-header {
-
-    width: 100% ;
-
+    width: 100%;
     padding: 20px;
-    
     color: white;
     background-color: #BF0B3B;
 
@@ -38,56 +31,34 @@
 .input-area {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
     width: 100%;
 }
 
 .input-area input {
-    
     padding: 10px;
     width: 100%;
-    border-radius: 10px !important;
+    border-radius: 10px;
+    border: none;
 
 }
 
 .input-area button {
-    
     padding: 10px;
-    border-radius: 10px !important;
+    border-radius: 10px;
     background-color: #000;
     color: #fff;
     border: none;
     font-size: 16px;
     cursor: pointer;
-    width: 100px !important;
+    width: 100px;
 
-}
-
-/* Barra de Contatos */
-#contacts-bar {
-    background-color: #F2F2F2;
-    padding: 0;
-}
-
-/* Barra superior com nome do contato */
-#contact-bar {
-    background-color: #BF0B3B;
-    color: #F2F2F2;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #F2F2F2;
-    height: 60px;
-    margin-bottom: 0;
 }
 
 /* Área de mensagens */
 .messages-box {
     background-color: #ffffff;
-    overflow-y: scroll;
-    border-radius: 0;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -96,7 +67,7 @@
     word-wrap: break-word;
 }
 
-.messages-box::-webkit-scrollbar {
+.messages-box::-webkit-scrollbar-thumb {
     color: transparent;
 }
 
@@ -104,50 +75,8 @@
     padding: 50px;
 }
 
-.butaoss {
-
+.open-chats {
     display: none;
-
-}
-
-/* Campo de entrada de mensagem */
-#message-input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #F2F2F2;
-    border-top: 1px solid #dee2e6;
-    width: 83vw;
-}
-
-#message-input-field {
-    flex-grow: 1;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    color: #0D0D0D;
-    margin-right: 10px;
-}
-
-#message-input-field::placeholder {
-    color: #666;
-}
-
-/* Responsividade para Telas Menores */
-@media (max-width: 768px) {
-    #chat-container {
-        padding: 0 7px;
-        max-width: 100%;
-    }
-
-    #chat-window,
-    #contacts-bar {
-        width: 100%;
-    }
-
-    #send-button {
-        width: auto !important;
-    }
 }
 
 .chat-box-chat {
@@ -155,10 +84,11 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     height: 100%;
     width: 250px;
+    border-right: 1px solid #66666667;
+  
 }
 
 .d-none {
@@ -169,19 +99,15 @@
     background-color: white;
     border: none;
     border-bottom: #66666667 solid 1px;
-    margin-right: 10px;
-    word-break: break-all;
     width: 100%;
     padding: 5px;
     min-height: 40px;
     font-size: larger;
-    transition: 0.5s;
-
 }
 
 .icon {
     width: 250px;
-    height: 80px;
+    height: 65px;
     background-color: #000000ad;
     display: flex;
     justify-content: center;
@@ -193,55 +119,41 @@
     width: 50px;
     height: 50px;
     color: #fff;
-    order: 2;
-    transform: matrix3d(0, 0, 1);
     display: grid;
     place-items: center;
-
 }
 
 .icon p {
     font-size: 20px;
     color: #fff;
-    order: 1;
     margin: 0;
 }
 
+.btn-acc:hover, .btn-acc:focus{
+    color: #fff;
+    transition: .5s;
+}
 .btn-acc:hover {
     background-color: #46464682;
-    transition: 0.5s;
-    color: white;
 }
 
 .btn-acc:focus {
-    background-color: #0D0D0D;
-    color: white;
-    transition: 0.5s;
+    background-color: #000;
 }
 
 .messages-container {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
-
-    max-width: 1200px;
-    align-items: flex-start;
-    justify-content: flex-start;
-
 }
 
 .message-input {
     display: flex;
     background-color: #b1b1b16f;
-    /* justify-content: center; */
     align-items: center;
     width: 100%;
     padding: 5px;
-    flex-direction: row !important;
-    margin-top: 0 !important;
-
 }
 
 .user-message {
@@ -261,32 +173,27 @@
     background-color: #f2f2f2;
     max-width: 50%;
     border-bottom-left-radius: 0;
-    gap: 5px;
 }
 
 .chat-default {
-    display: flex;
+    display: grid;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
     height: 100%;
     width: 100%;
 }
 
 .chat-default img {
     width: 400px;
-    height: 500px;
+    height: fit-content;
 }
 
 .chat-default p {
     font-size: 24px;
-
 }
 
 /* Estilos para tela de dispositivos móveis */
 @media (max-width: 900px) {
-
-
     #chat-container {
         padding: 0 5px;
         display: flex;
@@ -294,30 +201,6 @@
         height: 100vh;
         padding: 0vw !important;
 
-    }
-
-    /* Barra de contatos como backdrop */
-    .chat-box-chat {
-        position: fixed;
-        max-width: 300px;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.85);
-        /* Transparente */
-        z-index: 1000;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    /* Botão para abrir a barra de contatos */
-    #toggle-contacts {
-        display: inline-block;
-        background-color: #BF0B3B;
-        color: #fff;
-        border: none;
-        font-size: 18px;
-        cursor: pointer;
     }
 
     /* Quando a barra de contatos estiver aberta */
@@ -328,48 +211,25 @@
     /* Estilos gerais de chat responsivo */
     .messages-container {
         padding: 0px;
-        align-items: center;
-        justify-content: center;
+        max-height: 96%;
     }
 
-    .message-input {
-        width: 100%;
-    }
-
-    .butaoss {
-
-        display: flex;
+    .open-chats {
+        display: grid;
+        place-items: center;
         background-color: red;
+        margin-top: 0px;
         width: 100%;
-
-        align-items: center;
-        justify-content: center;
-
-        height: max-content;
-
-        text-align: center;
-
+        border: 0px;
+        border-radius: 0;
+        color: white;
 
     }
 
     .chat-default img {
         height: auto;
     }
-
-    .butaoss {
-        background-color: red;
-        border: 0px;
-        color: white;
-        border-radius: 0%;
+    .chat-box-chat{
+        display: none;
     }
-
 }
-
-.notification-badge {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    font-size: 0.8em;
-    padding: 0.2em 0.5em;
-    margin-left: 10px;
-  }

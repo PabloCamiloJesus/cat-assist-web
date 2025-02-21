@@ -102,16 +102,16 @@ function Chat() {
   // if (loading) return <p>Carregando...</p>;
 
   return (
-    <div id="chat-container" className="">
+    <div id="chat-container">
       {/* Offcanvas Toggle Button - Only Visible on Small Screens */}
       <button
-        className="butaoss btn"
+        className="open-chats btn"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#chatOffcanvas"
         aria-controls="chatOffcanvas"
       >
-        Abrir Chats
+        <span>Abrir Chats</span>
       </button>
 
       {/* Offcanvas for Chats - Visible on Small Screens */}
@@ -156,10 +156,10 @@ function Chat() {
       </div>
 
       {/* Chat List - Visible on Larger Screens */}
-      <div className="chat-box-chat d-none d-md-block">
+      <div className="chat-box-chat d-none d-lg-block">
         <div className="icon">
-          <i className="text-center bi bi-chat-square-dots"></i>
           <p>CHATS</p>
+          <i className="text-center bi bi-chat-square-dots"></i>
         </div>
         <div className="scroll">
           {employees.map((employee, index) => (
