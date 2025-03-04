@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import "animate.css";
-import IntersectionObserverComponent from "../Animation/useIntersectionObserver";
+import IntersectionObserverComponent from "../animation/useIntersectionObserver";
 
 const Home = () => {
 
@@ -52,7 +52,7 @@ const Home = () => {
       {/* Ícone do bot */}
       <Link to="/chatbot" title="Luna Assistente" className="icone-do-bot">
         <img
-          src={require('../../assets/luna.gif')}
+          src={require('../../assets/Luna.gif')}
           alt="luna"
           height={80}
           width={80}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Nav, Dropdown } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import IntersectionObserverComponent from "../../Animation/useIntersectionObserver";
 import { auth } from "../../../services/firebase/firebase";
 import "./style.css";
 import { onAuthStateChanged } from "firebase/auth";
+import IntersectionObserverComponent from "../../animation/useIntersectionObserver";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);

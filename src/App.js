@@ -2,9 +2,9 @@
 
 import Footer from "./components/Templates/Footer";
 import Header from "./components/Templates/Header";
-import Perfil from "./components/Perfil";
+import Perfil from "./components/perfil/index";
 import PergFreq from "./components/PergFreq";
-import Home from "./components/Home/index";
+import Home from "./components/home/index";
 import Chat from "./components/Chat";
 import Avaliacao from "./components/Avaliacao";
 import Sobrenos from "./components/SobreNos";
