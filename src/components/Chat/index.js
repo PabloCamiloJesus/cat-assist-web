@@ -99,8 +99,6 @@ function Chat() {
     });
   }, [employees]);
 
-  // if (loading) return <p>Carregando...</p>;
-
   return (
     <div id="chat-container">
       {/* Offcanvas Toggle Button - Only Visible on Small Screens */}
