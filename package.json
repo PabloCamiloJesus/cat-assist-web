@@ -2,7 +2,6 @@
   "name": "cat-assist-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -10,8 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
+    "caniuse-lite": "^1.0.30001741",
     "firebase": "^10.14.1",
-    "firestore": "^1.1.6",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
